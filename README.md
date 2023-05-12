@@ -1,4 +1,4 @@
-# FluentDrip
+# Lingosta
 Unlock the power of language effortlessly. Our AI-driven language learning app turns your sentences into personalized flashcards, making learning a breeze.
 
 > Swipe, absorb, conquer! Unleash your linguistic drip with our brainy flashcard generator - no words spoken, just pure drip-driven learning power.
