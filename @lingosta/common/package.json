@@ -1,0 +1,11 @@
+{
+  "main": "dist/index.js",
+  "name": "@lingosta/common",
+  "scripts": {
+    "build": "npm run clean && tsc -p ./tsconfig.common.json",
+    "build:check": "tsc -p ./tsconfig.common.json --noEmit",
+    "build:watch": "tsc -p ./tsconfig.common.json --watch",
+    "clean": "rm -rf dist"
+  },
+  "types": "dist/index.d.ts"
+}
