@@ -1,0 +1,12 @@
+{
+  "name": "lingosta-api",
+  "version": "0.0.1",
+  "scripts": {
+  },
+  "devDependencies": {
+    "@vercel/node": "^2.14.2"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
