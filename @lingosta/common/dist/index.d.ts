@@ -1,0 +1,1 @@
+export { TestEnum } from './types';
