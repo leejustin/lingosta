@@ -1,4 +1,25 @@
 # Lingosta API
+NodeJS serverless APIs deployed to Vercel.
+
+## Prerequisites
+1. [Install Vercel CLI](https://vercel.com/docs/concepts/functions/serverless-functions/quickstart):
+   
+   ```bash
+   npm i -g vercel@latest
+   ```
+1. Set up `.env` file in `@lingosta/` if you haven't done so yet. This is needed for application configurations to be loaded.
+
+## Run Locally
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+1. Run the development server in the `@lingosta/` root directory:
+   ```bash
+   vercel dev
+   ```
+    This will start the server at `http://localhost:3000`
 
 ## API Specification
 ### Query for translations
@@ -6,7 +27,7 @@
 `POST` `{BASE_URL}/api/translations`
 
 Implements `@lingosta/common/TranslationRequest`
-    
+
  ```json
  {
      "language": "es",
@@ -48,23 +69,3 @@ curl -X POST -H "Content-Type: application/json" -d '{
   "sentence": "tengo muchos amigos"
 }' {BASE_URL}/api/translations
 ```
-
-## Prerequisites
-1. [Install Vercel CLI](https://vercel.com/docs/concepts/functions/serverless-functions/quickstart):
-   
-   ```bash
-   npm i -g vercel@latest
-   ```
-1. Set up `.env` file in `@lingosta/` if you haven't done so yet. This is needed for application configurations to be loaded.
-
-## Run Locally
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-1. Run the development server in the `@lingosta/` root directory:
-   ```bash
-   vercel dev
-   ```
-    This will start the server at `http://localhost:3000`
