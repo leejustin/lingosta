@@ -27,3 +27,8 @@ export interface Translation {
   sentence: string;
   terms: Term[];
 }
+
+export interface TranslationRequest {
+  type: Language;
+  sentence: string;
+}

@@ -9,7 +9,7 @@
     "build:app": "cd @lingosta/app && npm run build",
     "start:api": "cd @lingosta/api && npm run start",
     "format": "npm run format:check && npm run format:fix",
-    "format:check": "prettier --list-different './{api,common,app}/**/*.{js,ts,tsx}' './**/*.json'",
-    "format:fix": "prettier --write './{api,common,app}/**/*.{js,ts,tsx}' './**/*.json'"
+    "format:check": "prettier --list-different './@lingosta/{api,common,app}/**/*.{js,ts,tsx}' './**/*.json'",
+    "format:fix": "prettier --write './@lingosta/{api,common,app}/**/*.{js,ts,tsx}' './**/*.json'"
   }
 }
