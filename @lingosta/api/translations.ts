@@ -11,13 +11,13 @@ import {
 
 
 const configuration = new Configuration({
-  organization: process.env.OPEN_API_ORGANIZATION_ID,
-  apiKey: process.env.OPEN_API_SECRET_KEY,
+  organization: process.env.OPENAI_ORGANIZATION_ID,
+  apiKey: process.env.OPENAI_SECRET_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
 
-// cleanResponse cleans up the OpenAPI response so that it can be properly serialized
+// cleanResponse cleans up the OpenAI response so that it can be properly serialized
 const cleanResponse = (input: string): string => {
   // Remove all characters before the first `{` and after the last `}`
   const regex = /^.*?({.*}).*?$/s;
@@ -38,15 +38,15 @@ export default async function translations(
 
   const {sentence, type} = requestBody;
 
-  const prompt: string = process.env.OPEN_API_PROMPT
+  const prompt: string = process.env.OPENAI_PROMPT
     .replace("$SOURCE_LANGUAGE_NAME", getLanguageName(type))
     .replace("$SOURCE_LANGUAGE", type)
     .replace("$TARGET_LANGUAGE", Language.ENGLISH)
     .replace("$SENTENCE", sentence);
 
   const query = await openai.createCompletion({
-    model: process.env.OPEN_API_MODEL,
-    max_tokens: parseInt(process.env.OPEN_API_MAX_TOKENS),
+    model: process.env.OPENAI_MODEL,
+    max_tokens: parseInt(process.env.OPENAI_MAX_TOKENS),
     prompt: prompt,
   });
 
