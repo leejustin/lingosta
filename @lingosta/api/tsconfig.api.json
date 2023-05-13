@@ -5,6 +5,6 @@
   "extends": "../../tsconfig.base.json",
   "include": ["src/**/*"],
   "paths": {
-    "@lingosta/common": ["../common/source"]
+    "@lingosta/common": ["../common/src"]
   }
 }
