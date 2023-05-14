@@ -1,8 +1,5 @@
 {
-  "devDependencies": {
-  },
-  "engines": {
-  },
+  "engines": {},
   "scripts": {
     "build": "npm run build:common && npm run build:app",
     "build:common": "cd @lingosta/common && npm run build",
@@ -11,5 +8,8 @@
     "format": "npm run format:check && npm run format:fix",
     "format:check": "prettier --list-different './{api,common,app}/**/*.{js,ts,tsx}' './**/*.json'",
     "format:fix": "prettier --write './{api,common,app}/**/*.{js,ts,tsx}' './**/*.json'"
+  },
+  "dependencies": {
+    "appwrite": "^11.0.0"
   }
 }
