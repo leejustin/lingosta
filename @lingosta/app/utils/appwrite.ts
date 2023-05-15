@@ -3,8 +3,8 @@ import { Client, Account } from 'appwrite';
 const client = new Client();
 
 client
-.setEndpoint('https://cloud.appwrite.io/v1') 
-.setProject('646057dd81245323769b');
+.setEndpoint('') 
+.setProject('');
 
 const account = new Account(client);
 

@@ -13,6 +13,7 @@ const useUser = () => {
       setUser(response);
     } catch(error) {
       setUser(null)
+      router.push('/auth/login')
     }
   }
 

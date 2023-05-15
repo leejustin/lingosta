@@ -5,7 +5,8 @@ import useUser from '../hooks/useUser'
 
 const Navbar = () => {
 
-    const { logout } = useUser();
+    const { logout, user } = useUser();
+    console.log(user)
 
   return (
     <div className='border-b-[1px] border-neutral-800 p-5'>
@@ -14,7 +15,9 @@ const Navbar = () => {
                 Lingosta
             </div>
             <div>
-                <button onClick={() => logout()}>Logout</button>
+                { !user && (
+                    <button onClick={() => logout()}>Logout</button>
+                )}                
             </div>
         </div>
     </div>
