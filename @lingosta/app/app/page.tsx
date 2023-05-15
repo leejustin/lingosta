@@ -3,14 +3,15 @@ import useUser from "../hooks/useUser"
 
 export default function Home() {
 
-  const { user } = useUser();
+  const { user, logout } = useUser();
 
 
   return (
     <div>
       {user && (
-        <div>
-          hello {user.name}
+        <div className="flex justify-between">
+          hello {user.email}
+          <button onClick={() => logout()}>Logout</button>
         </div>
       )}
     </div>

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { account } from '../utils/appwrite';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-hot-toast';
 
 const useUser = () => {
 
@@ -11,7 +12,7 @@ const useUser = () => {
     try {
       const response = await account.get();
       setUser(response)
-      console.log('hello')
+      console.log('user exists')
     } catch(error) {
       console.log(error)
     }
@@ -21,10 +22,11 @@ const useUser = () => {
     try {
       await account.createEmailSession(email, password);
       await checkUser();
-      console.log('success');
+      console.log('login success');
       router.push('/')
     } catch (error) {
       console.error(error);
+      toast.error('Login information incorrect')
     }
   };
 
