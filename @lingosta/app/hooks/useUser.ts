@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { account } from '../utils/appwrite';
 import { useRouter } from 'next/navigation';
 
@@ -10,18 +10,18 @@ const useUser = () => {
   const checkUser = async() => {
     try {
       const response = await account.get();
-      setUser(response);
+      setUser(response)
+      console.log('hello')
     } catch(error) {
-      setUser(null)
-      router.push('/auth/login')
+      console.log(error)
     }
-  }
+  };
 
-  const login = async (email, password) => {
+  const login = async (email:string, password:string) => {
     try {
-      const response = await account.createEmailSession(email, password);
-      setUser(response);
-      console.log('success')
+      await account.createEmailSession(email, password);
+      await checkUser();
+      console.log('success');
       router.push('/')
     } catch (error) {
       console.error(error);
@@ -38,16 +38,22 @@ const useUser = () => {
     }
   };
 
-  const signup = async (email, password, name) => {
+  const signup = async (email:string, password:string, name:string) => {
     try {
       const response = await account.create(email, password, name);
       setUser(response);
+      await account.createEmailSession(email, password);
     } catch (error) {
       console.error(error);
     }
   };
 
-  return { user, checkUser, login, logout, signup };
+  useEffect(() => {
+    checkUser();
+  }, []);
+
+
+  return { user, login, logout, signup };
 };
 
 export default useUser;
