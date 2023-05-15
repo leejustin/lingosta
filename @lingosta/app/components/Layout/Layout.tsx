@@ -1,8 +1,5 @@
-'use client'
+import React from 'react'
 
-import React, { useEffect } from 'react'
-import useUser from '../../hooks/useUser'
-import { useRouter } from 'next/navigation';
 
 const Layout = ({ children }) => {
 
