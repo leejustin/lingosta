@@ -22,7 +22,6 @@ const useUser = () => {
     try {
       await account.createEmailSession(email, password);
       await checkUser();
-      console.log('login success');
       router.push('/')
     } catch (error) {
       console.error(error);
@@ -33,7 +32,7 @@ const useUser = () => {
     try {
       await account.deleteSession('current');
       setUser(null);
-      router.push('/auth/login')
+      router.push('/')
     } catch (error) {
       console.error(error);
     }
@@ -52,7 +51,6 @@ const useUser = () => {
   useEffect(() => {
     checkUser();
   }, []);
-
 
   return { user, checkUser, login, logout, signup };
 };
