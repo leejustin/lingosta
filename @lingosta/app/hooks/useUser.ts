@@ -26,7 +26,6 @@ const useUser = () => {
       router.push('/')
     } catch (error) {
       console.error(error);
-      toast.error('Login information incorrect')
     }
   };
 
@@ -55,7 +54,7 @@ const useUser = () => {
   }, []);
 
 
-  return { user, login, logout, signup };
+  return { user, checkUser, login, logout, signup };
 };
 
 export default useUser;
