@@ -6,14 +6,11 @@ import { useRouter } from 'next/navigation';
 
 const Layout = ({ children }) => {
 
-    const { user } = useUser();
-    const router = useRouter();
+    const { checkUser } = useUser();
 
     useEffect(() => {
-        if(!user) {
-            router.push('/auth/login')
-        }
-    },[user, router])
+        checkUser()
+    },[checkUser])
 
     return (
     <div className='container h-full mx-auto'>
