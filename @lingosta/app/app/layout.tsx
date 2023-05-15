@@ -1,3 +1,5 @@
+'use client'
+
 import Layout from '../components/Layout/Layout'
 import Navbar from '../components/Layout/Navbar'
 import './globals.css'
