@@ -1,33 +1,26 @@
-'use client';
+"use client";
 
-import React, { FormEvent, useEffect, useState } from 'react'
-import useUser from '../../hooks/useUser'
+import React, { FormEvent, useState } from 'react'
+import { useUser } from '../../hooks/useUser'
 import Link from 'next/link';
 
 import Input from '../../components/Input';
-import { useRouter } from 'next/navigation';
+import { Toaster } from 'react-hot-toast';
 
 const Login = () => {
 
-  const { login, user } = useUser();
+  const { login } = useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const router = useRouter();
-
-  const handleLogin = (e: FormEvent<EventTarget>) => {
+  const handleLogin = async (e: FormEvent<EventTarget>) => {
     e.preventDefault()
-    login(email, password);
+    await login(email, password);
   }
-
-  useEffect(() => {
-    if(user) {
-      router.push('/')
-    }
-  }, [])
 
   return (
     <div>
+      <Toaster />
       <div className='my-10 text-xl w-full text-center max-w-2xl mx-auto'>
         Sign in to Lingosta.
       </div>
@@ -63,16 +56,16 @@ const Login = () => {
               Login
             </button>
             <p className="mt-6">
-                  Don&apos;t have an account?{' '}
-                  <Link href="/signup" className="cursor-pointer underline">
-                    Sign Up
-                  </Link>
-                </p>
+              Don&apos;t have an account?{' '}
+              <Link href="/signup" className="cursor-pointer underline">
+                Sign Up
+              </Link>
+            </p>
           </form>
-          </div>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Login

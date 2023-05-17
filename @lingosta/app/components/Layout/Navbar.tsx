@@ -1,7 +1,5 @@
-'use client'
-
-import React from 'react'
-import useUser from '../../hooks/useUser'
+"use client";
+import { useUser } from '../../hooks/useUser'
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -14,22 +12,10 @@ const Navbar = () => {
                 <Link href='/' className='text-lg font-semibold'>
                     Lingosta
                 </Link>
+
                 <div>
-                    { !user && (
-                        <div>
-                            <Link href='/login'>
-                                Login
-                            </Link>
-                        </div>
-                    )}
-                    { user && (
-                        <div className="flex gap-5">
-                            hello {user.email}
-                            <button onClick={() => logout()}>
-                                Logout
-                            </button>
-                        </div>
-                    )}
+                    {!user && <Link href='login'>Login</Link>}
+                    {user && <button onClick={() =>logout()}>Logout</button>}
                 </div>
             </div>
         </div>

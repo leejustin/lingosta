@@ -1,7 +1,7 @@
-'use client'
-
+import ClientOnly from '../components/ClientOnly'
 import Layout from '../components/Layout/Layout'
 import Navbar from '../components/Layout/Navbar'
+import { UserProvider } from '../hooks/useUser'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -19,12 +19,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Layout>
-          <Navbar />
-          {children}
-        </Layout>
-      </body>
+      <UserProvider>
+        <body className={inter.className}>
+            <Layout>
+                <Navbar />
+              {children}
+            </Layout>
+        </body>
+      </UserProvider>
+
     </html>
   )
 }

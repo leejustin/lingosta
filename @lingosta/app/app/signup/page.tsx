@@ -1,6 +1,6 @@
 'use client'
 import React, { FormEvent, useState } from 'react';
-import useUser from '../../hooks/useUser';
+import { useUser } from '../../hooks/useUser';
 
 const SignUp = () => {
 
