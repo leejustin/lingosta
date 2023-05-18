@@ -1,10 +1,10 @@
 "use client";
 
 import React, { FormEvent, useState } from 'react'
-import { useUser } from '../../hooks/useUser'
+import { useUser } from '../../../hooks/useUser'
 import Link from 'next/link';
 
-import Input from '../../components/Input';
+import Input from '../../../components/Input';
 import { Toaster } from 'react-hot-toast';
 
 const Login = () => {
@@ -26,10 +26,7 @@ const Login = () => {
       </div>
       <div className='mt-5 px-6 md:p-0 flex max-w-lg mx-auto '>
         <div className='flex-grow flex flex-col justify-center p-5 border-[1px] bg-slate-100 border-neutral-300 rounded-xl'>
-          <form onSubmit={handleLogin} className=''>
-            <label className="block mt-6" htmlFor="email">
-              Email
-            </label>
+          <form onSubmit={handleLogin} className='space-y-4'>
             <Input 
               id='email'
               type='email'
@@ -37,10 +34,8 @@ const Login = () => {
               placeholder='Email'
               onChange={(e) => setEmail(e.target.value)}
               required={true}
+              label='Email'
             />
-            <label className="block mt-6" htmlFor="password">
-              Password
-            </label>
             <Input 
               id='password'
               type='password'
@@ -48,6 +43,7 @@ const Login = () => {
               placeholder='Password'
               onChange={(e) => setPassword(e.target.value)}
               required={true}
+              label='Password'
             />
             <button 
               type='submit'
@@ -55,13 +51,18 @@ const Login = () => {
             >
               Login
             </button>
-            <p className="mt-6">
-              Don&apos;t have an account?{' '}
-              <Link href="/signup" className="cursor-pointer underline">
-                Sign Up
-              </Link>
-            </p>
           </form>
+        </div>
+      </div>
+      
+      <div className='mt-5 px-6 md:p-0 flex max-w-lg mx-auto '>
+        <div className='flex-grow flex flex-col text-center justify-center p-5 border-[1px] bg-slate-100 border-neutral-300 rounded-xl'>
+          <p className="">
+            New to Lingosta?{' '}
+            <Link href="/signup" className="cursor-pointer text-blue-500 hover:underline">
+              Create an account.
+            </Link>
+          </p>
         </div>
       </div>
     </div>
