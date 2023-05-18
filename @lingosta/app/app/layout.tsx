@@ -1,4 +1,3 @@
-import ClientOnly from '../components/ClientOnly'
 import Layout from '../components/Layout/Layout'
 import Navbar from '../components/Layout/Navbar'
 import { UserProvider } from '../hooks/useUser'

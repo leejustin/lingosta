@@ -53,7 +53,7 @@ const SignUp = () => {
                             label='Password *'
                         />
                         <p className='text-xs text-gray-500'>
-                        Make sure it's at least 8 characters.
+                        Make sure it&apos;s at least 8 characters.
                         </p>
                         <button 
                         type='submit'

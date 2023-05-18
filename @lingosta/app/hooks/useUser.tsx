@@ -25,8 +25,8 @@ const UserContext = createContext<UserState>(defaultState);
 export const UserProvider = ({ children } : {children: any}) => {
 
   const router = useRouter();
-  const [user, setUser] = useState(null);
-
+  const [user, setUser] = useState<null | {email:string, name:string}>(null);
+  
   const checkUser = async() => {
     try {
       const response = await account.get();
@@ -34,6 +34,7 @@ export const UserProvider = ({ children } : {children: any}) => {
       console.log('user exists')
     } catch(error) {
       console.log(error)
+      router.push('/')
     }
   };
 

@@ -22,6 +22,7 @@ const Navbar = () => {
                     ) : (
                         <div className='flex gap-4 capitalize'>
                             <p>Hey, {user.name}!</p>
+                            <Link href='translate'>Translate</Link>
                             <button onClick={() =>logout()}>Logout</button>
                         </div>
                     )}
