@@ -8,7 +8,7 @@ export default function Home() {
           Welcome to Lingosta
         </h1>
         <p className="mt-6 text-lg leading-8 text-gray-600">
-          Language learning made quickly!
+          Helping you learn a new language more efficiently!
         </p>
       </div>
     </div>

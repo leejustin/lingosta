@@ -5,6 +5,7 @@ interface InputProps {
     placeholder?: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     required?: boolean;
+    label?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -13,9 +14,14 @@ const Input: React.FC<InputProps> = ({
     value,
     placeholder,
     onChange,
-    required
+    required,
+    label,
 }) => {
     return (
+        <>
+        <label className="block">
+            {label}
+        </label>
         <input 
             id={id}
             type={type}
@@ -36,6 +42,7 @@ const Input: React.FC<InputProps> = ({
                 focus:border-gray-400
             "
         />
+        </>
     )
 }
 

@@ -41,11 +41,24 @@ export const UserProvider = ({ children } : {children: any}) => {
     try {
       await account.createEmailSession(email, password);
       await checkUser();
-      router.push('/')
+      router.push('/translate')
     } catch (error: any) {
       const appwriteException = error as AppwriteException;
       toast.error(appwriteException.message)
       console.error(error);
+    }
+  };
+
+  const signup = async (email:string, password:string, name:string) => {
+    try {
+      const response = await account.create('unique()', email, password, name);
+      setUser(response);
+      await account.createEmailSession(email, password);
+      router.push('/translate');
+    } catch (error: any) {
+      const appwriteException = error as AppwriteException;
+      toast.error(appwriteException.message);
+      console.error(error);  
     }
   };
 
@@ -54,16 +67,6 @@ export const UserProvider = ({ children } : {children: any}) => {
       await account.deleteSession('current');
       setUser(null);
       router.push('/login')
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const signup = async (email:string, password:string, name:string) => {
-    try {
-      const response = await account.create(email, password, name);
-      setUser(response);
-      await account.createEmailSession(email, password);
     } catch (error) {
       console.error(error);
     }

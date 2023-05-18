@@ -14,8 +14,17 @@ const Navbar = () => {
                 </Link>
 
                 <div>
-                    {!user && <Link href='login'>Login</Link>}
-                    {user && <button onClick={() =>logout()}>Logout</button>}
+                    {!user ? (
+                        <div className='space-x-4'>
+                            <Link href='login'>Login</Link>
+                            <Link href='signup'>Join</Link>
+                        </div>
+                    ) : (
+                        <div className='flex gap-4 capitalize'>
+                            <p>Hey, {user.name}!</p>
+                            <button onClick={() =>logout()}>Logout</button>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
