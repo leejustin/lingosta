@@ -1,7 +1,11 @@
 "use client";
 
 import React, { FormEvent, useState } from 'react'
+<<<<<<< HEAD
 import { useUser } from '../../../providers/useUser'
+=======
+import { useUser } from '../../../hooks/useUser'
+>>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
 import Link from 'next/link';
 
 import Input from '../../../components/Input';
@@ -25,8 +29,13 @@ const Login = () => {
         Sign in to Lingosta.
       </div>
       <div className='mt-5 px-6 md:p-0 flex max-w-lg mx-auto '>
+<<<<<<< HEAD
         <div className='flex-grow flex flex-col justify-center p-5 border-[1px] bg-slate-200 border-neutral-300 rounded-xl'>
           <form onSubmit={handleLogin} className='space-y-2'>
+=======
+        <div className='flex-grow flex flex-col justify-center p-5 border-[1px] bg-slate-100 border-neutral-300 rounded-xl'>
+          <form onSubmit={handleLogin} className='space-y-4'>
+>>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
             <Input 
               id='email'
               type='email'
@@ -56,7 +65,11 @@ const Login = () => {
       </div>
       
       <div className='mt-5 px-6 md:p-0 flex max-w-lg mx-auto '>
+<<<<<<< HEAD
         <div className='flex-grow flex flex-col text-center justify-center p-5 border-[1px] bg-slate-200 border-neutral-300 rounded-xl'>
+=======
+        <div className='flex-grow flex flex-col text-center justify-center p-5 border-[1px] bg-slate-100 border-neutral-300 rounded-xl'>
+>>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
           <p className="">
             New to Lingosta?{' '}
             <Link href="/signup" className="cursor-pointer text-blue-500 hover:underline">

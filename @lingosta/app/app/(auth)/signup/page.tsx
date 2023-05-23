@@ -1,7 +1,11 @@
 'use client'
 import React, { FormEvent, useState } from 'react';
 import Link from 'next/link';
+<<<<<<< HEAD
 import { useUser } from '../../../providers/useUser';
+=======
+import { useUser } from '../../../hooks/useUser';
+>>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
 import Input from '../../../components/Input';
 
 const SignUp = () => {
@@ -23,7 +27,11 @@ const SignUp = () => {
                 Get started with Lingosta.
             </div>
             <div className='mt-5 px-6 md:p-0 flex max-w-lg mx-auto '>
+<<<<<<< HEAD
                 <div className='flex-grow flex flex-col justify-center p-5 border-[1px] bg-slate-200 border-neutral-300 rounded-xl'>
+=======
+                <div className='flex-grow flex flex-col justify-center p-5 border-[1px] bg-slate-100 border-neutral-300 rounded-xl'>
+>>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
                     <form onSubmit={handleSignup} className='space-y-2'>
                         <Input 
                             id='name'
@@ -53,7 +61,11 @@ const SignUp = () => {
                             label='Password *'
                         />
                         <p className='text-xs text-gray-500'>
+<<<<<<< HEAD
                         Make sure it&apos;s at least 8 characters.
+=======
+                        Make sure it's at least 8 characters.
+>>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
                         </p>
                         <button 
                         type='submit'
@@ -66,7 +78,11 @@ const SignUp = () => {
             </div>
 
             <div className='mt-5 px-6 md:p-0 flex max-w-lg mx-auto '>
+<<<<<<< HEAD
                 <div className='flex-grow flex flex-col text-center justify-center p-5 border-[1px] bg-slate-200 border-neutral-300 rounded-xl'>
+=======
+                <div className='flex-grow flex flex-col text-center justify-center p-5 border-[1px] bg-slate-100 border-neutral-300 rounded-xl'>
+>>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
                      <p className="">
                         Already have an account?{' '}
                         <Link href="/login" className="cursor-pointer text-blue-500 hover:underline">
