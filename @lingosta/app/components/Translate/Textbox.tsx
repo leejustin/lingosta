@@ -1,11 +1,13 @@
 import React from 'react'
 import LangListbox from './LangListbox';
 
-const Textbox = () => {
+const Textbox = ({input, setInput, handleInput}) => {
     return (
         <div className=''>
             <div className='flex space-x-2'>
             <input
+                value={input}
+                type='text'
                 className="
                     block
                     drop-shadow-xl
@@ -17,11 +19,12 @@ const Textbox = () => {
                     rounded-lg
                     border
                     border-gray-300
-                " 
+                "
+                onChange={handleInput}
                 placeholder="Translate your sentence here..."
             >
             </input>
-            <LangListbox />
+                <LangListbox />
             </div>
         </div>
     )

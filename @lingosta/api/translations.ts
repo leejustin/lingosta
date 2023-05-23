@@ -1,23 +1,12 @@
-<<<<<<< HEAD
-import { Configuration, OpenAIApi } from "openai";
-import type { VercelRequest, VercelResponse } from "@vercel/node";
-=======
 import {Configuration, OpenAIApi} from "openai";
 import type {VercelRequest, VercelResponse} from "@vercel/node";
->>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
 import {
   getLanguageName,
   Language,
   mapRawTranslation,
-<<<<<<< HEAD
-  RawTranslation,
-  Translation,
-  TranslationRequest
-=======
   RawTranslationResponse,
   TranslationRequest,
   TranslationResponse,
->>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
 } from "@lingosta/common";
 
 
@@ -28,11 +17,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-<<<<<<< HEAD
-// cleanResponse cleans up the OpenAI response so that it can be properly serialized
-=======
 // cleanResponse cleans up the upstream response so that it can be properly serialized
->>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
 const cleanResponse = (input: string): string => {
   // Remove all characters before the first `{` and after the last `}`
   const regex = /^.*?({.*}).*?$/s;
@@ -68,24 +53,15 @@ export default async function translations(
   const result: string = cleanResponse(query.data.choices[0].text);
 
   try {
-<<<<<<< HEAD
-    const rawTranslation: RawTranslation = JSON.parse(result);
-    const translation: Translation = mapRawTranslation(sentence, rawTranslation, Language.SPANISH);
-=======
     const rawTranslation: RawTranslationResponse = JSON.parse(result);
     const translation: TranslationResponse = mapRawTranslation(sentence, rawTranslation, type as Language);
->>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
 
     console.log(translation);
     return response.status(200).json(translation);
   } catch (e) {
     console.error(e);
     return response.status(500).json({
-<<<<<<< HEAD
-      error: "Failed to parse OpenAI response",
-=======
       error: "Failed to parse response",
->>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
     });
   }
 }

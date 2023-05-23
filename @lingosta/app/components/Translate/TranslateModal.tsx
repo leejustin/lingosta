@@ -2,7 +2,7 @@ import React from 'react'
 import { AiOutlineClose } from 'react-icons/ai';
 import Button from '../Button';
 
-const Checkbox = ({ isOpen, setIsOpen }) => {
+const TranslateModal = ({ input, isOpen, setIsOpen }) => {
   const data = {
     "type": "es",
     "sentence": "tengo muchos amigos",
@@ -33,7 +33,7 @@ const Checkbox = ({ isOpen, setIsOpen }) => {
       </button>
         <div className=' border-b-[1px] border-neutral-300 w-full p-4  text-lg'>
           <p>
-          {data.sentence}
+          {input}
           </p>
           <p>
             I have many friends
@@ -53,7 +53,7 @@ const Checkbox = ({ isOpen, setIsOpen }) => {
                       </td>
                       <td className="w-4 p-4">
                       <div className="flex items-center">
-                          <input type="checkbox" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                          <input type="TranslateModal" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                           <label className="sr-only" />
                       </div>
                   </td>
@@ -72,4 +72,4 @@ const Checkbox = ({ isOpen, setIsOpen }) => {
   )
 }
 
-export default Checkbox
+export default TranslateModal
