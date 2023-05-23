@@ -17,7 +17,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-// cleanResponse cleans up the OpenAI response so that it can be properly serialized
+// cleanResponse cleans up the upstream response so that it can be properly serialized
 const cleanResponse = (input: string): string => {
   // Remove all characters before the first `{` and after the last `}`
   const regex = /^.*?({.*}).*?$/s;
@@ -54,14 +54,14 @@ export default async function translations(
 
   try {
     const rawTranslation: RawTranslationResponse = JSON.parse(result);
-    const translation: TranslationResponse = mapRawTranslation(sentence, rawTranslation, Language.SPANISH);
+    const translation: TranslationResponse = mapRawTranslation(sentence, rawTranslation, type as Language);
 
     console.log(translation);
     return response.status(200).json(translation);
   } catch (e) {
     console.error(e);
     return response.status(500).json({
-      error: "Failed to parse OpenAI response",
+      error: "Failed to parse response",
     });
   }
 }
