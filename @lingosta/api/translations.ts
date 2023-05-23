@@ -1,12 +1,12 @@
-import { Configuration, OpenAIApi } from "openai";
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import {Configuration, OpenAIApi} from "openai";
+import type {VercelRequest, VercelResponse} from "@vercel/node";
 import {
   getLanguageName,
   Language,
   mapRawTranslation,
-  RawTranslation,
-  Translation,
-  TranslationRequest
+  RawTranslationResponse,
+  TranslationRequest,
+  TranslationResponse,
 } from "@lingosta/common";
 
 
@@ -53,8 +53,8 @@ export default async function translations(
   const result: string = cleanResponse(query.data.choices[0].text);
 
   try {
-    const rawTranslation: RawTranslation = JSON.parse(result);
-    const translation: Translation = mapRawTranslation(sentence, rawTranslation, Language.SPANISH);
+    const rawTranslation: RawTranslationResponse = JSON.parse(result);
+    const translation: TranslationResponse = mapRawTranslation(sentence, rawTranslation, Language.SPANISH);
 
     console.log(translation);
     return response.status(200).json(translation);
