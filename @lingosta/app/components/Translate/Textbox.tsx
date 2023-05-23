@@ -1,9 +1,12 @@
 import React from 'react'
+import { BsTranslate } from 'react-icons/bs';
+import LangListbox from './LangListbox';
 
 const Textbox = () => {
     return (
-        <div>
-        <textarea 
+        <div className=''>
+        <div className='flex space-x-2'>
+        <input
             className="
                 block
                 drop-shadow-xl
@@ -18,7 +21,9 @@ const Textbox = () => {
             " 
             placeholder="Translate your sentence here..."
         >
-        </textarea>
+        </input>
+        <LangListbox />
+        </div>
         </div>
     )
 }

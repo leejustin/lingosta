@@ -1,7 +1,7 @@
 'use client'
 import React, { FormEvent, useState } from 'react';
 import Link from 'next/link';
-import { useUser } from '../../../hooks/useUser';
+import { useUser } from '../../../providers/useUser';
 import Input from '../../../components/Input';
 
 const SignUp = () => {
@@ -23,7 +23,7 @@ const SignUp = () => {
                 Get started with Lingosta.
             </div>
             <div className='mt-5 px-6 md:p-0 flex max-w-lg mx-auto '>
-                <div className='flex-grow flex flex-col justify-center p-5 border-[1px] bg-slate-100 border-neutral-300 rounded-xl'>
+                <div className='flex-grow flex flex-col justify-center p-5 border-[1px] bg-slate-200 border-neutral-300 rounded-xl'>
                     <form onSubmit={handleSignup} className='space-y-2'>
                         <Input 
                             id='name'
@@ -66,7 +66,7 @@ const SignUp = () => {
             </div>
 
             <div className='mt-5 px-6 md:p-0 flex max-w-lg mx-auto '>
-                <div className='flex-grow flex flex-col text-center justify-center p-5 border-[1px] bg-slate-100 border-neutral-300 rounded-xl'>
+                <div className='flex-grow flex flex-col text-center justify-center p-5 border-[1px] bg-slate-200 border-neutral-300 rounded-xl'>
                      <p className="">
                         Already have an account?{' '}
                         <Link href="/login" className="cursor-pointer text-blue-500 hover:underline">

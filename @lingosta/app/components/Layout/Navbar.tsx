@@ -1,6 +1,8 @@
 "use client";
-import { useUser } from '../../hooks/useUser'
+import { useUser } from '../../providers/useUser';
 import Link from 'next/link';
+import { BsTranslate } from 'react-icons/bs';
+
 
 const Navbar = () => {
 
@@ -9,8 +11,8 @@ const Navbar = () => {
     return (
         <div className='border-b-[1px] border-neutral-200 p-5'>
             <div className='flex justify-between'>
-                <Link href='/' className='text-lg font-semibold'>
-                    Lingosta
+                <Link href='/' className='text-lg font-semibold flex gap-2'>
+                    <BsTranslate size={20}/> Lingosta
                 </Link>
 
                 <div>
@@ -21,7 +23,6 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <div className='flex gap-4 capitalize'>
-                            <p>Hey, {user.name}!</p>
                             <Link href='translate'>Translate</Link>
                             <button onClick={() =>logout()}>Logout</button>
                         </div>
