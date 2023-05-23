@@ -1,4 +1,4 @@
-import { Client, Account } from 'appwrite';
+import { Client, Databases, Account } from 'appwrite';
 
 if (!process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID) {
     throw new Error('Must include Appwrite project id');
