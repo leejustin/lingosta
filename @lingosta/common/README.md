@@ -16,8 +16,6 @@ In `@lingosta/common/`, run the following:
 ```bash
 npm run build
 ```
-<<<<<<< HEAD
-=======
 
 ## Structure
 Currently, this package organizes code with the following conventions:
@@ -41,5 +39,3 @@ Appwrite data stored in `groups` is straightforward and can be used as-is. Howev
 
 - Data returned by Appwrite: type the response as a `DBGroup` object. This allows you to use custom-defined fields as well as Appwrite-internal fields such as `$id`.
 - Data passed into Appwrite: use the `DBGroupFields` interface. This allows you to decouple custom-defined fields from Appwrite-internal fields. If you try to pass in `$id` into a document creation/update, Appwrite will complain.
-
->>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
