@@ -7,13 +7,8 @@
     "build:watch": "tsc -p ./tsconfig.common.json --watch",
     "clean": "rm -rf dist"
   },
-<<<<<<< HEAD
-  "types": "dist/index.d.ts"
-}
-=======
   "types": "dist/index.d.ts",
   "dependencies": {
     "appwrite": "^11.0.0"
   }
 }
->>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
