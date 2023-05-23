@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 import Layout from '../components/Layout/Layout'
 import Navbar from '../components/Layout/Navbar'
 import { UserProvider } from '../providers/useUser'
-=======
-import ClientOnly from '../components/ClientOnly'
-import Layout from '../components/Layout/Layout'
-import Navbar from '../components/Layout/Navbar'
-import { UserProvider } from '../hooks/useUser'
->>>>>>> 4215f1f2c59075f2682ab6e4751b091a38487d79
 import './globals.css'
 import { Inter } from 'next/font/google'
 
