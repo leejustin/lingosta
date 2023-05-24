@@ -2,6 +2,7 @@
 import { useUser } from '../../providers/useUser';
 import Link from 'next/link';
 import { BsTranslate } from 'react-icons/bs';
+import GroupSelection from "../GroupSelection";
 
 
 const Navbar = () => {
@@ -22,8 +23,9 @@ const Navbar = () => {
                             <Link href='signup'>Join</Link>
                         </div>
                     ) : (
-                        <div className='flex gap-4 capitalize'>
-                            <Link href='translate'>Translate</Link>
+                        <div className='flex gap-4 capitalize '>
+                            <Link className="m-auto" href='translate'>Translate</Link>
+                            <GroupSelection />
                             <button onClick={() =>logout()}>Logout</button>
                         </div>
                     )}
