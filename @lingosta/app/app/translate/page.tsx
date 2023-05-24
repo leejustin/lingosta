@@ -1,24 +1,23 @@
 "use client";
 
-import React, { useEffect } from 'react'
-import { useUser } from '../../hooks/useUser'
-import { useRouter } from 'next/navigation';
+import { useUser } from '../../providers/UserProvider'
+
+import TranslateContainer from '../../components/Translate/TranslateContainer';
 
 const Translate = () => {
 
     const { user } = useUser();
-    const router = useRouter();
   
-    useEffect(() => {
-      if(!user) {
-        router.push('/')
-      } else {
-        console.log('something went wrong')
+    if(!user) {
+        return (
+            <div className='mt-8 p-5 text-center'>
+                loading
+            </div>
+        )
     }
-    }, []);
 
     return (
-        <div>Welcome back, {user?.name}!</div>
+        <TranslateContainer />
     )
 }
 

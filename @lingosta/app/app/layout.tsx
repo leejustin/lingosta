@@ -1,7 +1,6 @@
-import ClientOnly from '../components/ClientOnly'
 import Layout from '../components/Layout/Layout'
 import Navbar from '../components/Layout/Navbar'
-import { UserProvider } from '../hooks/useUser'
+import { UserProvider } from '../providers/UserProvider'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
