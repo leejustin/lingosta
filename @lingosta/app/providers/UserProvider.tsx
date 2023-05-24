@@ -1,13 +1,13 @@
 "use client";
 import { useState, useEffect, useContext, createContext } from 'react';
-import { account } from '../utils/appwrite';
+import { account } from '../helpers/AppwriteHelper';
 import { AppwriteException } from 'appwrite';
 import { useRouter } from 'next/navigation';
 
 import toast from 'react-hot-toast';
 
 export interface UserState {
-  user: {name: string; email: string} | null;
+  user: {name: string; email: string, $id: string} | null;
   login: (email: string, password: string) => Promise<void>;
   signup: (email: string, password: string, name: string) => Promise<void>;
   logout: () => Promise<void>;
@@ -25,7 +25,7 @@ const UserContext = createContext<UserState>(defaultState);
 export const UserProvider = ({ children } : {children: any}) => {
 
   const router = useRouter();
-  const [user, setUser] = useState<null | {email:string, name:string}>(null);
+  const [user, setUser] = useState<null | {email:string, name:string, $id: string}>(null);
   
   const checkUser = async() => {
     try {

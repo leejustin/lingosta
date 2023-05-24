@@ -1,16 +1,47 @@
 import React, { useState } from 'react'
 
+import { ID } from 'appwrite';
+import { databases } from '../../helpers/AppwriteHelper';
+import { useUser } from '../../providers/UserProvider';
+
+
 import Textbox from './Textbox';
 import { BsTranslate } from 'react-icons/bs';
 import Button from '../Button';
 import TranslateModal from './TranslateModal';
+import { toast } from 'react-hot-toast';
 
 
 const TranslateContainer = () => {
-    
+
+    const { user } = useUser();
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState('');
-    const [type, setType] = useState('')
+    const [language, setLanguage] = useState('kr')
+    const [terms, setTerms] = useState([]);
+
+    const handleSave = async(event) => {
+
+        try {
+            await databases.createDocument(
+                process.env.NEXT_PUBLIC_API_APPWRITE_DB_USER_TRANSLATIONS,
+                process.env.NEXT_PUBLIC_API_APPWRITE_COLLECTION_TRANSLATIONS,
+                ID.unique(),
+                {
+                    owner_id: user.$id,
+                    group_id: process.env.NEXT_PUBLIC_API_APPWRITE_COLLECTION_GROUPS_ID,
+                    raw_data: input,
+                    source_language: language,
+                }
+            );
+            setInput('');
+            setTerms([]);
+            console.log('success');
+
+        } catch(error) {
+            console.log(error);
+        }
+    }
 
     const handleInput= (event:any) => {
         setInput(event.target.value);
@@ -25,12 +56,12 @@ const TranslateContainer = () => {
                 </label>
                 Translate
             </div>
-                <Textbox input={input} setInput={setInput} handleInput={handleInput} />
+                <Textbox input={input} handleInput={handleInput} language={language} setLanguage={setLanguage}/>
                 <Button label='Lingosta' onClick={() => setIsOpen(true)}/>
             </div>
             {!isOpen ? <></> : 
                 (
-                    <TranslateModal isOpen={isOpen} setIsOpen={setIsOpen} input={input} />
+                    <TranslateModal handleSave={handleSave} isOpen={isOpen} setIsOpen={setIsOpen} input={input} />
                 )
             }
     </div>

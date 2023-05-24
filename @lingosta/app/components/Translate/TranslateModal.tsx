@@ -2,7 +2,7 @@ import React from 'react'
 import { AiOutlineClose } from 'react-icons/ai';
 import Button from '../Button';
 
-const TranslateModal = ({ input, isOpen, setIsOpen }) => {
+const TranslateModal = ({ handleSave, input, isOpen, setIsOpen }) => {
   const data = {
     "type": "es",
     "sentence": "tengo muchos amigos",
@@ -53,8 +53,7 @@ const TranslateModal = ({ input, isOpen, setIsOpen }) => {
                       </td>
                       <td className="w-4 p-4">
                       <div className="flex items-center">
-                          <input type="TranslateModal" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                          <label className="sr-only" />
+                          <input type='checkbox' className="w-5 h-5 text-black border-gray-300 rounded " />
                       </div>
                   </td>
                     </tr>
@@ -65,7 +64,7 @@ const TranslateModal = ({ input, isOpen, setIsOpen }) => {
         </div>
         <div className='flex flex-row p-4 space-x-2'>
           <Button label='Close' onClick={() => setIsOpen(false)}/>
-          <Button label='Save'/>
+          <Button label='Save' onClick={() => handleSave()}/>
         </div>
       </div>
     </div>

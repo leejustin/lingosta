@@ -1,7 +1,7 @@
 import React from 'react'
 import LangListbox from './LangListbox';
 
-const Textbox = ({input, setInput, handleInput}) => {
+const Textbox = ({input, handleInput, language, setLanguage}) => {
     return (
         <div className=''>
             <div className='flex space-x-2'>
@@ -24,7 +24,7 @@ const Textbox = ({input, setInput, handleInput}) => {
                 placeholder="Translate your sentence here..."
             >
             </input>
-                <LangListbox />
+                <LangListbox language={language} setLanguage={setLanguage} />
             </div>
         </div>
     )
