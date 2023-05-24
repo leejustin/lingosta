@@ -1,6 +1,6 @@
 "use client";
 
-import { useUser } from '../../providers/useUser'
+import { useUser } from '../../providers/UserProvider'
 
 import TranslateContainer from '../../components/Translate/TranslateContainer';
 

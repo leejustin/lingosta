@@ -13,7 +13,6 @@ const LangListbox = () => {
 
     const [selectedLanguage, setSelectedLanguage] = useState(languages[0])
 
-
   return (
     <div className="w-24">
       <Listbox value={selectedLanguage} onChange={setSelectedLanguage}>

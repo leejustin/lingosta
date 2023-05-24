@@ -1,5 +1,5 @@
 "use client";
-import { useUser } from '../../providers/useUser';
+import { useUser } from '../../providers/UserProvider';
 import Link from 'next/link';
 import { BsTranslate } from 'react-icons/bs';
 import GroupSelection from "../GroupSelection";

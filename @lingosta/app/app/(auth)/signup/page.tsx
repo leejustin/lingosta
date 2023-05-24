@@ -1,7 +1,7 @@
 'use client'
 import React, { FormEvent, useState } from 'react';
 import Link from 'next/link';
-import { useUser } from '../../../providers/useUser';
+import { useUser } from '../../../providers/UserProvider';
 import Input from '../../../components/Input';
 
 const SignUp = () => {
