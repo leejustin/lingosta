@@ -7,10 +7,15 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 export interface UserState {
-  user: Models.User<any> | undefined;
+  user?: Models.User<any>;
   login: (email: string, password: string) => Promise<void>;
   signup: (email: string, password: string, name: string) => Promise<void>;
   logout: () => Promise<void>;
+  setUserConfigs: (user: UserConfigs) => void;
+}
+
+export interface UserConfigs {
+  activeGroupId?: string;
 }
 
 const defaultState: UserState = {
@@ -18,6 +23,7 @@ const defaultState: UserState = {
   login: async() => {},
   signup: async() => {},
   logout: async() => {},
+  setUserConfigs: async() => {},
 }
 
 const UserContext = createContext<UserState>(defaultState);
@@ -73,12 +79,16 @@ export const UserProvider = ({ children } : {children: any}) => {
     }
   };
 
+  const setUserConfigs = async (userConfigs: UserConfigs): Promise<void> => {
+    await account.updatePrefs(userConfigs);
+  }
+
   useEffect(() => {
     checkUser();
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, login, logout, signup}}>
+    <UserContext.Provider value={{ user, login, logout, signup, setUserConfigs}}>
       {children}
     </UserContext.Provider>
   )
