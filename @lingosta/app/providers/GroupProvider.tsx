@@ -10,7 +10,9 @@ const DATABASE_ID = process.env.NEXT_PUBLIC_API_APPWRITE_DB_USER_TRANSLATIONS;
 const GROUPS_COLLECTION_ID = process.env.NEXT_PUBLIC_API_APPWRITE_COLLECTION_GROUPS;
 
 export type GroupContextType = {
-  userGroups: UserGroup[] | undefined;
+  userGroups?: UserGroup[];
+  activeGroup?: UserGroup;
+  setActiveGroup: (group: UserGroup) => void;
   createGroup: (group: UserGroup) => Promise<UserGroup>;
   listUserGroups: (userId: string) => Promise<UserGroup[]>;
   getGroup: (groupId: string) => Promise<UserGroup>;
@@ -27,7 +29,7 @@ interface Props {
 const GroupProvider = ({children}: Props) => {
   // The length of this iterable is expected to be relatively small, so an Array is sufficient over Map<T> to keep things simple
   const [userGroups, setUserGroups] = useState<UserGroup[] | undefined>(undefined);
-  const [activeGroup, setActiveGroup] = useState<string>("");
+  const [activeGroup, setActiveGroup] = useState<UserGroup>();
 
   const { user } = useUser();
 
@@ -36,12 +38,12 @@ const GroupProvider = ({children}: Props) => {
       initializeUserGroups(user.$id).then(
         (groups) => {
           setUserGroups(groups);
-          setActiveGroup(user.prefs?.activeGroupId ?? groups[0].id);
+          setActiveGroup(user.prefs?.activeGroupId ?? groups[0]);
         }
       )
     } else {
       setUserGroups(undefined);
-      setActiveGroup("");
+      setActiveGroup(undefined);
     }
   }, [user]);
 
@@ -105,7 +107,7 @@ const GroupProvider = ({children}: Props) => {
   }
 
   return (
-    <GroupContext.Provider value={{userGroups, createGroup, listUserGroups, getGroup, updateGroup, deleteGroup}}>
+    <GroupContext.Provider value={{userGroups, activeGroup, setActiveGroup, createGroup, listUserGroups, getGroup, updateGroup, deleteGroup}}>
       {children}
     </GroupContext.Provider>
   );

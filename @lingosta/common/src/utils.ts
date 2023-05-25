@@ -29,3 +29,32 @@ export const getLanguageName = (lang: Language): string => {
       return "Unknown";
   }
 };
+
+export const getLanguageEmoji = (lang: Language): string => {
+  switch (lang) {
+    case Language.SPANISH:
+      return "🇪🇸";
+    case Language.BRAZILIAN_PORTUGUESE:
+      return "🇧🇷";
+    case Language.ENGLISH:
+      return "🇺🇸"; // Changed from 🇬🇧 to 🇺🇸
+    case Language.KOREAN:
+      return "🇰🇷";
+    case Language.FRENCH:
+      return "🇫🇷";
+    case Language.GERMAN:
+      return "🇩🇪";
+    case Language.ITALIAN:
+      return "🇮🇹";
+    case Language.DUTCH:
+      return "🇳🇱";
+    case Language.RUSSIAN:
+      return "🇷🇺";
+    case Language.CHINESE:
+      return "🇨🇳";
+    case Language.JAPANESE:
+      return "🇯🇵";
+    default:
+      return "❓";
+  }
+};
