@@ -2,11 +2,12 @@ import {Menu, Transition} from '@headlessui/react'
 import {Fragment, useEffect} from 'react'
 import {VscAdd, VscChevronDown} from "react-icons/all";
 import {useGroup} from "../providers/GroupProvider";
+import {useUser} from "../providers/UserProvider";
 import {getLanguageEmoji, UserGroup} from "@lingosta/common";
 
 const GroupSelection = () => {
-  // TODO: configure setActiveGroup to persist this for the given user in Appwrite
   const {userGroups, activeGroup, setActiveGroup} = useGroup();
+  const {setUserConfigs} = useUser();
 
   useEffect(() => {
 
@@ -38,7 +39,14 @@ const GroupSelection = () => {
             className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               {userGroups?.filter((group: UserGroup) => group.id !== activeGroup.id).map((group: UserGroup) => (
-                <Menu.Item key={group.id} onClick={() => setActiveGroup(group)}>
+                <Menu.Item key={group.id} onClick={() => {
+                  // This will need to be refactored if we store more than activeGroupId in the configs
+                  setActiveGroup(group);
+                  setUserConfigs({
+                    activeGroupId: group.id
+                  });
+                }
+                }>
                   {({active}) => (
                     <button
                       className={`${
