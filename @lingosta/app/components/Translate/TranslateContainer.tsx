@@ -14,6 +14,28 @@ import { toast } from 'react-hot-toast';
 
 const TranslateContainer = () => {
 
+    const data = {
+        "type": "es",
+        "sentence": "tengo muchos amigos",
+        "terms": [
+          {
+            "source": "tengo",
+            "target": "I have",
+            "weight": 0.8
+          },
+          {
+            "source": "muchos",
+            "target": "many",
+            "weight": 0.7
+          },
+          {
+            "source": "amigos",
+            "target": "friends",
+            "weight": 0.9
+          }
+        ]
+      }
+
     const { user } = useUser();
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState('');
@@ -30,8 +52,11 @@ const TranslateContainer = () => {
                 {
                     owner_id: user.$id,
                     group_id: process.env.NEXT_PUBLIC_API_APPWRITE_COLLECTION_GROUPS_ID,
+                    source_translations: data.terms.map(term => term.source),
+                    target_translations: data.terms.map(term => term.target),
+                    translation_weights: data.terms.map(term => term.weight),
                     raw_data: input,
-                    source_language: language,
+                    source_language: data.type,
                 }
             );
             setInput('');
