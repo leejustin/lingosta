@@ -1,7 +1,7 @@
 import {Menu, Transition} from '@headlessui/react'
 import {Fragment} from 'react'
 import {VscAdd, VscChevronDown} from "react-icons/all";
-import {ES} from 'country-flag-icons/react/3x2'
+import {ES} from 'country-flag-icons/react/3x2';
 
 const GroupSelection = () => {
   return (

@@ -1,5 +1,5 @@
 import { databases } from '../helpers/AppwriteHelper';
-import {DBTranslation, deserializeTranslation, serializeTranslation, UserTranslation} from "@lingosta/common";
+import {DBTranslation, deserializeTranslation, serializeTranslation, UserTranslation} from "../../common";
 import {ID, Models, Query} from "appwrite";
 
 const DATABASE_ID = process.env.NEXT_PUBLIC_API_APPWRITE_DB_USER_TRANSLATIONS;

@@ -39,8 +39,6 @@ const TranslateContainer = () => {
     const { user } = useUser();
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState('');
-    const [language, setLanguage] = useState('kr')
-    const [terms, setTerms] = useState([]);
 
     const handleSave = async(event) => {
 
@@ -60,7 +58,6 @@ const TranslateContainer = () => {
                 }
             );
             setInput('');
-            setTerms([]);
             console.log('success');
 
         } catch(error) {
@@ -81,7 +78,7 @@ const TranslateContainer = () => {
                 </label>
                 Translate
             </div>
-                <Textbox input={input} handleInput={handleInput} language={language} setLanguage={setLanguage}/>
+                <Textbox input={input} handleInput={handleInput} />
                 <Button label='Lingosta' onClick={() => setIsOpen(true)}/>
             </div>
             {!isOpen ? <></> : 
