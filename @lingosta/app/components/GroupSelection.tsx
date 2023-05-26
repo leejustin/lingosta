@@ -11,7 +11,7 @@ const GroupSelection = () => {
 
   return (
     <div>
-      <Menu as="div" className="relative inline-block text-left">
+      <Menu as="div" className="relative inline-block text-left z-10">
         <div>
           <Menu.Button
             className="inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30">
