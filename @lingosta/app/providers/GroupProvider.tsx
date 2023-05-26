@@ -38,7 +38,7 @@ const GroupProvider = ({children}: Props) => {
       initializeUserGroups(user.$id).then(
         (groups) => {
           setUserGroups(groups);
-          setActiveGroup(user.prefs?.activeGroupId ?? groups[0]);
+          setActiveGroup(groups.find((g: UserGroup) => g.id === user.prefs?.activeGroupId) ?? groups[0]);
         }
       )
     } else {
