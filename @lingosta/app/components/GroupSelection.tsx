@@ -9,10 +9,6 @@ const GroupSelection = () => {
   const {userGroups, activeGroup, setActiveGroup} = useGroup();
   const {setUserConfigs} = useUser();
 
-  useEffect(() => {
-
-  }, [])
-
   return (
     <div>
       <Menu as="div" className="relative inline-block text-left">
