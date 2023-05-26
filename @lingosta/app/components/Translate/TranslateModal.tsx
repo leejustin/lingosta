@@ -2,7 +2,7 @@ import React from 'react'
 import { AiOutlineClose } from 'react-icons/ai';
 import Button from '../Button';
 
-const TranslateModal = ({ handleSave, input, isOpen, setIsOpen }) => {
+const TranslateModal = ({ handleSave, input, isOpen, setIsOpen, terms, setTerms }) => {
   const data = {
     "type": "es",
     "sentence": "tengo muchos amigos",

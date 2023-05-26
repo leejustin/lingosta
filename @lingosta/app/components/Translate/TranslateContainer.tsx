@@ -10,6 +10,7 @@ import { BsTranslate } from 'react-icons/bs';
 import Button from '../Button';
 import TranslateModal from './TranslateModal';
 import { toast } from 'react-hot-toast';
+import { useGroup } from '../../providers/GroupProvider';
 
 
 const TranslateContainer = () => {
@@ -37,11 +38,12 @@ const TranslateContainer = () => {
       }
 
     const { user } = useUser();
+    const { activeGroup } = useGroup();
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState('');
+    const [terms, setTerms] = useState('');
 
-    const handleSave = async(event) => {
-
+    const handleSave = async() => {
         try {
             await databases.createDocument(
                 process.env.NEXT_PUBLIC_API_APPWRITE_DB_USER_TRANSLATIONS,
@@ -49,7 +51,7 @@ const TranslateContainer = () => {
                 ID.unique(),
                 {
                     owner_id: user.$id,
-                    group_id: process.env.NEXT_PUBLIC_API_APPWRITE_COLLECTION_GROUPS_ID,
+                    group_id: {activeGroup},
                     source_translations: data.terms.map(term => term.source),
                     target_translations: data.terms.map(term => term.target),
                     translation_weights: data.terms.map(term => term.weight),
@@ -83,7 +85,14 @@ const TranslateContainer = () => {
             </div>
             {!isOpen ? <></> : 
                 (
-                    <TranslateModal handleSave={handleSave} isOpen={isOpen} setIsOpen={setIsOpen} input={input} />
+                    <TranslateModal 
+                        handleSave={handleSave} 
+                        isOpen={isOpen} 
+                        setIsOpen={setIsOpen} 
+                        input={input} 
+                        terms={terms} 
+                        setTerms={setTerms} 
+                    />
                 )
             }
     </div>

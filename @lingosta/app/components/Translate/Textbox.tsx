@@ -12,7 +12,7 @@ const Textbox = ({input, handleInput }) => {
                     
                     block
                     drop-shadow-xl
-                    p-24
+                    p-2.5
                     w-full
                     text-md
                     text-gray-50

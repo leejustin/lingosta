@@ -3,7 +3,7 @@ import {Fragment, useEffect} from 'react'
 import {VscAdd, VscChevronDown} from "react-icons/all";
 import {useGroup} from "../providers/GroupProvider";
 import {useUser} from "../providers/UserProvider";
-import {getLanguageEmoji, UserGroup} from "@lingosta/common";
+import {getLanguageEmoji, UserGroup} from "../../common/";
 
 const GroupSelection = () => {
   const {userGroups, activeGroup, setActiveGroup} = useGroup();
