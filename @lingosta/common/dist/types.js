@@ -4,7 +4,7 @@ exports.Language = void 0;
 var Language;
 (function (Language) {
     Language["SPANISH"] = "es";
-    Language["BRAZILIAN_PORTUGUESE"] = "pt-BR";
+    Language["BRAZILIAN_PORTUGUESE"] = "pt-br";
     Language["ENGLISH"] = "en";
     Language["FRENCH"] = "fr";
     Language["GERMAN"] = "de";

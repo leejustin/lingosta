@@ -3,7 +3,7 @@ import {Fragment, useEffect, useState} from 'react'
 import {VscAdd, VscChevronDown} from "react-icons/all";
 import {useGroup} from "../../providers/GroupProvider";
 import {useUser} from "../../providers/UserProvider";
-import {getLanguageEmoji, UserGroup} from "@lingosta/common";
+import {getLanguageEmoji, UserGroup} from "../../../common";
 import GroupModal from "./GroupModal";
 
 const GroupSelection = () => {
@@ -18,6 +18,13 @@ const GroupSelection = () => {
 
   function closeCreateModal() {
     setIsCreateModalOpen(false);
+  }
+
+  const handleActiveGroup = (group: UserGroup) => {
+    setActiveGroup(group);
+    setUserConfigs({
+      activeGroupId: group.id
+    });
   }
 
   return (
@@ -46,16 +53,10 @@ const GroupSelection = () => {
             className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               {userGroups?.filter((group: UserGroup) => group.id !== activeGroup.id).map((group: UserGroup) => (
-                <Menu.Item key={group.id} onClick={() => {
-                  // This will need to be refactored if we store more than activeGroupId in the configs
-                  setActiveGroup(group);
-                  setUserConfigs({
-                    activeGroupId: group.id
-                  });
-                }
-                }>
+                <Menu.Item key={group.id}>
                   {({active}) => (
                     <button
+                      onClick={() => handleActiveGroup(group)}
                       className={`${
                         active ? 'bg-violet-500 text-white' : 'text-gray-900'
                       } group flex w-full items-center rounded-md px-2 py-2 text-md`}
@@ -90,3 +91,5 @@ const GroupSelection = () => {
     </div>
   )
 }
+
+export default GroupSelection

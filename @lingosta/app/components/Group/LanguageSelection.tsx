@@ -3,7 +3,7 @@
 import React, { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { HiChevronUpDown } from 'react-icons/hi2'
-import {getLanguageEmoji, getLanguageName, Language} from "@lingosta/common";
+import {getLanguageEmoji, getLanguageName, Language} from "../../../common";
 
 const SUPPORTED_LANGUAGES: Language[] = process.env.NEXT_PUBLIC_SUPPORTED_TARGET_LANGUAGES.split(",").map((language: string) => language as Language);
 

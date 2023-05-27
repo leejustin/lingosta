@@ -1,6 +1,6 @@
 export declare enum Language {
     SPANISH = "es",
-    BRAZILIAN_PORTUGUESE = "pt-BR",
+    BRAZILIAN_PORTUGUESE = "pt-br",
     ENGLISH = "en",
     FRENCH = "fr",
     GERMAN = "de",

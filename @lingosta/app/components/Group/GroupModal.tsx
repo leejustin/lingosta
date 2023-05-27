@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {Dialog, Transition} from '@headlessui/react';
 import LanguageSelection from "./LanguageSelection";
-import {Language} from "@lingosta/common";
+import {Language} from "../../../common";
 import { useGroup } from "../../providers/GroupProvider";
 import { useUser } from "../../providers/UserProvider";
 
