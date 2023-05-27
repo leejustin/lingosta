@@ -2,7 +2,7 @@
 import { useUser } from '../../providers/UserProvider';
 import Link from 'next/link';
 import { BsTranslate } from 'react-icons/bs';
-import GroupSelection from "../GroupSelection";
+import GroupSelection from "../Group/GroupSelection";
 
 
 const Navbar = () => {
