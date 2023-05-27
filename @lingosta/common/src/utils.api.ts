@@ -6,13 +6,7 @@ const removePunctuation = (sentence: string): string => {
   if (!sentence) {
     return "";
   }
-
-  const matches = sentence.match(/[^_\W]+/g);
-  if (!matches) {
-    return ""
-  } else {
-    return matches.join(' ');
-  }
+  return sentence.replace(/[^\p{L}\p{N}\s-]|(?<=\p{L})-(?=\p{L})/gu, '').replace(/\s+/g, ' ');
 }
 
 export const mapRawTranslation = (sentence: string, rawTranslation: RawTranslationResponse, language: Language): TranslationResponse => {
