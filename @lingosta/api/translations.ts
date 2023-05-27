@@ -49,13 +49,10 @@ export default async function translations(
     max_tokens: parseInt(process.env.OPENAI_MAX_TOKENS),
     prompt: prompt,
   });
-
   const result: string = cleanResponse(query.data.choices[0].text);
-
   try {
     const rawTranslation: RawTranslationResponse = JSON.parse(result);
     const translation: TranslationResponse = mapRawTranslation(sentence, rawTranslation, type as Language);
-
     console.log(translation);
     return response.status(200).json(translation);
   } catch (e) {
