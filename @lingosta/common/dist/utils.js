@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getLanguageName = void 0;
+exports.getLanguageEmoji = exports.getLanguageName = void 0;
 const types_1 = require("./types");
 // This is used to map the Language enum to a human-readable format.
 const getLanguageName = (lang) => {
@@ -32,3 +32,32 @@ const getLanguageName = (lang) => {
     }
 };
 exports.getLanguageName = getLanguageName;
+const getLanguageEmoji = (lang) => {
+    switch (lang) {
+        case types_1.Language.SPANISH:
+            return "🇪🇸";
+        case types_1.Language.BRAZILIAN_PORTUGUESE:
+            return "🇧🇷";
+        case types_1.Language.ENGLISH:
+            return "🇺🇸"; // Changed from 🇬🇧 to 🇺🇸
+        case types_1.Language.KOREAN:
+            return "🇰🇷";
+        case types_1.Language.FRENCH:
+            return "🇫🇷";
+        case types_1.Language.GERMAN:
+            return "🇩🇪";
+        case types_1.Language.ITALIAN:
+            return "🇮🇹";
+        case types_1.Language.DUTCH:
+            return "🇳🇱";
+        case types_1.Language.RUSSIAN:
+            return "🇷🇺";
+        case types_1.Language.CHINESE:
+            return "🇨🇳";
+        case types_1.Language.JAPANESE:
+            return "🇯🇵";
+        default:
+            return "❓";
+    }
+};
+exports.getLanguageEmoji = getLanguageEmoji;

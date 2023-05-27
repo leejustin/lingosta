@@ -34,6 +34,19 @@ export default async function translations(
   request: VercelRequest,
   response: VercelResponse,
 ) {
+
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  response.setHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Accept',
+  );
+
+  if (request.method === 'OPTIONS') {
+    response.status(200).end();
+    return;
+  }
+
   const requestBody: TranslationRequest = request.body;
 
   const {sentence, type} = requestBody;

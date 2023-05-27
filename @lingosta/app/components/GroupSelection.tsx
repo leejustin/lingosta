@@ -1,9 +1,10 @@
 import {Menu, Transition} from '@headlessui/react'
 import {Fragment, useEffect} from 'react'
-import {VscAdd, VscChevronDown} from "react-icons/all";
+import {HiPlusCircle, HiChevronDown} from "react-icons/hi";
 import {useGroup} from "../providers/GroupProvider";
 import {useUser} from "../providers/UserProvider";
-import {getLanguageEmoji, UserGroup} from "../../common/";
+import { getLanguageEmoji, UserGroup } from "../../common/";
+
 
 const GroupSelection = () => {
   const {userGroups, activeGroup, setActiveGroup} = useGroup();
@@ -11,13 +12,13 @@ const GroupSelection = () => {
 
   return (
     <div>
-      <Menu as="div" className="relative inline-block text-left">
+      <Menu as="div" className="relative inline-block text-left z-50">
         <div>
           <Menu.Button
-            className="inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30">
+            className="inline-flex w-full justify-center rounded-md bg-slate-300 px-4 py-2 text-sm font-medium text-black hover:bg-opacity-50">
             { activeGroup ? <span className="ml-2">{getLanguageEmoji(activeGroup.language)} {activeGroup.name}</span> : <span>Select Group</span>}
-            <VscChevronDown
-              className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
+            <HiChevronDown
+              className="ml-2 -mr-1 h-5 w-5 text-black hover:text-gray-500"
               aria-hidden="true"
             />
           </Menu.Button>
@@ -46,7 +47,7 @@ const GroupSelection = () => {
                   {({active}) => (
                     <button
                       className={`${
-                        active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                        active ? 'bg-blue-500 text-white' : 'text-gray-900'
                       } group flex w-full items-center rounded-md px-2 py-2 text-md`}
                     >
                       <div className="mr-2 h-5 w-2 whitespace-nowrap" aria-hidden="true">
@@ -62,10 +63,10 @@ const GroupSelection = () => {
                 {({active}) => (
                   <button
                     className={`${
-                      active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                      active ? 'bg-blue-500 text-white' : 'text-gray-900'
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
-                    <VscAdd className="mr-2 h-5 w-5" aria-hidden="true"/>
+                    <HiPlusCircle className="mr-2 h-5 w-5" aria-hidden="true"/>
                     Create Group
                   </button>
                 )}

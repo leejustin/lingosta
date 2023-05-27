@@ -12,36 +12,18 @@ import TranslateModal from './TranslateModal';
 import { toast } from 'react-hot-toast';
 import { useGroup } from '../../providers/GroupProvider';
 
+import axios from 'axios';
 
 const TranslateContainer = () => {
 
-    const data = {
-        "type": "es",
-        "sentence": "tengo muchos amigos",
-        "terms": [
-          {
-            "source": "tengo",
-            "target": "I have",
-            "weight": 0.8
-          },
-          {
-            "source": "muchos",
-            "target": "many",
-            "weight": 0.7
-          },
-          {
-            "source": "amigos",
-            "target": "friends",
-            "weight": 0.9
-          }
-        ]
-      }
-
     const { user } = useUser();
     const { activeGroup } = useGroup();
+
+    const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState('');
-    const [terms, setTerms] = useState('');
+    const [translations, setTranslations] = useState();
+
 
     const handleSave = async() => {
         try {
@@ -51,12 +33,12 @@ const TranslateContainer = () => {
                 ID.unique(),
                 {
                     owner_id: user.$id,
-                    group_id: {activeGroup},
-                    source_translations: data.terms.map(term => term.source),
-                    target_translations: data.terms.map(term => term.target),
-                    translation_weights: data.terms.map(term => term.weight),
+                    group_id: activeGroup.id,
+                    source_translations: translations?.terms.map(term => term.source),
+                    target_translations: translations?.terms.map(term => term.target),
+                    translation_weights: translations?.terms.map(term => term.weight),
                     raw_data: input,
-                    source_language: data.type,
+                    source_language: activeGroup.language,
                 }
             );
             setInput('');
@@ -67,8 +49,30 @@ const TranslateContainer = () => {
         }
     }
 
-    const handleInput= (event:any) => {
+    const handleInput = (event:any) => {
         setInput(event.target.value);
+    }
+
+    const handleTranslate = async() => {
+        
+        try {
+            setIsLoading(true);
+
+            const response = await axios.post('http://localhost:3001/api/translations', {
+                type: activeGroup.language,
+                sentence: input,
+            })
+            const translationsData = response.data;
+            setTranslations(translationsData);
+            
+            setIsOpen(true);
+            console.log(translations)
+            
+        } catch(error) {
+            console.log(error);
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     return (
@@ -81,17 +85,17 @@ const TranslateContainer = () => {
                 Translate
             </div>
                 <Textbox input={input} handleInput={handleInput} />
-                <Button label='Lingosta' onClick={() => setIsOpen(true)}/>
+                <Button label='Lingosta' onClick={() => handleTranslate()}/>
             </div>
+            
             {!isOpen ? <></> : 
                 (
                     <TranslateModal 
+                        isLoading={isLoading}
                         handleSave={handleSave} 
-                        isOpen={isOpen} 
                         setIsOpen={setIsOpen} 
                         input={input} 
-                        terms={terms} 
-                        setTerms={setTerms} 
+                        translations={translations}
                     />
                 )
             }

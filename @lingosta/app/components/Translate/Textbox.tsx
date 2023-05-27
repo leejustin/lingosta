@@ -9,7 +9,6 @@ const Textbox = ({input, handleInput }) => {
                 value={input}
                 type='text'
                 className="
-                    
                     block
                     drop-shadow-xl
                     p-2.5
