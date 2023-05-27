@@ -10,9 +10,16 @@ const GroupSelection = () => {
   const {userGroups, activeGroup, setActiveGroup} = useGroup();
   const {setUserConfigs} = useUser();
 
+  const handleActiveGroup = (group: UserGroup) => {
+    setActiveGroup(group);
+    setUserConfigs({
+      activeGroupId: group.id
+    });
+  }
+
   return (
     <div>
-      <Menu as="div" className="relative inline-block text-left z-50">
+      <Menu as="div" className="relative inline-block text-left z-10">
         <div>
           <Menu.Button
             className="inline-flex w-full justify-center rounded-md bg-slate-300 px-4 py-2 text-sm font-medium text-black hover:bg-opacity-50">
@@ -36,16 +43,10 @@ const GroupSelection = () => {
             className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               {userGroups?.filter((group: UserGroup) => group.id !== activeGroup.id).map((group: UserGroup) => (
-                <Menu.Item key={group.id} onClick={() => {
-                  // This will need to be refactored if we store more than activeGroupId in the configs
-                  setActiveGroup(group);
-                  setUserConfigs({
-                    activeGroupId: group.id
-                  });
-                }
-                }>
+                <Menu.Item key={group.id}>
                   {({active}) => (
                     <button
+                      onClick={() => handleActiveGroup(group)}
                       className={`${
                         active ? 'bg-blue-500 text-white' : 'text-gray-900'
                       } group flex w-full items-center rounded-md px-2 py-2 text-md`}

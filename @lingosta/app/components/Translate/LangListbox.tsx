@@ -5,7 +5,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import { HiChevronUpDown } from 'react-icons/hi2'
 
 
-const LangListbox = () => {
+const LangListbox = (language, setLanguage) => {
     const languages = [
         { id: 1, country: 'Korea', code: '🇰🇷' },
         { id: 2, country: 'Spain', code: '🇪🇸' },

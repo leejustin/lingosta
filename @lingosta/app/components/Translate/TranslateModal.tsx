@@ -5,8 +5,13 @@ import Button from '../Button';
 const TranslateModal = ({ isLoading, handleSave, input, setIsOpen, translations }) => {
 
   return (
-    <div className='fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex justify-center items-center'>
-      {isLoading ? (<p className='text-white text-3xl'>loading...</p>) : (
+    <div className='fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-50'>
+      {isLoading ? (
+        <div className='animate-pulse w-2/3 max-w-xl mx-auto'>
+          <div className=' h-72 bg-slate-300 rounded-md text-center'>
+          </div>
+        </div>
+      ) : (
       <div className='absolute flex flex-col mx-auto overflow-y-auto h-auto w-2/3 max-w-xl bg-slate-200 rounded-md'>
       <button className='px-2 mt-2 text-gray-700 font-semibold text-xl place-self-end ml-auto border-0 hover:opacity-70 transition' onClick={() => setIsOpen(false)}>
         <AiOutlineClose size={20} className=''/>

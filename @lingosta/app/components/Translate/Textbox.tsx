@@ -6,6 +6,7 @@ const Textbox = ({input, handleInput }) => {
         <div className=''>
             <div className='flex space-x-2'>
             <input
+                required
                 value={input}
                 type='text'
                 className="

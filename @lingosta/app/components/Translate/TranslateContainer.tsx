@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 import { ID } from 'appwrite';
 import { databases } from '../../helpers/AppwriteHelper';
 import { useUser } from '../../providers/UserProvider';
+import { UserTranslation } from '../../../common/';
 
 
 import Textbox from './Textbox';
 import { BsTranslate } from 'react-icons/bs';
 import Button from '../Button';
 import TranslateModal from './TranslateModal';
-import { toast } from 'react-hot-toast';
 import { useGroup } from '../../providers/GroupProvider';
 
 import axios from 'axios';
@@ -22,8 +22,7 @@ const TranslateContainer = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState('');
-    const [translations, setTranslations] = useState();
-
+    const [translations, setTranslations] = useState(null);
 
     const handleSave = async() => {
         try {
@@ -34,14 +33,15 @@ const TranslateContainer = () => {
                 {
                     owner_id: user.$id,
                     group_id: activeGroup.id,
-                    source_translations: translations?.terms.map(term => term.source),
-                    target_translations: translations?.terms.map(term => term.target),
-                    translation_weights: translations?.terms.map(term => term.weight),
+                    source_translations: translations?.terms?.map(term => term.source) ?? [],
+                    target_translations: translations?.terms?.map(term => term.target) ?? [],
+                    translation_weights: translations?.terms?.map(term => term.weight) ?? [],
                     raw_data: input,
                     source_language: activeGroup.language,
                 }
             );
             setInput('');
+            setIsOpen(false);
             console.log('success');
 
         } catch(error) {
@@ -54,9 +54,14 @@ const TranslateContainer = () => {
     }
 
     const handleTranslate = async() => {
-        
         try {
+            if(input.trim() === '') {
+                alert(`Please enter a sentence.`);
+                return;
+            }
+
             setIsLoading(true);
+            setIsOpen(true);
 
             const response = await axios.post('http://localhost:3001/api/translations', {
                 type: activeGroup.language,
@@ -65,7 +70,6 @@ const TranslateContainer = () => {
             const translationsData = response.data;
             setTranslations(translationsData);
             
-            setIsOpen(true);
             console.log(translations)
             
         } catch(error) {
