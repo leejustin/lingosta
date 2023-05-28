@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 
-import { ID } from 'appwrite';
-import { databases } from '../../helpers/AppwriteHelper';
 import { useUser } from '../../providers/UserProvider';
 import { UserTranslation } from '../../../common/';
 
@@ -13,33 +11,53 @@ import TranslateModal from './TranslateModal';
 import { useGroup } from '../../providers/GroupProvider';
 
 import axios from 'axios';
+import { createTranslation } from '../../helpers/TranslationHelper';
 
 const TranslateContainer = () => {
+
+    const testdata = {
+        "type": "es",
+        "sentence": "tengo muchos amigos",
+        "terms": [
+          {
+            "source": "tengo",
+            "target": "I have",
+            "weight": 0.8
+          },
+          {
+            "source": "muchos",
+            "target": "many",
+            "weight": 0.7
+          },
+          {
+            "source": "amigos",
+            "target": "friends",
+            "weight": 0.9
+          }
+        ]
+      }
 
     const { user } = useUser();
     const { activeGroup } = useGroup();
 
     const [isLoading, setIsLoading] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     const [input, setInput] = useState('');
     const [translations, setTranslations] = useState(null);
 
     const handleSave = async() => {
+
+        const userTranslation: UserTranslation = {
+            ownerId: user.$id,
+            groupId: activeGroup.id,
+            terms: translations?.terms,
+            rawData: input,
+            sourceLanguage: activeGroup.language
+        }
+        
         try {
-            await databases.createDocument(
-                process.env.NEXT_PUBLIC_API_APPWRITE_DB_USER_TRANSLATIONS,
-                process.env.NEXT_PUBLIC_API_APPWRITE_COLLECTION_TRANSLATIONS,
-                ID.unique(),
-                {
-                    owner_id: user.$id,
-                    group_id: activeGroup.id,
-                    source_translations: translations?.terms?.map(term => term.source) ?? [],
-                    target_translations: translations?.terms?.map(term => term.target) ?? [],
-                    translation_weights: translations?.terms?.map(term => term.weight) ?? [],
-                    raw_data: input,
-                    source_language: activeGroup.language,
-                }
-            );
+            createTranslation(userTranslation);
+
             setInput('');
             setIsOpen(false);
             console.log('success');
@@ -63,14 +81,14 @@ const TranslateContainer = () => {
             setIsLoading(true);
             setIsOpen(true);
 
-            const response = await axios.post('http://localhost:3001/api/translations', {
-                type: activeGroup.language,
-                sentence: input,
-            })
-            const translationsData = response.data;
-            setTranslations(translationsData);
+            // const response = await axios.post('http://localhost:3001/api/translations', {
+            //     type: activeGroup.language,
+            //     sentence: input,
+            // })
+            // const translationsData = response.data;
+            // setTranslations(translationsData);
+            setTranslations(testdata);
             
-            console.log(translations)
             
         } catch(error) {
             console.log(error);
@@ -78,6 +96,8 @@ const TranslateContainer = () => {
             setIsLoading(false);
         }
     }
+
+    console.log(translations)
 
     return (
         <div className='mx-auto p-5'>
@@ -97,9 +117,11 @@ const TranslateContainer = () => {
                     <TranslateModal 
                         isLoading={isLoading}
                         handleSave={handleSave} 
+                        isOpen={isOpen}
                         setIsOpen={setIsOpen} 
                         input={input} 
                         translations={translations}
+                        setTranslations={setTranslations}
                     />
                 )
             }
