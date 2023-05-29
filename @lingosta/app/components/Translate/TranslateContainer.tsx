@@ -15,27 +15,37 @@ import { createTranslation } from '../../helpers/TranslationHelper';
 
 const TranslateContainer = () => {
 
-    const testdata = {
-        "type": "es",
-        "sentence": "tengo muchos amigos",
-        "terms": [
-          {
-            "source": "tengo",
-            "target": "I have",
-            "weight": 0.8
-          },
-          {
-            "source": "muchos",
-            "target": "many",
-            "weight": 0.7
-          },
-          {
-            "source": "amigos",
-            "target": "friends",
-            "weight": 0.9
-          }
-        ]
-      }
+    // const testdata = {
+    //     "type": "es",
+    //     "sentence": "tengo muchos amigos",
+    //     "terms": [
+    //       {
+    //         "source": "tengo",
+    //         "target": "I have",
+    //         "weight": 0.8
+    //       },
+    //       {
+    //         "source": "muchos",
+    //         "target": "many",
+    //         "weight": 0.7
+    //       },
+    //       {
+    //         "source": "amigos",
+    //         "target": "friends",
+    //         "weight": 0.9
+    //       },
+    //       {
+    //         "source": "amigos",
+    //         "target": "friends",
+    //         "weight": 0.9
+    //       },
+    //       {
+    //         "source": "amigos",
+    //         "target": "friends",
+    //         "weight": 0.9
+    //       }
+    //     ]
+    //   }
 
     const { user } = useUser();
     const { activeGroup } = useGroup();
@@ -44,13 +54,13 @@ const TranslateContainer = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [input, setInput] = useState('');
     const [translations, setTranslations] = useState(null);
-
-    const handleSave = async() => {
+    
+    const handleSave = async(selectedTerms) => {
 
         const userTranslation: UserTranslation = {
             ownerId: user.$id,
             groupId: activeGroup.id,
-            terms: translations?.terms,
+            terms: selectedTerms,
             rawData: input,
             sourceLanguage: activeGroup.language
         }
@@ -81,14 +91,12 @@ const TranslateContainer = () => {
             setIsLoading(true);
             setIsOpen(true);
 
-            // const response = await axios.post('http://localhost:3001/api/translations', {
-            //     type: activeGroup.language,
-            //     sentence: input,
-            // })
-            // const translationsData = response.data;
-            // setTranslations(translationsData);
-            setTranslations(testdata);
-            
+            const response = await axios.post('http://localhost:3001/api/translations', {
+                type: activeGroup.language,
+                sentence: input,
+            })
+            const translationsData = response.data;
+            setTranslations(translationsData);            
             
         } catch(error) {
             console.log(error);
@@ -96,8 +104,6 @@ const TranslateContainer = () => {
             setIsLoading(false);
         }
     }
-
-    console.log(translations)
 
     return (
         <div className='mx-auto p-5'>
@@ -121,7 +127,6 @@ const TranslateContainer = () => {
                         setIsOpen={setIsOpen} 
                         input={input} 
                         translations={translations}
-                        setTranslations={setTranslations}
                     />
                 )
             }

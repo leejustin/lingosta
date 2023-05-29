@@ -1,13 +1,26 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import {Dialog, Transition} from '@headlessui/react';
 import Button from '../Button';
 
-const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, translations, setTranslations }) => {
+const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, translations }) => {
 
   const closeModal = () => {
     setIsOpen(false)
   }
 
+  const [checkedTerms, setCheckedTerms] = useState([]);
+
+  useEffect(() => {
+    if (translations && translations.terms) {
+      setCheckedTerms(translations.terms.map(() => true));
+    }
+  }, [translations]);
+
+  const handleSavetest = () => {
+    const selectedTerms = translations.terms?.filter((_, index) => checkedTerms[index]);
+    handleSave(selectedTerms);
+    console.log(selectedTerms)
+  };
 
   return (
     <div>
@@ -47,17 +60,17 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
                 <Dialog.Panel
                   className="w-full max-w-md transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
                 >
-                  <div className=' border-b-[1px] border-neutral-300 w-full py-2 text-lg'>
+                  <div className=' border-b-[2px] border-neutral-300 w-full py-2 text-lg'>
                     <p>
                     {input}
                     </p>
                     <p className=''>
-                      {translations?.terms?.map((term, index) => (
+                      {translations?.terms?.map((term) => (
                         <> {term.target}</> 
                       ))}
                     </p>
                   </div>
-                  <div className='border-b-[1px] border-neutral-300 w-full py-2 '>
+                  <div className='border-b-[2px] border-neutral-300 w-full py-2 '>
                     <div className='relative overflow-x-auto'>
                       <table className='w-full text-left text-lg'>
                         <tbody>
@@ -73,7 +86,12 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
                                   <div className="flex items-center">
                                       <input 
                                         type='checkbox'
-                                        defaultChecked={true}
+                                        checked={checkedTerms[index]}
+                                        onChange={(e) => {
+                                          const newCheckedTerms = [...checkedTerms];
+                                          newCheckedTerms[index] = e.target.checked;
+                                          setCheckedTerms(newCheckedTerms);
+                                        }}
                                         className="w-5 h-5 text-black border-gray-300 rounded" 
                                       />
                                   </div>
@@ -87,13 +105,13 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
                   <div className='flex flex-row justify-end mt-4 space-x-2'>
                     <button 
                       className='inline-flex justify-center rounded-md border border-transparent bg-gray-300 px-6 py-2 text-sm font-medium text-black hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2' 
-                      onClick={() => handleSave()}
+                      onClick={() => setIsOpen(false)}
                     >
                       Close
                     </button>
                     <button 
-                      className='inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-6 py-2 text-sm font-medium text-black hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                      onClick={() => setIsOpen(false)}
+                      className='inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-6 py-2 text-sm font-medium text-white hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                      onClick={() => handleSavetest()}
                     >
                       Save
                     </button>
