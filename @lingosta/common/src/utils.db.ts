@@ -20,8 +20,8 @@ export const deserializeTranslation = (t: DBTranslation): UserTranslation => {
     ownerId: t["owner_id"],
     groupId: t["group_id"],
     terms: terms,
-    rawData: t["rawData"] as Language,
-    sourceLanguage: t["sourceLanguage"]
+    rawData: t["raw_data"] as string,
+    sourceLanguage: t["source_language"] as Language,
   }
 }
 

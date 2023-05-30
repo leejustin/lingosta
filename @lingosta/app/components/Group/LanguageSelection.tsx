@@ -3,7 +3,7 @@
 import React, { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { HiChevronUpDown } from 'react-icons/hi2'
-import {getLanguageEmoji, getLanguageName, Language} from "@lingosta/common";
+import {getLanguageEmoji, getLanguageName, Language} from "../../../common";
 
 const SUPPORTED_LANGUAGES: Language[] = process.env.NEXT_PUBLIC_SUPPORTED_TARGET_LANGUAGES.split(",").map((language: string) => language as Language);
 
@@ -20,13 +20,13 @@ const LanguageSelection = ({setLanguage}: LanguageSelectionProps) => {
   const [activeLanguage, setActiveLanguage] = useState(undefined);
 
   return (
-    <div className="w-full">
+    <div className="w-full mt-2">
       <Listbox value={activeLanguage} onChange={(v) => {
         setActiveLanguage(v);
         setLanguage(v.id)}
       }>
-        <div className="relative ">
-          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-4 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-300 sm:text-sm">
+        <div className="relative">
+          <Listbox.Button className="z-50 relative w-full cursor-default rounded-lg bg-white py-4 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-300 sm:text-sm">
             {activeLanguage ? <span className="block">{activeLanguage.icon} {activeLanguage.name}</span> : <span>Select a Language</span>}
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <HiChevronUpDown
@@ -41,7 +41,7 @@ const LanguageSelection = ({setLanguage}: LanguageSelectionProps) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Listbox.Options className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white p-2 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
               {languages?.sort((a, b) => a.name.localeCompare(b.name) ) .map((language) => (
                 <Listbox.Option
                   key={language.id}

@@ -1,72 +1,129 @@
-import React from 'react'
-import { AiOutlineClose } from 'react-icons/ai';
+import React, { Fragment, useState, useEffect } from 'react'
+import {Dialog, Transition} from '@headlessui/react';
 import Button from '../Button';
 
-const TranslateModal = ({ handleSave, input, isOpen, setIsOpen }) => {
-  const data = {
-    "type": "es",
-    "sentence": "tengo muchos amigos",
-    "terms": [
-      {
-        "source": "tengo",
-        "target": "I have",
-        "weight": 0.8
-      },
-      {
-        "source": "muchos",
-        "target": "many",
-        "weight": 0.7
-      },
-      {
-        "source": "amigos",
-        "target": "friends",
-        "weight": 0.9
-      }
-    ]
+const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, translations }) => {
+
+  const closeModal = () => {
+    setIsOpen(false)
   }
 
+  const [checkedTerms, setCheckedTerms] = useState([]);
+
+  useEffect(() => {
+    if (translations && translations.terms) {
+      setCheckedTerms(translations.terms.map(() => true));
+    }
+  }, [translations]);
+
+  const handleSavetest = () => {
+    const selectedTerms = translations.terms?.filter((_, index) => checkedTerms[index]);
+    handleSave(selectedTerms);
+    console.log(selectedTerms)
+  };
+
   return (
-    <div className='fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex justify-center items-center'>
-      <div className='absolute flex flex-col mx-auto overflow-y-auto h-auto w-2/3 max-w-xl bg-slate-200 rounded-md'>
-      <button className='px-2 mt-2 text-gray-700 font-semibold text-xl place-self-end ml-auto border-0 hover:opacity-70 transition' onClick={() => setIsOpen(false)}>
-        <AiOutlineClose size={20} className=''/>
-      </button>
-        <div className=' border-b-[1px] border-neutral-300 w-full p-4  text-lg'>
-          <p>
-          {input}
-          </p>
-          <p>
-            I have many friends
-          </p>
-        </div>
-        <div className='border-b-[1px] border-neutral-300 w-full p-4'>
-          <div className='relative overflow-x-auto'>
-            <table className='w-full text-left text-lg'>
-              <tbody>
-                {data.terms?.map((term, id) => (
-                    <tr className='' key={id}>
-                      <td className=''>
-                        {term.source}
-                      </td>
-                      <td className=''>
-                        {term.target}
-                      </td>
-                      <td className="w-4 p-4">
-                      <div className="flex items-center">
-                          <input type='checkbox' className="w-5 h-5 text-black border-gray-300 rounded " />
-                      </div>
-                  </td>
-                    </tr>
-                ))}
-              </tbody>
-            </table>
+    <div>
+    {isLoading ? (
+        <div className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center z-50'>
+          <div className='animate-pulse w-2/3 max-w-xl mx-auto'>
+            <div className=' h-72 bg-white rounded-md text-center'>
+            </div>
           </div>
         </div>
-        <div className='flex flex-row p-4 space-x-2'>
-          <Button label='Close' onClick={() => setIsOpen(false)}/>
-          <Button label='Save' onClick={() => handleSave()}/>
-        </div>
-      </div>
+      ) : (
+    <>
+      <Transition appear show={isOpen} as={Fragment}>
+        <Dialog as="div" className="relative" onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black bg-opacity-25"/>
+          </Transition.Child>
+          <div className="fixed inset-0 overflow-y-auto ">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel
+                  className="w-full max-w-md transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+                >
+                  <div className=' border-b-[2px] border-neutral-300 w-full py-2 text-lg'>
+                    <p>
+                    {input}
+                    </p>
+                    <p className=''>
+                      {translations?.terms?.map((term) => (
+                        <> {term.target}</> 
+                      ))}
+                    </p>
+                  </div>
+                  <div className='border-b-[2px] border-neutral-300 w-full py-2 '>
+                    <div className='relative overflow-x-auto'>
+                      <table className='w-full text-left text-lg'>
+                        <tbody>
+                          {translations?.terms?.map((term, index) => (
+                              <tr className='' key={index}>
+                                <td className=''>
+                                  {term.source}
+                                </td>
+                                <td className=''>
+                                  {term.target}
+                                </td>
+                                <td className="w-4 p-2">
+                                  <div className="flex items-center">
+                                      <input 
+                                        type='checkbox'
+                                        checked={checkedTerms[index]}
+                                        onChange={(e) => {
+                                          const newCheckedTerms = [...checkedTerms];
+                                          newCheckedTerms[index] = e.target.checked;
+                                          setCheckedTerms(newCheckedTerms);
+                                        }}
+                                        className="w-5 h-5 text-black border-gray-300 rounded" 
+                                      />
+                                  </div>
+                                </td>
+                              </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div className='flex flex-row justify-end mt-4 space-x-2'>
+                    <button 
+                      className='inline-flex justify-center rounded-md border border-transparent bg-gray-300 px-6 py-2 text-sm font-medium text-black hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2' 
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Close
+                    </button>
+                    <button 
+                      className='inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-6 py-2 text-sm font-medium text-white hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                      onClick={() => handleSavetest()}
+                    >
+                      Save
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
+    </>      
+    )}
     </div>
   )
 }
