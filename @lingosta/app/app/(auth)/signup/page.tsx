@@ -3,6 +3,7 @@ import React, { FormEvent, useState } from 'react';
 import Link from 'next/link';
 import { useUser } from '../../../providers/UserProvider';
 import Input from '../../../components/Input';
+import { Toaster } from 'react-hot-toast';
 
 const SignUp = () => {
 
@@ -19,6 +20,7 @@ const SignUp = () => {
 
     return (
         <div>
+            <Toaster />
             <div className='my-10 text-xl w-full text-center max-w-2xl mx-auto'>
                 Get started with Lingosta.
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useUser } from '../../providers/UserProvider';
 import { UserTranslation } from '../../../common/';
@@ -11,41 +11,11 @@ import TranslateModal from './TranslateModal';
 import { useGroup } from '../../providers/GroupProvider';
 
 import axios from 'axios';
-import { createTranslation } from '../../helpers/TranslationHelper';
+import { createTranslation, getUserTranslations } from '../../helpers/TranslationHelper';
+import { Toaster, toast } from 'react-hot-toast';
+import Link from 'next/link';
 
 const TranslateContainer = () => {
-
-    // const testdata = {
-    //     "type": "es",
-    //     "sentence": "tengo muchos amigos",
-    //     "terms": [
-    //       {
-    //         "source": "tengo",
-    //         "target": "I have",
-    //         "weight": 0.8
-    //       },
-    //       {
-    //         "source": "muchos",
-    //         "target": "many",
-    //         "weight": 0.7
-    //       },
-    //       {
-    //         "source": "amigos",
-    //         "target": "friends",
-    //         "weight": 0.9
-    //       },
-    //       {
-    //         "source": "amigos",
-    //         "target": "friends",
-    //         "weight": 0.9
-    //       },
-    //       {
-    //         "source": "amigos",
-    //         "target": "friends",
-    //         "weight": 0.9
-    //       }
-    //     ]
-    //   }
 
     const { user } = useUser();
     const { activeGroup } = useGroup();
@@ -54,6 +24,7 @@ const TranslateContainer = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [input, setInput] = useState('');
     const [translations, setTranslations] = useState(null);
+    const [translationsList, setTranslationsList] = useState([])
     
     const handleSave = async(selectedTerms) => {
 
@@ -66,11 +37,11 @@ const TranslateContainer = () => {
         }
         
         try {
-            createTranslation(userTranslation);
+            await createTranslation(userTranslation);
 
             setInput('');
             setIsOpen(false);
-            console.log('success');
+            toast.success('Successfully saved!');
 
         } catch(error) {
             console.log(error);
@@ -84,14 +55,14 @@ const TranslateContainer = () => {
     const handleTranslate = async() => {
         try {
             if(input.trim() === '') {
-                alert(`Please enter a sentence.`);
+                toast.error('Please enter a sentence');
                 return;
             }
 
             setIsLoading(true);
             setIsOpen(true);
 
-            const response = await axios.post('http://localhost:3001/api/translations', {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/translations`, {
                 type: activeGroup.language,
                 sentence: input,
             })
@@ -105,10 +76,30 @@ const TranslateContainer = () => {
         }
     }
 
+    const userTranslationsList = async() => {        
+        if(!user && !activeGroup) {
+            return
+        }
+        
+        try {
+            const response = await getUserTranslations(user.$id, activeGroup.id)
+            setTranslationsList(response);
+        } catch(error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        userTranslationsList();
+    }, [user, activeGroup])
+    
+    console.log(translationsList)
+
     return (
         <div className='mx-auto p-5'>
+            <Toaster />
             <div className='mt-8 text-center justify-center items-center space-y-4'>
-            <div className='flex gap-2 font-semibold'>
+            <div className='flex gap-2 items-center font-bold text-xl'>
                 <label className=''>
                     <BsTranslate size={20}/>
                 </label>
@@ -117,7 +108,23 @@ const TranslateContainer = () => {
                 <Textbox input={input} handleInput={handleInput} />
                 <Button label='Lingosta' onClick={() => handleTranslate()}/>
             </div>
-            
+            {translationsList && (
+                    <div className=''>
+                        <div className='mt-4 text-lg font-semibold'>
+                            Previous translations:
+                        </div>
+                        <div className='mx-auto grid grid-cols-3 gap-4 p-2'>
+                            {translationsList.map((data, index) => (
+                                <Link key={index} href={`/translate/${data.id}`}>
+                                <div className='shadow-md max-w-xl p-6 text-center rounded-xl bg-slate-200 hover:bg-slate-300 transition'>
+                                        <p className=''>{data.rawData}</p>
+                                </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
             {!isOpen ? <></> : 
                 (
                     <TranslateModal 
