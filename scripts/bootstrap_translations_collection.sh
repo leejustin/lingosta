@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# Sets up the schema for database collections
+# Sets up the schema for Appwrite translations collection
 
 DATABASE_ID=$APPWRITE_DATABASE_ID
 TRANSLATIONS_COLLECTION_ID=$APPWRITE_COLLECTION_ID_TRANSLATIONS
-GROUPS_COLLECTION_ID=$APPWRITE_COLLECTION_ID_GROUPS
 
 SUPPORTED_LANGUAGES="en es fr de it pt nl ru zh ja ko"
 
@@ -61,23 +60,7 @@ appwrite databases createIndex --databaseId $DATABASE_ID --databaseId $DATABASE_
 --type key \
 --attributes group_id
 
-## Groups Collection
-appwrite databases createStringAttribute --databaseId $DATABASE_ID --collectionId $GROUPS_COLLECTION_ID \
---key name \
---size 36 \
---required true
-
-appwrite databases createStringAttribute --databaseId $DATABASE_ID --collectionId $GROUPS_COLLECTION_ID \
---key owner_id \
---size 36 \
---required true
-
-appwrite databases createEnumAttribute --databaseId $DATABASE_ID --collectionId $GROUPS_COLLECTION_ID \
---key language \
---elements $SUPPORTED_LANGUAGES \
---required true
-
 appwrite databases createIndex --databaseId $DATABASE_ID --databaseId $DATABASE_ID --collectionId $GROUPS_COLLECTION_ID \
---key owner_id_idx \
+--key group_id_owner_id_idx \
 --type key \
---attributes owner_id
+--attributes owner_id group_id

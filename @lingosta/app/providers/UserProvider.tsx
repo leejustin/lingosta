@@ -1,8 +1,8 @@
 "use client";
-import { useState, useEffect, useContext, createContext } from 'react';
-import { account } from '../helpers/AppwriteHelper';
-import { AppwriteException, Models } from 'appwrite';
-import { useRouter } from 'next/navigation';
+import {createContext, useContext, useEffect, useState} from 'react';
+import {account} from '../helpers/AppwriteHelper';
+import {AppwriteException, Models} from 'appwrite';
+import {useRouter} from 'next/navigation';
 
 import toast from 'react-hot-toast';
 
@@ -11,6 +11,7 @@ export interface UserState {
   login: (email: string, password: string) => Promise<void>;
   signup: (email: string, password: string, name: string) => Promise<void>;
   logout: () => Promise<void>;
+  updatePassword: (password: string, oldPassword: string) => Promise<void>;
   setUserConfigs: (user: UserConfigs) => void;
 }
 
@@ -20,31 +21,37 @@ export interface UserConfigs {
 
 const defaultState: UserState = {
   user: null,
-  login: async() => {},
-  signup: async() => {},
-  logout: async() => {},
-  setUserConfigs: async() => {},
+  login: async () => {
+  },
+  signup: async () => {
+  },
+  logout: async () => {
+  },
+  updatePassword: async () => {
+  },
+  setUserConfigs: async () => {
+  },
 }
 
 const UserContext = createContext<UserState>(defaultState);
 
-export const UserProvider = ({ children } : {children: any}) => {
+export const UserProvider = ({children}: { children: any }) => {
 
   const router = useRouter();
   const [user, setUser] = useState<Models.User<any> | undefined>(undefined);
-  
-  const checkUser = async() => {
+
+  const checkUser = async () => {
     try {
       const response = await account.get();
       setUser(response)
       console.log('user exists')
-    } catch(error) {
+    } catch (error) {
       console.log(error)
       router.push('/')
     }
   };
 
-  const login = async (email:string, password:string) => {
+  const login = async (email: string, password: string) => {
     try {
       await account.createEmailSession(email, password);
       await checkUser();
@@ -56,7 +63,7 @@ export const UserProvider = ({ children } : {children: any}) => {
     }
   };
 
-  const signup = async (email:string, password:string, name:string) => {
+  const signup = async (email: string, password: string, name: string) => {
     try {
       const response = await account.create('unique()', email, password, name);
       setUser(response);
@@ -65,7 +72,7 @@ export const UserProvider = ({ children } : {children: any}) => {
     } catch (error: any) {
       const appwriteException = error as AppwriteException;
       toast.error(appwriteException.message);
-      console.error(error);  
+      console.error(error);
     }
   };
 
@@ -79,6 +86,16 @@ export const UserProvider = ({ children } : {children: any}) => {
     }
   };
 
+  const updatePassword = async (password: string, oldPassword: string) => {
+    try {
+      await account.updatePassword(password, oldPassword)
+      toast.success('Password updated successfully');
+    } catch (error) {
+      toast.error(error.message);
+      console.error(error);
+    }
+  }
+
   const setUserConfigs = async (userConfigs: UserConfigs): Promise<void> => {
     await account.updatePrefs(userConfigs);
   }
@@ -88,7 +105,7 @@ export const UserProvider = ({ children } : {children: any}) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, login, logout, signup, setUserConfigs}}>
+    <UserContext.Provider value={{user, login, logout, signup, setUserConfigs, updatePassword}}>
       {children}
     </UserContext.Provider>
   )

@@ -22,3 +22,15 @@ export interface DBGroupFields {
 }
 
 export type DBGroup = DBGroupFields & Models.Document;
+
+// Maps 1:1 in fields in Appwrite in `sessions` collection. Fields are deconstructed since Appwrite doesn't support objects.
+export interface DBSessionFields {
+  owner_id: string;
+  group_id: string;
+  source_translations: string[];
+  target_translations: string[];
+  translation_weights: number[];
+  progress: number[];
+}
+
+export type DBSession = DBSessionFields & Models.Document;

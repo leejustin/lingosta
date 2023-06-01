@@ -2,8 +2,8 @@
 import { useUser } from '../../providers/UserProvider';
 import Link from 'next/link';
 import { BsTranslate } from 'react-icons/bs';
-import { TbLogout } from 'react-icons/tb';
 import GroupSelection from "../Group/GroupSelection";
+import SettingsSelection from "../Settings/SettingsSelection";
 
 
 const Navbar = () => {
@@ -27,7 +27,7 @@ const Navbar = () => {
                         <div className='flex gap-4 capitalize '>
                             <Link className="m-auto" href='translate'>Translate</Link>
                             <GroupSelection />
-                            <button onClick={() =>logout()}><TbLogout className='hover:text-gray-500' size={25} /></button>
+                            <SettingsSelection />
                         </div>
                     )}
                 </div>

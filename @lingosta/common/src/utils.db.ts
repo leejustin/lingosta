@@ -1,5 +1,5 @@
-import {Language, Term, UserGroup, UserTranslation} from "./types";
-import {DBGroup, DBGroupFields, DBTranslation, DBTranslationFields} from "./types.db";
+import {Language, SessionStatus, Term, UserGroup, UserSession, UserTranslation} from "./types";
+import {DBGroup, DBGroupFields, DBSession, DBSessionFields, DBTranslation, DBTranslationFields} from "./types.db";
 
 // We store some data in Appwrite in a deconstructed format because of the inability to
 // store objects. So this function is used to map it into a usable format for consumption.
@@ -29,7 +29,6 @@ export const deserializeTranslation = (t: DBTranslation): UserTranslation => {
 // to use the deconstructed format when saving to Appwrite.
 // This will return an ID if we are updating a document and an undefined ID for new documents.
 export const serializeTranslation = (t: UserTranslation): [DBTranslationFields, string?] => {
-
   const source_translations: string[] = [];
   const target_translations: string[] = [];
   const translation_weights: number[] = [];
@@ -72,4 +71,48 @@ export const serializeGroup = (group: UserGroup): [DBGroupFields, string?] => {
     language: group.language as string,
   }
   return [dbGroup, group.id];
+}
+
+export const deserializeSession = (s: DBSession): UserSession => {
+  const terms: Term[] = []
+  for (let i = 0; i < s["source_translations"].length; i++) {
+    terms.push({
+      source: s["source_translations"][i],
+      target: s["target_translations"][i],
+      weight: s["translation_weights"][i],
+    })
+  }
+
+  return {
+    id: s["$id"],
+    createdAt: new Date(s["$createdAt"]),
+    updatedAt: new Date(s["$updatedAt"]),
+    ownerId: s["owner_id"],
+    groupId: s["group_id"],
+    terms: terms,
+    progress: s["progress"].map((p: number) => p as SessionStatus),
+  }
+}
+
+export const serializeSession = (s: UserSession): [DBSessionFields, string?] => {
+  const source_translations: string[] = [];
+  const target_translations: string[] = [];
+  const translation_weights: number[] = [];
+
+  s.terms.forEach((term: Term) => {
+    source_translations.push(term.source);
+    target_translations.push(term.target);
+    translation_weights.push(term.weight);
+  });
+
+  const dbSession: DBSessionFields = {
+    owner_id: s.ownerId,
+    group_id: s.groupId,
+    source_translations: source_translations,
+    target_translations: target_translations,
+    translation_weights: translation_weights,
+    progress: s.progress.map((p: SessionStatus) => p as number),
+  }
+
+  return [dbSession, s.id];
 }
