@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
+import Highlighter from "react-highlight-words";
 
 const PrevTranslationsList = ({ translationsList}) => {
 
-    const [isLoading, setIsLoading] = useState();
+  const [isLoading, setIsLoading] = useState();
 
   return (
     <div className=''>
@@ -14,7 +15,14 @@ const PrevTranslationsList = ({ translationsList}) => {
         {translationsList.map((data, index) => (
             <Link key={index} href={`/translate/${data.id}`}>
             <div className='flex shadow-md h-24 max-w-xl p-6 text-center items-center justify-center rounded-xl bg-slate-300 hover:bg-slate-400 transition'>
-                    <p className=''>{data.rawData}</p>
+                    <p className=''>
+                      <Highlighter
+                        highlightClassName="bg-teal-500"
+                        searchWords={data.terms.map(term => term.source)}
+                        autoEscape={true}
+                        textToHighlight={data.rawData}
+                      />
+                    </p>
             </div>
             </Link>
         ))}
