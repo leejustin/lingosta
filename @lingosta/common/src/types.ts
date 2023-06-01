@@ -18,6 +18,13 @@ export interface Term {
   weight: number; // range 0.0 - 1.0
 }
 
+// SessionStatus tracks the result of a flash card session
+export enum SessionStatus {
+  CORRECT = 0,
+  INCORRECT = 1,
+  PASS = 2,
+}
+
 // UserTranslation is the format that has been deserialized to be used in the application.
 // Usage: translation: UserTranslation = documentFromAppwriteLibrary.map((t) => formatTranslation(t))
 export interface UserTranslation {
@@ -38,6 +45,17 @@ export interface UserGroup {
   name: string,
   ownerId: string,
   language: Language,
+  id?: string,
+  createdAt?: Date,
+  updatedAt?: Date,
+}
+
+// UserSession is used to store the user's session when they practice translations in a group
+export interface UserSession {
+  ownerId: string,
+  groupId: string,
+  terms: Term[],
+  progress: SessionStatus[],
   id?: string,
   createdAt?: Date,
   updatedAt?: Date,
