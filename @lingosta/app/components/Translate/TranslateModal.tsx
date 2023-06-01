@@ -103,13 +103,13 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
                   </div>
                   <div className='flex flex-row justify-end mt-4 space-x-2'>
                     <button 
-                      className='inline-flex justify-center rounded-md border border-transparent bg-gray-300 px-6 py-2 text-sm font-medium text-black hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2' 
+                      className='inline-flex justify-center rounded-md border border-transparent transition bg-gray-300 px-6 py-2 text-sm font-medium text-black hover:bg-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2' 
                       onClick={() => setIsOpen(false)}
                     >
                       Close
                     </button>
                     <button 
-                      className='inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-6 py-2 text-sm font-medium text-white hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                      className='inline-flex justify-center rounded-md border border-transparent transition bg-blue-500 px-6 py-2 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
                       onClick={() => handleModalSave()}
                     >
                       Save

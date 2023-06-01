@@ -14,6 +14,7 @@ import axios from 'axios';
 import { createTranslation, getUserTranslations } from '../../helpers/TranslationHelper';
 import { Toaster, toast } from 'react-hot-toast';
 import Link from 'next/link';
+import PrevTranslationsList from './PrevTranslationsList';
 
 const TranslateContainer = () => {
 
@@ -93,8 +94,6 @@ const TranslateContainer = () => {
         userTranslationsList();
     }, [user, activeGroup])
     
-    console.log(translationsList)
-
     return (
         <div className='mx-auto p-5'>
             <Toaster />
@@ -109,20 +108,7 @@ const TranslateContainer = () => {
                 <Button label='Lingosta' onClick={() => handleTranslate()}/>
             </div>
             {translationsList && (
-                    <div className=''>
-                        <div className='mt-4 text-lg font-semibold'>
-                            Previous translations:
-                        </div>
-                        <div className='mx-auto grid grid-cols-3 gap-4 p-2'>
-                            {translationsList.map((data, index) => (
-                                <Link key={index} href={`/translate/${data.id}`}>
-                                <div className='shadow-md max-w-xl p-6 text-center rounded-xl bg-slate-200 hover:bg-slate-300 transition'>
-                                        <p className=''>{data.rawData}</p>
-                                </div>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
+                    <PrevTranslationsList translationsList={translationsList} />
                 )
             }
             {!isOpen ? <></> : 

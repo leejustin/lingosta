@@ -1,7 +1,9 @@
 import {Menu, Transition} from '@headlessui/react'
 import {Fragment} from 'react'
 import {useUser} from "../../providers/UserProvider";
-import {FaUserCircle, TbSettings} from "react-icons/all";
+import { FaUserCircle } from "react-icons/fa";
+import { TbSettings } from "react-icons/tb";
+
 import {TbLogout} from "react-icons/tb";
 import Link from "next/link";
 
@@ -14,7 +16,7 @@ const GroupSelection = () => {
         <div>
           <Menu.Button
             className="inline-flex w-full justify-center px-2 py-2 text-2xl font-medium text-gray hover:bg-opacity-75">
-            <FaUserCircle/>
+            <FaUserCircle className='text-black hover:opacity-50 transition'/>
           </Menu.Button>
         </div>
         <Transition

@@ -8,7 +8,7 @@ import SettingsSelection from "../Settings/SettingsSelection";
 
 const Navbar = () => {
 
-    const { user, logout } = useUser();
+    const { user } = useUser();
 
     return (
         <div className='border-b-[1px] border-neutral-200 p-5'>
