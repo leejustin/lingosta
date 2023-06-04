@@ -32,7 +32,7 @@ const GroupSelection = () => {
       <Menu as="div" className="relative inline-block text-left z-10">
         <div>
           <Menu.Button
-            className="inline-flex w-full justify-center rounded-md bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-75 transition">
+            className="inline-flex w-full justify-center rounded-md bg-teal-500 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-75 transition">
             { activeGroup ? <span className="ml-2">{getLanguageEmoji(activeGroup.language)} {activeGroup.name}</span> : <span>Select Group</span>}
             <HiChevronDown
               className="ml-2 -mr-1 h-5 w-5 text-white"
@@ -58,7 +58,7 @@ const GroupSelection = () => {
                     <button
                       onClick={() => handleActiveGroup(group)}
                       className={`${
-                        active ? 'bg-blue-500 text-white' : 'text-gray-900'
+                        active ? 'bg-teal-500 text-white' : 'text-gray-900'
                       } group flex w-full items-center rounded-md px-2 py-2 text-md`}
                     >
                       <div className="mr-2 h-5 w-2 whitespace-nowrap" aria-hidden="true">
@@ -74,7 +74,7 @@ const GroupSelection = () => {
                 {({active}) => (
                   <button
                     className={`${
-                      active ? 'bg-blue-500 text-white' : 'text-gray-900'
+                      active ? 'bg-teal-500 text-white' : 'text-gray-900'
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     onClick={openCreateModal}
                   >

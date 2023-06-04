@@ -1,6 +1,17 @@
+'use client';
+
 import Link from "next/link"
+import { useUser } from "../providers/UserProvider"
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+
+  const { user } = useUser();
+  const router = useRouter();
+
+  if(user) { 
+    router.push('/translate');
+  }
 
   return (
     <div className="mx-auto p-5">
@@ -12,7 +23,7 @@ export default function Home() {
           Helping you learn a new language more efficiently!
         </p>
         <div className="">
-        <button className='p-4 text-xl font-semibold rounded-lg bg-blue-500 text-white border  hover:bg-blue-600 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed'>
+        <button className='p-4 text-xl font-semibold rounded-xl bg-blue-500 text-white border  hover:bg-blue-600 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed'>
           <Link href='/signup'>
             Get Started
           </Link>

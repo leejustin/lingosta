@@ -17,7 +17,7 @@ const Textbox = ({input, handleInput }) => {
                     text-md
                     text-gray-50
                     bg-gray-800
-                    rounded-lg
+                    rounded-3xl
                     border
                     border-gray-300
                 "

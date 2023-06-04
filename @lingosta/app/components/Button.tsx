@@ -8,7 +8,7 @@ const Button: React.FC<ButtonProps> = ({
     onClick
 }) => {
     return (
-        <button onClick={onClick} className='p-4 py-2 w-full font-semibold rounded-lg bg-blue-500 text-white border  hover:bg-blue-600 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed'>
+        <button onClick={onClick} className='p-4 py-2 w-full font-semibold rounded-3xl bg-teal-500 text-white border transition hover:bg-teal-600 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed'>
             {label}
         </button>
     )

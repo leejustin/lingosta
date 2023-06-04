@@ -10,7 +10,7 @@ const Translate = () => {
   
     if(!user) {
         return (
-            <div className='mt-8 p-5 text-center'>
+            <div className='mt-8 p-5 text-center text-xl font-semibold animate-pulse'>
                 loading
             </div>
         )
