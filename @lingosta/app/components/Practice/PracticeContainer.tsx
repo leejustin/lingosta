@@ -30,7 +30,7 @@ const PracticeContainer = () => {
 
 
     return (
-      <div>
+      <div className='px-5'>
         <FilterList translationsList={translationsList}/>
       </div>
     )

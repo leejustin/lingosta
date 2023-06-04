@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { useUser } from '../../providers/UserProvider';
-import FilterList from '../../components/Practice/FilterList';
 import PracticeContainer from '../../components/Practice/PracticeContainer';
 
 const Practice = () => {

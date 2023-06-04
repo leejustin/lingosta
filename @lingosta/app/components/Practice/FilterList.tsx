@@ -27,7 +27,7 @@ const FilterList = ({ translationsList }) => {
 
     return (
         <div className='my-4'>
-            <div className=''>
+            <div className='max-w-lg items-center flex mx-auto'>
                 <Button label='Begin practice' onClick={handleBundleTranslations}/>
             </div>
             <div className='mt-4 text-lg font-semibold'>
@@ -35,8 +35,8 @@ const FilterList = ({ translationsList }) => {
             </div>
             <div className='mx-auto grid grid-cols-1 gap-4 mt-2'>
                 {translationsList.map((data, index) => (
-                    <div className='flex space-x-2 items-center'>
-                        <div className='flex w-full justify-between shadow-md h-24 p-6 rounded-3xl bg-slate-300 hover:bg-slate-400 transition'>
+                    <div key={index} className='flex space-x-2 items-center'>
+                        <div className='flex w-full justify-between shadow-md h-24 p-6 rounded-3xl bg-slate-300'>
                                 <div className='flex items-center'>
                                     <p className='text-lg'>
                                     <Highlighter

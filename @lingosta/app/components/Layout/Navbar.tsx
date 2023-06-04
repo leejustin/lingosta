@@ -30,8 +30,8 @@ const Navbar = () => {
                 <div>
                     {!user ? (
                         <div className='space-x-4'>
-                            <Link href='login'>Login</Link>
-                            <Link href='signup'>Join</Link>
+                            <Link className='m-auto font-semibold hover:text-gray-500' href='login'>Login</Link>
+                            <Link className='m-auto font-semibold hover:text-gray-500' href='signup'>Join</Link>
                         </div>
                     ) : (
                         <div className='flex gap-4 capitalize '>

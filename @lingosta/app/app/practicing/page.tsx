@@ -24,7 +24,7 @@ const Practicing = () => {
     const translations = selectedTranslations.map((translation) => translation.terms);
 
     return (
-        <main className="z-0 mt-20 flex mx-auto items-center justify-center">
+        <main className="px-5 z-0 mt-20 flex mx-auto items-center justify-center">
         {isLoading ? (<div>Loading...</div>) : (
             <div className='space-y-24'>
                 {translations.map((array,index) => (
