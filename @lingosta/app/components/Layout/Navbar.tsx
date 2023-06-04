@@ -35,7 +35,8 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <div className='flex gap-4 capitalize '>
-                            <Link className="m-auto font-semibold hover:text-gray-500" href='translate'>Practice</Link>
+                            <Link className="m-auto font-semibold hover:text-gray-500" href='translate'>Translate</Link>
+                            <Link className="m-auto font-semibold hover:text-gray-500" href='practice'>Practice</Link>
                             <GroupSelection />
                             <SettingsSelection />
                         </div>

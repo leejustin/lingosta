@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Highlighter from "react-highlight-words";
 import Button from '../Button';
+import { TranslationsContext } from '../../providers/SelectedTranslationsProvider';
 
 const FilterList = ({ translationsList }) => {
 
+
+    const [selectedTranslations, setSelectedTranslations] = useContext(TranslationsContext);
     const [checkedTranslations, setCheckedTranslations] = useState([]);
+    const router = useRouter();
 
     useEffect(() => {
         if(translationsList) {
@@ -13,11 +18,12 @@ const FilterList = ({ translationsList }) => {
     }, [translationsList]);
 
     const handleBundleTranslations = () => {
-        const selectedTranslations = translationsList?.filter((_, index) => checkedTranslations[index]);
-        
-    };
+        const selected = translationsList?.filter((_, index) => checkedTranslations[index]);
+        setSelectedTranslations(selected);
 
-    console.log(checkedTranslations)
+        localStorage.setItem('selectedTranslations', JSON.stringify(selected));
+        router.push('/practicing');
+    };
 
     return (
         <div className='my-4'>
