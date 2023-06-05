@@ -1,7 +1,6 @@
 "use client";
 import { useUser } from '../../providers/UserProvider';
 import Link from 'next/link';
-import { BsTranslate } from 'react-icons/bs';
 import GroupSelection from "../Group/GroupSelection";
 import SettingsSelection from "../Settings/SettingsSelection";
 
@@ -14,7 +13,7 @@ const Navbar = () => {
     const { user } = useUser();
 
     return (
-        <div className='border-b-[1px] border-neutral-200 p-5'>
+        <div className='bg-gray-100 border-b-[1px] border-neutral-200 p-5 top-0 z-20'>
             <div className='flex justify-between'>
                 <Link href='/' className='text-lg font-semibold flex gap-2'>
                     <Image
@@ -34,9 +33,9 @@ const Navbar = () => {
                             <Link className='m-auto font-semibold hover:text-gray-500' href='signup'>Join</Link>
                         </div>
                     ) : (
-                        <div className='flex gap-4 capitalize '>
-                            <Link className="m-auto font-semibold hover:text-gray-500" href='translate'>Translate</Link>
-                            <Link className="m-auto font-semibold hover:text-gray-500" href='practice'>Practice</Link>
+                        <div className='flex gap-4 capitalize'>
+                            <Link className="m-auto font-semibold hover:text-gray-500 hidden md:block" href='translate'>Translate</Link>
+                            <Link className="m-auto font-semibold hover:text-gray-500 hidden md:block" href='practice'>Practice</Link>
                             <GroupSelection />
                             <SettingsSelection />
                         </div>
