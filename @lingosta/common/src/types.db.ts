@@ -34,3 +34,27 @@ export interface DBSessionFields {
 }
 
 export type DBSession = DBSessionFields & Models.Document;
+
+// Maps 1:1 in fields in Appwrite in `jumbles` collection.
+export interface DBJumbleFields {
+    owner_id: string,
+    source_group_ids: string[],
+    process_id: string,
+    answer: string[],
+    prompt: string[],
+    translation_weights: number[],
+    options: string[],
+    is_reversed: boolean,
+}
+
+export type DBJumble = DBJumbleFields & Models.Document;
+
+// Maps 1:1 in fields in Appwrite in `jumble_sessions` collection.
+export interface DBJumbleSubmissionFields {
+    owner_id: string,
+    jumble_id: string,
+    submission: string[],
+    is_correct: boolean,
+}
+
+export type DBJumbleSubmission = DBJumbleSubmissionFields & Models.Document;
