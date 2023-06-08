@@ -16,10 +16,9 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
     }
   }, [translations]);
 
-  const handleSavetest = () => {
+  const handleModalSave = () => {
     const selectedTerms = translations.terms?.filter((_, index) => checkedTerms[index]);
     handleSave(selectedTerms);
-    console.log(selectedTerms)
   };
 
   return (
@@ -34,7 +33,7 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
       ) : (
     <>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative" onClose={closeModal}>
+        <Dialog as="div" className="relative z-50" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -104,14 +103,14 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
                   </div>
                   <div className='flex flex-row justify-end mt-4 space-x-2'>
                     <button 
-                      className='inline-flex justify-center rounded-md border border-transparent bg-gray-300 px-6 py-2 text-sm font-medium text-black hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2' 
+                      className='inline-flex justify-center rounded-md border border-transparent transition bg-gray-300 px-6 py-2 text-sm font-medium text-black hover:bg-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2' 
                       onClick={() => setIsOpen(false)}
                     >
                       Close
                     </button>
                     <button 
-                      className='inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-6 py-2 text-sm font-medium text-white hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                      onClick={() => handleSavetest()}
+                      className='inline-flex justify-center rounded-md border border-transparent transition bg-blue-500 px-6 py-2 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                      onClick={() => handleModalSave()}
                     >
                       Save
                     </button>
