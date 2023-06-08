@@ -68,7 +68,7 @@ export interface UserJumble {
     processId: string,
     terms: Term[],
     options: string[],
-    isReversed?: boolean,
+    isReversed: boolean,
     id?: string,
     createdAt?: Date,
     updatedAt?: Date,

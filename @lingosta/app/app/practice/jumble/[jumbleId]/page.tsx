@@ -7,6 +7,7 @@ import Option from "../../../../components/Jumble/Option";
 import {UserJumble} from "../../../../../common/src/types";
 import {v4 as uuidv4} from 'uuid';
 
+// Placeholder
 const testJumble: UserJumble = {
   ownerId: "12345",
   sourceGroupIds: ["12345", "12346"],
@@ -33,10 +34,11 @@ const testJumble: UserJumble = {
       "weight": 0,
     },
   ],
-  options: ["I", "speak", "English", "sir", "and", "eat", "dog", "food", "yeah"],
+  options: ["I", "speak", "English", "sir", "and", "eat", "food", "coffee"],
   id: "12345",
   createdAt: new Date(),
   updatedAt: new Date(),
+  isReversed: false,
 }
 
 interface JumbleItem {
