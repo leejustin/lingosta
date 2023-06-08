@@ -7,10 +7,11 @@ const Textbox = ({input, handleInput }) => {
             <div className='flex space-x-2'>
             <input
                 required
+                resize-y
                 value={input}
                 type='text'
                 className="
-                    block
+                    resize-y
                     drop-shadow-xl
                     p-2.5
                     w-full

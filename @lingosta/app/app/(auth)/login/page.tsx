@@ -47,7 +47,7 @@ const Login = () => {
             />
             <button 
               type='submit'
-              className='mx-auto mt-4 py-2 w-full font-semibold rounded-lg bg-blue-500 text-white border  hover:bg-blue-600 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed'  
+              className='mx-auto mt-4 py-2 w-full font-semibold rounded-lg bg-teal-500 text-white border  hover:bg-teal-600 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed'  
             >
               Login
             </button>
@@ -59,7 +59,7 @@ const Login = () => {
         <div className='flex-grow flex flex-col text-center justify-center p-5 border-[1px] bg-slate-200 border-neutral-300 rounded-xl'>
           <p className="">
             New to Lingosta?{' '}
-            <Link href="/signup" className="cursor-pointer text-blue-500 hover:underline">
+            <Link href="/signup" className="cursor-pointer text-teal-500 hover:underline">
               Create an account.
             </Link>
           </p>

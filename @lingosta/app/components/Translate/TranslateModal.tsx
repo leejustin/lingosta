@@ -91,7 +91,7 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
                                           newCheckedTerms[index] = e.target.checked;
                                           setCheckedTerms(newCheckedTerms);
                                         }}
-                                        className="w-5 h-5 text-black border-gray-300 rounded" 
+                                        className="w-5 h-5 accent-teal-500 text-white border-gray-300" 
                                       />
                                   </div>
                                 </td>

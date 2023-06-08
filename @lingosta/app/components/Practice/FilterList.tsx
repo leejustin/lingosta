@@ -59,7 +59,7 @@ const FilterList = ({ translationsList }) => {
                                 newCheckedTranslations[index] = e.target.checked;
                                 setCheckedTranslations(newCheckedTranslations);
                             }}
-                            className='w-12 h-6'
+                            className='w-12 h-6 accent-teal-500'
                         />
                     </div>
                 ))}

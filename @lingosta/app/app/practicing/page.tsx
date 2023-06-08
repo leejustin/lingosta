@@ -15,16 +15,18 @@ const Practicing = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
+        setIsLoading(true);
         const storedTranslations = localStorage.getItem('selectedTranslations');
         if (storedTranslations) {
             setSelectedTranslations(JSON.parse(storedTranslations));
         }
+        setIsLoading(false);
     }, []);
 
     const translations = selectedTranslations.map((translation) => translation.terms);
 
     return (
-        <main className="px-5 z-0 mt-20 flex mx-auto items-center justify-center">
+        <main className="px-5 z-0 mt-20 flex mx-auto items-center justify-center overflow-x-hidden">
         {isLoading ? (<div>Loading...</div>) : (
             <div className='space-y-24'>
                 {translations.map((array,index) => (
