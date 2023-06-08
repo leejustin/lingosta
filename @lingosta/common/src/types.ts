@@ -60,3 +60,27 @@ export interface UserSession {
   createdAt?: Date,
   updatedAt?: Date,
 }
+
+// UserJumble is used to store the user's jumble when they practice jumbles in a group
+export interface UserJumble {
+    ownerId: string,
+    sourceGroupIds: string[],
+    processId: string,
+    terms: Term[],
+    options: string[],
+    isReversed: boolean,
+    id?: string,
+    createdAt?: Date,
+    updatedAt?: Date,
+}
+
+// JumbleSubmission is used to store the user's jumble sessions when they practice
+export interface UserJumbleSubmission {
+    ownerId: string,
+    jumbleId: string,
+    submission: string[],
+    isCorrect: boolean,
+    id?: string,
+    createdAt?: Date,
+    updatedAt?: Date,
+}
