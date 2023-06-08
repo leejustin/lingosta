@@ -114,7 +114,7 @@ const JumblePractice: React.FC = () => {
     if (
       userAnswer.map((v) => v.displayText).join(" ") === answer.join(" ")
     ) {
-      console.log("YAY!");
+      console.log("CORRECT!");
     }
   };
 
