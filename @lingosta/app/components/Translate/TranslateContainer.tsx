@@ -13,8 +13,8 @@ import { useGroup } from '../../providers/GroupProvider';
 import axios from 'axios';
 import { createTranslation, getUserTranslations } from '../../helpers/TranslationHelper';
 import { Toaster, toast } from 'react-hot-toast';
-import Link from 'next/link';
 import PrevTranslationsList from './PrevTranslationsList';
+import ViewOnly from './ViewOnly';
 
 const TranslateContainer = () => {
 
@@ -23,9 +23,11 @@ const TranslateContainer = () => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isViewOnlyOpen, setIsViewOnlyOpen] = useState<boolean>(false);
     const [input, setInput] = useState('');
     const [translations, setTranslations] = useState(null);
     const [translationsList, setTranslationsList] = useState([])
+    const [selectedTranslation, setSelectedTranslation] = useState();
     
     const handleSave = async(selectedTerms) => {
 
@@ -44,6 +46,8 @@ const TranslateContainer = () => {
             setIsOpen(false);
             toast.success('Successfully saved!');
 
+            userTranslationsList();
+            
         } catch(error) {
             console.log(error);
         }
@@ -68,7 +72,7 @@ const TranslateContainer = () => {
                 sentence: input,
             })
             const translationsData = response.data;
-            setTranslations(translationsData);            
+            setTranslations(translationsData);
             
         } catch(error) {
             console.log(error);
@@ -77,7 +81,7 @@ const TranslateContainer = () => {
         }
     }
 
-    const userTranslationsList = async() => {        
+    const userTranslationsList = async() => {
         if(!user && !activeGroup) {
             return
         }
@@ -94,13 +98,14 @@ const TranslateContainer = () => {
         userTranslationsList();
     }, [user, activeGroup])
     
+
     return (
         <div className='mx-auto p-5'>
             <Toaster />
             <div className='mt-8 text-center justify-center items-center space-y-4'>
             <div className='flex gap-2 items-center font-bold text-xl'>
                 <label className=''>
-                    <BsTranslate size={20}/>
+                    <BsTranslate size={20} />
                 </label>
                 Translate
             </div>
@@ -108,18 +113,32 @@ const TranslateContainer = () => {
                 <Button label='Lingosta' onClick={() => handleTranslate()}/>
             </div>
             {translationsList && (
-                    <PrevTranslationsList translationsList={translationsList} />
+                    <PrevTranslationsList 
+                        translationsList={translationsList} 
+                        setSelectedTranslation={setSelectedTranslation} 
+                        setIsViewOnlyOpen={setIsViewOnlyOpen} 
+                    />
                 )
             }
             {!isOpen ? <></> : 
                 (
-                    <TranslateModal 
+                    <TranslateModal
                         isLoading={isLoading}
                         handleSave={handleSave} 
                         isOpen={isOpen}
                         setIsOpen={setIsOpen} 
                         input={input} 
                         translations={translations}
+                    />
+                )
+            }
+            {!isViewOnlyOpen ? <></> : 
+                (
+                    <ViewOnly
+                        isLoading={isLoading}
+                        isViewOnlyOpen={isViewOnlyOpen}
+                        setIsViewOnlyOpen={setIsViewOnlyOpen} 
+                        translations={selectedTranslation}
                     />
                 )
             }

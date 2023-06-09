@@ -6,6 +6,7 @@ import Word from "../../../../components/Jumble/Word";
 import Option from "../../../../components/Jumble/Option";
 import {UserJumble} from "../../../../../common/src/types";
 import {v4 as uuidv4} from 'uuid';
+import { Toaster, toast } from "react-hot-toast";
 
 // Placeholder
 const testJumble: UserJumble = {
@@ -114,20 +115,23 @@ const JumblePractice: React.FC = () => {
     if (
       userAnswer.map((v) => v.displayText).join(" ") === answer.join(" ")
     ) {
-      console.log("CORRECT!");
+      toast.success('Correct!')
+    } else {
+      toast.error("Incorrect!")
     }
   };
 
   return (
     <div className="mx-auto p-5">
-      <div className="flex mx-auto w-full mt-8 text-center justify-center space-y-6 items-center">
+      <Toaster />
+      <div className="flex mx-auto max-w-2xl w-full text-center justify-center space-y-6 items-center">
         <DragDropContext
           onDragEnd={(dropResult: DropResult) =>
             testJumble &&
             onDragEnd(dropResult, jumbleOptions, userAnswer, setUserAnswer, setJumbleOptions)
           }
         >
-          <div className="bg-gray-100 md:w-3/5 w-full h-4/5 rounded-xl p-10 shadow-xl">
+          <div className="bg-slate-200 w-full h-4/5 rounded-xl p-10 shadow-xl">
             <div className="mt-16 flex gap-3 text-lg">
               {testJumble.terms.map((term, index) => (
                 <Word key={index} text={term.source} hint={term.target} />
@@ -169,7 +173,7 @@ const JumblePractice: React.FC = () => {
               <Droppable droppableId="Question" direction="horizontal">
                 {(provided, snapshot) => (
                   <div
-                    className="mt-16 flex items-start gap-2 h-28"
+                    className="mt-16 flex flex-wrap items-start gap-2 h-28"
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                   >

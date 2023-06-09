@@ -17,7 +17,6 @@ export default function TranslationPage() {
 
     const params = useParams();
 
-    const { user } = useUser();
     const [translations, setTranslations] = useState([]);
     const [isLoading, setIsLoading] = useState(false)
 
@@ -56,7 +55,7 @@ export default function TranslationPage() {
             >
             {translations.map((term,index) => (
                 <SwiperSlide key={index}>
-                    <div className='p-6 md:p-12 flex text-2xl font-semibold'>
+                    <div className='p-8 md:p-12 flex text-3xl md:text-4xl font-semibold'>
                         <Flashcard 
                             frontHTML={term.source} 
                             backHTML={term.target} 

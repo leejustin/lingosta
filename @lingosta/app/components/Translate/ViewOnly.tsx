@@ -1,25 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import {Dialog, Transition} from '@headlessui/react';
-import Button from '../Button';
 
-const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, translations }) => {
+const ViewOnly = ({ isLoading, isViewOnlyOpen, setIsViewOnlyOpen, translations }) => {
 
   const closeModal = () => {
-    setIsOpen(false)
+    setIsViewOnlyOpen(false)
   }
-
-  const [checkedTerms, setCheckedTerms] = useState([]);
-
-  useEffect(() => {
-    if (translations && translations.terms) {
-      setCheckedTerms(translations.terms.map(() => true));
-    }
-  }, [translations]);
-
-  const handleModalSave = () => {
-    const selectedTerms = translations.terms?.filter((_, index) => checkedTerms[index]);
-    handleSave(selectedTerms);
-  };
 
   return (
     <div>
@@ -32,7 +18,7 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
         </div>
       ) : (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={isViewOnlyOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
@@ -61,7 +47,7 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
                 >
                   <div className=' border-b-[2px] border-neutral-300 w-full py-2 text-lg'>
                     <p>
-                    {input}
+                      {translations.rawData}
                     </p>
                     <p className=''>
                       {translations?.terms?.map((term) => (
@@ -69,7 +55,7 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
                       ))}
                     </p>
                   </div>
-                  <div className='border-b-[2px] border-neutral-300 w-full py-2 '>
+                  <div className=' border-neutral-300 w-full py-2 '>
                     <div className='relative overflow-x-auto'>
                       <table className='w-full text-left text-lg'>
                         <tbody>
@@ -81,39 +67,11 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
                                 <td className=''>
                                   {term.target}
                                 </td>
-                                <td className="w-4 p-2">
-                                  <div className="flex items-center">
-                                      <input 
-                                        type='checkbox'
-                                        checked={checkedTerms[index]}
-                                        onChange={(e) => {
-                                          const newCheckedTerms = [...checkedTerms];
-                                          newCheckedTerms[index] = e.target.checked;
-                                          setCheckedTerms(newCheckedTerms);
-                                        }}
-                                        className="w-5 h-5 accent-teal-500 text-white border-gray-300" 
-                                      />
-                                  </div>
-                                </td>
                               </tr>
                           ))}
                         </tbody>
                       </table>
                     </div>
-                  </div>
-                  <div className='flex flex-row justify-end mt-4 space-x-2'>
-                    <button 
-                      className='inline-flex justify-center rounded-md border border-transparent transition bg-gray-300 px-6 py-2 text-sm font-medium text-black hover:bg-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2' 
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Close
-                    </button>
-                    <button 
-                      className='inline-flex justify-center rounded-md border border-transparent transition bg-blue-500 px-6 py-2 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                      onClick={() => handleModalSave()}
-                    >
-                      Save
-                    </button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
@@ -127,4 +85,4 @@ const TranslateModal = ({ isLoading, handleSave, input, isOpen, setIsOpen, trans
   )
 }
 
-export default TranslateModal
+export default ViewOnly

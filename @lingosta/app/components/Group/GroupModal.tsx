@@ -83,7 +83,7 @@ const GroupModal = ({isOpen, closeModal}) => {
                     <div className="w-full">
                       <input
                         type="text"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-teal-500 focus:border-teal-500"
                         placeholder={"Group name"}
                         value={groupName}
                         onChange={(e) => setGroupName(e.target.value)}
@@ -104,7 +104,7 @@ const GroupModal = ({isOpen, closeModal}) => {
                     </button>
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-teal-500 px-4 py-2 text-sm font-medium text-white hover:bg-teal-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                       onClick={handleSubmit}
                     >
                       Create

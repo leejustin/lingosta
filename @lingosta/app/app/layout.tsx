@@ -5,6 +5,8 @@ import './globals.css'
 import {Inter} from 'next/font/google'
 import GroupProvider from "../providers/GroupProvider";
 import Head from "next/head";
+import Footer from '../components/Layout/Footer'
+import { TranslationsProvider } from '../providers/SelectedTranslationsProvider'
 
 const inter = Inter({subsets: ['latin']})
 
@@ -14,22 +16,25 @@ export const metadata = {
 }
 
 export default function RootLayout({
-                                     children,
-                                   }: {
+  children,
+}: {
   children: React.ReactNode
 }) {
   return (
     <html lang="en">
-    <UserProvider>
-      <GroupProvider>
-        <body className={inter.className}>
-        <Layout>
-          <Navbar/>
-          {children}
-        </Layout>
-        </body>
-      </GroupProvider>
-    </UserProvider>
+      <UserProvider>
+        <GroupProvider>
+          <TranslationsProvider>
+            <body className={inter.className}>
+              <Layout>
+                <Navbar />
+                {children}
+                <Footer />
+              </Layout>
+            </body>
+          </TranslationsProvider>
+        </GroupProvider>
+      </UserProvider>
     </html>
   )
 }

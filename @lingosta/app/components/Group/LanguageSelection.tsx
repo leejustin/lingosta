@@ -47,7 +47,7 @@ const LanguageSelection = ({setLanguage}: LanguageSelectionProps) => {
                   key={language.id}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 ${
-                      active ? 'bg-blue-200 text-gray-900' : 'text-gray-900'
+                      active ? 'bg-teal-500 text-gray-900' : 'text-gray-900'
                     }`
                   }
                   value={language}
