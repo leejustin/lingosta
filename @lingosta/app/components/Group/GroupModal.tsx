@@ -70,12 +70,12 @@ const GroupModal = ({isOpen, closeModal}) => {
                   className="w-full max-w-md transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-lg font-semibold leading-6 text-gray-900"
                   >
                     Create a Group
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 mb-1">
                       Groups organize your translations together.
                     </p>
                   </div>

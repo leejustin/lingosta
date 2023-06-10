@@ -21,11 +21,19 @@ const GroupSelection = () => {
   }
 
   const handleActiveGroup = (group: UserGroup) => {
-    setActiveGroup(group);
-    setUserConfigs({
-      activeGroupId: group.id
-    });
+    if (group) {
+      setActiveGroup(group);
+      setUserConfigs({
+        activeGroupId: group.id
+      });
+    }
   }
+
+  useEffect(() => {
+    if (userGroups && userGroups.length > 0 && !activeGroup) {
+      setActiveGroup(userGroups[0]);
+    }
+  }, [userGroups, activeGroup, setActiveGroup]);
 
   return (
     <div>
@@ -52,7 +60,7 @@ const GroupSelection = () => {
           <Menu.Items
             className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1">
-              {userGroups?.filter((group: UserGroup) => group.id !== activeGroup.id).map((group: UserGroup) => (
+              {userGroups?.filter((group: UserGroup) => activeGroup && group.id !== activeGroup.id).map((group: UserGroup) => (
                 <Menu.Item key={group.id}>
                   {({active}) => (
                     <button

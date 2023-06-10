@@ -11,10 +11,11 @@ import TranslateModal from './TranslateModal';
 import { useGroup } from '../../providers/GroupProvider';
 
 import axios from 'axios';
-import { createTranslation, getUserTranslations } from '../../helpers/TranslationHelper';
+import { createTranslation, getUserTranslations, deleteTranslation } from '../../helpers/TranslationHelper';
 import { Toaster, toast } from 'react-hot-toast';
 import PrevTranslationsList from './PrevTranslationsList';
 import ViewOnly from './ViewOnly';
+import GroupModal from '../Group/GroupModal';
 
 const TranslateContainer = () => {
 
@@ -24,6 +25,7 @@ const TranslateContainer = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [isViewOnlyOpen, setIsViewOnlyOpen] = useState<boolean>(false);
+    const [isGroupModalOpen, setisGroupModalOpen] = useState<boolean>(false);
     const [input, setInput] = useState('');
     const [translations, setTranslations] = useState(null);
     const [translationsList, setTranslationsList] = useState([])
@@ -46,8 +48,8 @@ const TranslateContainer = () => {
             setIsOpen(false);
             toast.success('Successfully saved!');
 
-            userTranslationsList();
-            
+            setTranslationsList((prevTranslationsList) => [...prevTranslationsList, userTranslation]);
+
         } catch(error) {
             console.log(error);
         }
@@ -94,8 +96,28 @@ const TranslateContainer = () => {
         }
     }
 
+    const handleDelete = async(translationId) => {
+        try {
+            await deleteTranslation(translationId);
+            toast.success('Successfully deleted.');
+            
+            setTranslationsList((prevTranslations) =>
+            prevTranslations.filter((translation) => translation.id !== translationId)
+          );
+        } catch(error) {
+            toast.error('Something went wrong.')
+        }
+    }
+
     useEffect(() => {
         userTranslationsList();
+        if (activeGroup) {
+            setIsLoading(true);
+            setisGroupModalOpen(false);
+            setIsLoading(false);
+        } else {
+            setisGroupModalOpen(true);
+        }
     }, [user, activeGroup])
     
 
@@ -117,6 +139,7 @@ const TranslateContainer = () => {
                         translationsList={translationsList} 
                         setSelectedTranslation={setSelectedTranslation} 
                         setIsViewOnlyOpen={setIsViewOnlyOpen} 
+                        handleDelete={handleDelete}
                     />
                 )
             }
@@ -142,6 +165,9 @@ const TranslateContainer = () => {
                     />
                 )
             }
+            {!activeGroup && isGroupModalOpen && (
+                <GroupModal isOpen={isGroupModalOpen} closeModal={() => setisGroupModalOpen(false)} />
+            )}
     </div>
     )
 }

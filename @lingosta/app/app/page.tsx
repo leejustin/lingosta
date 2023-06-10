@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div className="mx-auto p-5">
-      <div className="mx-auto w-full py-8 max-w-4xl text-center justify-center space-y-12">
+      <div className="mx-auto w-full py-8 text-center justify-center space-y-12">
         <div className="space-y-4">
           <h1 className="text-4xl font-bold tracking-normal text-gray-900">
             Lingosta - Language Learning
@@ -43,21 +43,44 @@ export default function Home() {
             </button>
           </div>
           <div className="w-full md:w-1/2 p-4">
-            <Image src="/learning.svg" width={1240} height={720} alt='learning' />
-          </div>
-        </div>
-        {/* Section 2  */}
-        <div className="mx-auto flex flex-col-reverse md:flex-row items-center">
-          <div className="w-full md:w-1/2 p-4">
             <Image src="/world.svg" width={1240} height={720} alt='learning' />
           </div>
-          <div className="w-full md:w-1/2 text-left p-4">
-            <h2 className="text-xl font-bold mb-4">Translate Sentences and Practice Flash Cards</h2>
-            <p className="leading-relaxed">
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-white shadow-lg p-6 rounded-3xl text-left space-y-2">
+            <h3 className="font-bold text-xl">Translate Sentences and Practice Flash Cards</h3>
+            <p className="">
               With Lingosta, you can easily translate sentences from English into various languages such as Spanish, French,
               German, Italian, Portuguese (Brazilian), Russian, Chinese (Simplified), Japanese, and Korean. The translated words
               are automatically turned into flash cards, providing you with a seamless interface to create flash cards that are
               highly relevant to your language learning journey.
+            </p>
+            <p>
+              Imagine being able to take sentences or text from someone you follow on Instagram and translate those words to
+              build your understanding of how to read relevant content. Many language learning approaches focus on formalized
+              language instruction, which may not align with the organic language usage found on social media and the internet.
+              Lingosta allows you to have control over the type of text and content you want to spend time learning.
+            </p>
+          </div>
+          <div className="bg-white shadow-lg p-6 rounded-3xl text-left space-y-2">
+            <h3 className="font-bold text-xl">Unlock the Power of Context with Relevant Content</h3>
+            <p>
+              We understand the importance of learning languages in a context that matters to you. Lingosta enables you to
+              explore relevant content and tailor your language learning experience accordingly. By learning words and phrases
+              in the context of sentences you've translated, you gain a deeper understanding of how language is used in real-life
+              situations. This approach enhances your language skills and empowers you to engage with authentic written content
+              found in social media, blogs, and websites.
+            </p>
+          </div>
+          <div className="bg-white shadow-lg p-6 rounded-3xl text-left space-y-2">
+            <h3 className="font-bold text-xl">Jumble - Match Translations with Drag and Drop</h3>
+            <p>
+              Beyond flash cards, Lingosta offers an exercise called "Jumble" that utilizes AI-generated sentences based on words you've translated.
+              In this exercise, you can match translations using a user-friendly drag and drop interface. Jumble enhances your
+              comprehension and retention skills as you engage with dynamically created sentences. It's a fun and effective way
+              to reinforce your language learning progress.
             </p>
           </div>
         </div>

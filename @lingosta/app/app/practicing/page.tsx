@@ -26,10 +26,14 @@ const Practicing = () => {
     const translations = selectedTranslations.map((translation) => translation.terms);
 
     return (
-        <main className="px-5 z-0 mt-20 flex mx-auto items-center justify-center overflow-x-hidden">
+        <main className="md:px-5 z-0 mt-20 flex mx-auto items-center justify-center overflow-x-hidden">
         {isLoading ? (<div>Loading...</div>) : (
-            <div className='space-y-24'>
-                {translations.map((array,index) => (
+            <div className=''>
+                {selectedTranslations.map((data,index) => (
+                    <div key={index} className='mt-12 space-y-2'>
+                    <span className='text-lg font-bold'>
+                        {data.rawData}
+                    </span>
                     <Swiper
                         key={index}
                         className='w-full max-w-sm md:max-w-xl'
@@ -46,7 +50,7 @@ const Practicing = () => {
                             type: "progressbar",
                         }}
                     >
-                        {array.map((term,index) => (
+                        {data.terms.map((term,index) => (
                             <SwiperSlide key={index}>
                                 <div className='p-8 md:p-12 flex text-3xl md:text-4xl font-semibold'>
                                     <Flashcard 
@@ -74,6 +78,7 @@ const Practicing = () => {
                             </SwiperSlide>
                         ))}
                     </Swiper>
+                    </div>
                 ))}
             </div>
         )}
