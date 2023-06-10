@@ -48,7 +48,7 @@ export default function Home() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white shadow-lg p-6 rounded-3xl text-left space-y-2">
             <h3 className="font-bold text-xl">Translate Sentences and Practice Flash Cards</h3>
             <p className="">
@@ -83,7 +83,7 @@ export default function Home() {
               to reinforce your language learning progress.
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

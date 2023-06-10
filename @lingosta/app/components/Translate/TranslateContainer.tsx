@@ -122,7 +122,7 @@ const TranslateContainer = () => {
     
 
     return (
-        <div className='mx-auto p-5'>
+        <div className='mx-auto p-5 max-w-4xl'>
             <Toaster />
             <div className='mt-8 text-center justify-center items-center space-y-4'>
             <div className='flex gap-2 items-center font-bold text-xl'>

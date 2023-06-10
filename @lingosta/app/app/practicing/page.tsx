@@ -23,14 +23,12 @@ const Practicing = () => {
         setIsLoading(false);
     }, []);
 
-    const translations = selectedTranslations.map((translation) => translation.terms);
-
     return (
         <main className="md:px-5 z-0 mt-20 flex mx-auto items-center justify-center overflow-x-hidden">
         {isLoading ? (<div>Loading...</div>) : (
             <div className=''>
                 {selectedTranslations.map((data,index) => (
-                    <div key={index} className='mt-12 space-y-2'>
+                    <div key={index} className='max-w-sm md:max-w-xl mt-12 space-y-2'>
                     <span className='text-lg font-bold'>
                         {data.rawData}
                     </span>
