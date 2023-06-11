@@ -112,9 +112,7 @@ const TranslateContainer = () => {
     useEffect(() => {
         userTranslationsList();
         if (activeGroup) {
-            setIsLoading(true);
             setisGroupModalOpen(false);
-            setIsLoading(false);
         } else {
             setisGroupModalOpen(true);
         }
