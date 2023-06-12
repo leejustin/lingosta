@@ -3,7 +3,7 @@ import {Fragment, useEffect, useState} from 'react'
 import {HiPlusCircle, HiChevronDown} from "react-icons/hi";
 import {useGroup} from "../../providers/GroupProvider";
 import {useUser} from "../../providers/UserProvider";
-import {getLanguageEmoji, UserGroup} from "../../../common";
+import {getLanguageEmoji, UserGroup} from "../../models";
 import GroupModal from "./GroupModal";
 
 const GroupSelection = () => {

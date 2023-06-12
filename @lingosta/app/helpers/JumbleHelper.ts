@@ -1,5 +1,5 @@
 import { databases } from '../helpers/AppwriteHelper';
-import {DBJumble, deserializeJumble, serializeJumble, UserJumble} from "../../common";
+import {DBJumble, deserializeJumble, serializeJumble, UserJumble} from "../models";
 import {Models, Query} from "appwrite";
 
 const DATABASE_ID = process.env.NEXT_PUBLIC_API_APPWRITE_DB_USER_TRANSLATIONS;

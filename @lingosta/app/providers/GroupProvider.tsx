@@ -2,7 +2,7 @@
 
 import React, {useState, useEffect, createContext, useContext} from 'react';
 import { databases, account } from '../helpers/AppwriteHelper';
-import {DBGroup, deserializeGroup, serializeGroup, UserGroup} from "../../common/";
+import {DBGroup, deserializeGroup, serializeGroup, UserGroup} from "../models";
 import {ID, Models, Query} from "appwrite";
 import {useUser} from "../providers/UserProvider";
 

@@ -7,7 +7,7 @@ import {
   RawTranslationResponse,
   TranslationRequest,
   TranslationResponse,
-} from "@lingosta/common";
+} from "../../models";
 
 
 const configuration = new Configuration({
