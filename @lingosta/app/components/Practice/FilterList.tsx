@@ -26,19 +26,19 @@ const FilterList = ({ translationsList }) => {
     };
 
     return (
-        <div className='my-4'>
+        <div className='my-4 mx-auto max-w-4xl'>
             <div className='max-w-lg items-center flex mx-auto'>
                 <Button label='Begin practice' onClick={handleBundleTranslations}/>
             </div>
             <div className='mt-4 text-lg font-semibold'>
                 Select translations to practice:
             </div>
-            <div className='mx-auto grid grid-cols-1 gap-4 mt-2'>
+            <div className='mx-auto grid grid-flow-row gap-4 mt-2'>
                 {translationsList.map((data, index) => (
                     <div key={index} className='flex space-x-2 items-center'>
                         <div className='flex w-full justify-between shadow-md h-24 p-6 rounded-3xl bg-slate-300'>
                                 <div className='flex items-center'>
-                                    <p className='text-lg'>
+                                    <p className='text-md md:text-lg'>
                                     <Highlighter
                                         highlightClassName="bg-teal-400"
                                         searchWords={data.terms.map(term => term.source)}
@@ -47,7 +47,7 @@ const FilterList = ({ translationsList }) => {
                                     />
                                     </p>
                                 </div>
-                                <span className='text-xs md:text-sm'>
+                                <span className='text-xs md:text-sm ml-2'>
                                     {new Date(data.updatedAt).toLocaleDateString()}
                                 </span>
                         </div>

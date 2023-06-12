@@ -13,7 +13,7 @@ const Settings = () => {
   }
 
   return (
-    <div>
+    <div className="bg-slate-300 mt-6 max-w-lg p-2 rounded-xl">
       <div className="lg:flex lg:items-center lg:justify-between">
         <div className="min-w-0 flex-1">
           <ul role="list" className="divide-y divide-gray-100">
