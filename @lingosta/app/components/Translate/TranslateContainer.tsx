@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { useUser } from '../../providers/UserProvider';
-import { UserTranslation } from '../../../common/';
+import { UserTranslation } from '../../models';
 
 
 import Textbox from './Textbox';
