@@ -69,7 +69,7 @@ export default function Home() {
             <p>
               We understand the importance of learning languages in a context that matters to you. Lingosta enables you to
               explore relevant content and tailor your language learning experience accordingly. By learning words and phrases
-              in the context of sentences you've translated, you gain a deeper understanding of how language is used in real-life
+              in the context of sentences you&apos;ve translated, you gain a deeper understanding of how language is used in real-life
               situations. This approach enhances your language skills and empowers you to engage with authentic written content
               found in social media, blogs, and websites.
             </p>
@@ -77,9 +77,9 @@ export default function Home() {
           <div className="bg-white shadow-lg p-6 rounded-3xl text-left space-y-2">
             <h3 className="font-bold text-xl">Jumble - Match Translations with Drag and Drop</h3>
             <p>
-              Beyond flash cards, Lingosta offers an exercise called "Jumble" that utilizes AI-generated sentences based on words you've translated.
+              Beyond flash cards, Lingosta offers an exercise called &quot;Jumble&quot; that utilizes AI-generated sentences based on words you&apos;ve translated.
               In this exercise, you can match translations using a user-friendly drag and drop interface. Jumble enhances your
-              comprehension and retention skills as you engage with dynamically created sentences. It's a fun and effective way
+              comprehension and retention skills as you engage with dynamically created sentences. It&apos;s a fun and effective way
               to reinforce your language learning progress.
             </p>
           </div>
