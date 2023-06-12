@@ -3,7 +3,7 @@
 # Sets up the schema for Appwrite sessions collection
 
 DATABASE_ID=$APPWRITE_DATABASE_ID
-SESSIONS_COLLECTION_ID=$APPWRITE_COLLECTION_ID_SESSIONS
+SESSIONS_COLLECTION_ID=$APPWRITE_COLLECTION_SESSIONS
 
 appwrite databases createStringAttribute --databaseId $DATABASE_ID --collectionId $SESSIONS_COLLECTION_ID \
 --key group_id \
