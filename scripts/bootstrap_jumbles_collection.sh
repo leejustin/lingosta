@@ -3,7 +3,7 @@
 # Sets up the schema for Appwrite jumbles collection
 
 DATABASE_ID=$APPWRITE_DATABASE_ID
-JUMBLES_COLLECTION_ID=$APPWRITE_COLLECTION_ID_JUMBLES
+JUMBLES_COLLECTION_ID=$APPWRITE_COLLECTION_JUMBLES
 
 ## Jumbles Collection
 appwrite databases createStringAttribute --databaseId $DATABASE_ID --collectionId $JUMBLES_COLLECTION_ID \
