@@ -4,7 +4,7 @@ import React, {useEffect, useState} from "react";
 import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
 import Word from "../../../../components/Jumble/Word";
 import Option from "../../../../components/Jumble/Option";
-import {UserJumble} from "../../../../../common/src/types";
+import {UserJumble} from "../../../../models";
 import {v4 as uuidv4} from 'uuid';
 import { Toaster, toast } from "react-hot-toast";
 
