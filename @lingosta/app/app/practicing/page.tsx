@@ -15,26 +15,26 @@ const Practicing = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        setIsLoading(true);
         const storedTranslations = localStorage.getItem('selectedTranslations');
         if (storedTranslations) {
+            setIsLoading(true)
             setSelectedTranslations(JSON.parse(storedTranslations));
+            setIsLoading(false)
         }
-        setIsLoading(false);
     }, []);
 
     return (
-        <main className="md:px-5 z-0 mt-20 flex mx-auto items-center justify-center overflow-x-hidden">
+        <main className="md:px-5 z-0 mt-12 flex mx-auto items-center justify-center overflow-x-hidden">
         {isLoading ? (<div>Loading...</div>) : (
             <div className=''>
-                {selectedTranslations.map((data,index) => (
-                    <div key={index} className='max-w-sm md:max-w-xl mt-12 space-y-2'>
+                {selectedTranslations?.map((data,index) => (
+                    <div key={index} className='max-w-sm md:max-w-xl space-y-2'>
                     <span className='text-lg font-bold'>
                         {data.rawData}
                     </span>
                     <Swiper
                         key={index}
-                        className='w-full max-w-sm md:max-w-xl'
+                        className='w-full max-w-sm md:max-w-2xl'
                         rewind={true}
                         effect={"cards"}
                         navigation={true}

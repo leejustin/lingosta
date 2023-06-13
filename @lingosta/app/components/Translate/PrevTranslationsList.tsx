@@ -40,9 +40,9 @@ const PrevTranslationsList = ({ translationsList, setIsViewOnlyOpen, setSelected
                                 </span>
                                 <button 
                                     onClick={() => handleDelete(data.id)}
-                                    className='flex items-center bg-slate-400 hover:bg-slate-700 transition p-2 rounded-xl text-sm'
+                                    className='flex items-center bg-slate-500 hover:bg-slate-700 transition p-2 rounded-2xl text-sm'
                                 >
-                                    <AiFillDelete /> Delete
+                                    <AiFillDelete />Delete
                                 </button>
                             </div>
                     </div>
