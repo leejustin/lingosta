@@ -24,7 +24,7 @@ const FilterList = ({ translationsList }) => {
     setSelectedTranslations(selected);
 
     localStorage.setItem('selectedTranslations', JSON.stringify(selected));
-    router.push('/practicing');
+    router.push('/practice/flashcards');
   };
 
   return (

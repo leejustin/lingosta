@@ -6,7 +6,7 @@ import { useGroup } from '../../providers/GroupProvider';
 import { useUser } from '../../providers/UserProvider';
 
 const GroupModal = ({ isOpen, closeModal }) => {
-  const { createGroup } = useGroup();
+  const { createGroup , activeGroup} = useGroup();
   const { user } = useUser();
 
   const [groupName, setGroupName] = useState('');
@@ -93,18 +93,20 @@ const GroupModal = ({ isOpen, closeModal }) => {
                     <LanguageSelection setLanguage={setSelectedLanguage} />
                   </div>
                   {errorMessage && (
-                    <div>
-                      <p className="text-red-700">{errorMessage}</p>
+                    <div className='mt-1'>
+                      <p className="text-sm text-red-700">{errorMessage}</p>
                     </div>
                   )}
                   <div className="flex flex-row justify-end mt-4 space-x-2">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-gray-300 px-4 py-2 text-sm font-medium text-black hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Cancel
-                    </button>
+                    {activeGroup && 
+                      <button
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-gray-300 px-4 py-2 text-sm font-medium text-black hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
+                        onClick={closeModal}
+                      >
+                        Cancel
+                      </button>
+                    }
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-teal-500 px-4 py-2 text-sm font-medium text-white hover:bg-teal-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"

@@ -27,6 +27,14 @@ const PracticeContainer = () => {
     fetchUserTranslations();
   }, [user, activeGroup]);
 
+  if(translationsList.length===0) {
+    return (
+      <div className='px-12 mx-auto items-center text-center py-8 font-bold text-lg'>
+        There are currently no translations to practice for {activeGroup.name}.
+      </div>
+    )
+  }
+
   return (
     <div className='px-5'>
       <FilterList translationsList={translationsList} />

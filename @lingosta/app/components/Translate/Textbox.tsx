@@ -1,30 +1,36 @@
 import React from 'react';
+import { getLanguageName } from '../../models';
+import { useGroup } from '../../providers/GroupProvider';
 
 const Textbox = ({ input, handleInput }) => {
-  return (
-    <div className="">
-      <div className="flex space-x-2">
-        <input
-          required
-          value={input}
-          type="text"
-          className="
-            block
-            drop-shadow-xl
-            p-2.5
-            w-full
-            text-md
-            text-gray-50
-            bg-gray-800
-            rounded-3xl
-            border border-gray-300
-          "
-          onChange={handleInput}
-          placeholder="Translate your sentence here..."
-        />
-      </div>
-    </div>
-  );
+
+    const { activeGroup } = useGroup();
+    const activeLanguage = getLanguageName(activeGroup?.language).toLowerCase();
+
+    return (
+        <div className="">
+        <div className="flex space-x-2">
+            <input
+            required
+            value={input}
+            type="text"
+            className="
+                block
+                drop-shadow-xl
+                p-2.5
+                w-full
+                text-md
+                text-gray-50
+                bg-gray-800
+                rounded-3xl
+                border border-gray-300
+            "
+            onChange={handleInput}
+            placeholder={`Translate your ${activeLanguage} sentence here...`}
+            />
+        </div>
+        </div>
+    );
 };
 
 export default Textbox;

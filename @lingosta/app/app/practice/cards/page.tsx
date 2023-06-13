@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useState, useEffect } from 'react';
-import { TranslationsContext } from '../../providers/SelectedTranslationsProvider';
+import { TranslationsContext } from '../../../providers/SelectedTranslationsProvider';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards, Pagination, Navigation } from 'swiper';
 import { Flashcard } from 'react-quizlet-flashcard';
@@ -8,7 +8,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-cards';
-import { Term } from "../../models";
+import { Term } from "../../../models";
 
 
 const Practicing: React.FC = () => {
@@ -16,16 +16,16 @@ const Practicing: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setIsLoading(true);
         const storedTranslations = localStorage.getItem('selectedTranslations');
         if (storedTranslations) {
+            setIsLoading(true)
             setSelectedTranslations(JSON.parse(storedTranslations));
+            setIsLoading(false)
         }
-        setIsLoading(false);
     }, []);
 
     return (
-      <main className="md:px-5 z-0 mt-20 flex mx-auto items-center justify-center overflow-x-hidden">
+      <main className="md:px-5 z-0 flex mx-auto items-center justify-center overflow-x-hidden">
           {isLoading ? (
             <div>Loading...</div>
           ) : (

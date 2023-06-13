@@ -62,7 +62,7 @@ const TranslateContainer: React.FC = () => {
       setIsLoading(true);
       setIsOpen(true);
 
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/translations`, {
+      const response = await axios.post(`/api/translations`, {
         type: activeGroup!.language,
         sentence: input,
       });
@@ -150,7 +150,7 @@ const TranslateContainer: React.FC = () => {
         />
       )}
       {!activeGroup && isGroupModalOpen && (
-        <GroupModal isOpen={isGroupModalOpen} closeModal={() => setisGroupModalOpen(false)}/>
+        <GroupModal isOpen={isGroupModalOpen} closeModal={() => {}}/>
       )}
     </div>
   );

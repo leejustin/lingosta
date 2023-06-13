@@ -1,31 +1,15 @@
-"use client";
-
-import React from 'react';
-import Link from 'next/link';
-import { BsTranslate, BsPencilFill } from 'react-icons/bs';
-import { useUser } from '../../providers/UserProvider';
+import React from 'react'
 
 const Footer = () => {
-    const { user } = useUser();
+  return (
+    <footer className='bg-white/50 md:bg-gray-100 border-t-[1px] border-neutral-50 md:border-neutral-200 bg-backdrop-blur-sm max-w-5xl p-1 mx-auto absolute bottom-0 right-0 left-0'>
+        <div className='mx-auto text-center'>
+        <small className='text-gray-700'>
+            &copy; Copyright 2023, Lingosta
+        </small>
+        </div>
+    </footer>
+  )
+}
 
-    if (!user) {
-        return null;
-    }
-
-    return (
-      <footer className='block md:hidden bg-white/50 backdrop-blur-sm border-t-[1px] border-neutral-200 z-50 py-2 mx-auto fixed bottom-0 left-0 right-0'>
-          <div className='flex items-center justify-center space-x-24'>
-              <Link href='translate' className='flex flex-col items-center space-y-1'>
-                  <BsTranslate size={30} className='text-gray-600' />
-                  <p className='m-auto text-xs font-semibold text-gray-600'>Translate</p>
-              </Link>
-              <Link href='practice' className='flex flex-col items-center space-y-1'>
-                  <BsPencilFill size={30} className='text-gray-600' />
-                  <p className='m-auto text-xs font-semibold text-gray-600'>Practice</p>
-              </Link>
-          </div>
-      </footer>
-    );
-};
-
-export default Footer;
+export default Footer

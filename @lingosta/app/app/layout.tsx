@@ -5,8 +5,9 @@ import './globals.css'
 import {Inter} from 'next/font/google'
 import GroupProvider from "../providers/GroupProvider";
 import Head from "next/head";
-import Footer from '../components/Layout/Footer'
+import MobileNav from '../components/Layout/MobileNav'
 import { TranslationsProvider } from '../providers/SelectedTranslationsProvider'
+import Footer from '../components/Layout/Footer'
 
 const inter = Inter({subsets: ['latin']})
 
@@ -30,6 +31,7 @@ export default function RootLayout({
                 <Navbar />
                 {children}
                 <Footer />
+                <MobileNav />
               </Layout>
             </body>
           </TranslationsProvider>
