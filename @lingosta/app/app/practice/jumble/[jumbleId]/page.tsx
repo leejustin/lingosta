@@ -122,9 +122,14 @@ const JumblePractice: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto p-5">
+    <div className="mx-auto">
+      <div className="bg-teal-500 w-full p-1 top-0 mx-auto text-center">
+        <span className="text-white text-sm font-bold">
+          This is a preview for Jumbles!
+        </span>
+      </div>
       <Toaster />
-      <div className="flex mx-auto max-w-2xl w-full text-center justify-center space-y-6 items-center">
+      <div className="flex mx-auto max-w-2xl w-full text-center justify-center space-y-6 items-center p-5">
         <DragDropContext
           onDragEnd={(dropResult: DropResult) =>
             testJumble &&

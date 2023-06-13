@@ -1,5 +1,5 @@
+import { NextApiRequest, NextApiResponse } from "next";
 import {Configuration, OpenAIApi} from "openai";
-import type {VercelRequest, VercelResponse} from "@vercel/node";
 import {
   getLanguageName,
   Language,
@@ -7,7 +7,7 @@ import {
   RawTranslationResponse,
   TranslationRequest,
   TranslationResponse,
-} from "../../models";
+} from "../../../models";
 
 
 const configuration = new Configuration({
@@ -31,8 +31,8 @@ const cleanResponse = (input: string): string => {
 };
 
 export default async function translations(
-  request: VercelRequest,
-  response: VercelResponse,
+  request,
+  response
 ) {
 
   const requestBody: TranslationRequest = request.body;

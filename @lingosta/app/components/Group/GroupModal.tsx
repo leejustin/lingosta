@@ -93,8 +93,8 @@ const GroupModal = ({ isOpen, closeModal }) => {
                     <LanguageSelection setLanguage={setSelectedLanguage} />
                   </div>
                   {errorMessage && (
-                    <div>
-                      <p className="text-red-700">{errorMessage}</p>
+                    <div className='mt-1'>
+                      <p className="text-sm text-red-700">{errorMessage}</p>
                     </div>
                   )}
                   <div className="flex flex-row justify-end mt-4 space-x-2">

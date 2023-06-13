@@ -32,7 +32,8 @@ const Navbar = () => {
                   ) : (
                     <div className="flex gap-4 capitalize">
                         <Link className="m-auto font-semibold hover:text-gray-500 hidden md:block" href="/translate">Translate</Link>
-                        <Link className="m-auto font-semibold hover:text-gray-500 hidden md:block" href="/practice">Practice</Link>
+                        <Link className="m-auto font-semibold hover:text-gray-500 hidden md:block" href="/practice">Cards</Link>
+                        <Link className="m-auto font-semibold hover:text-gray-500 hidden md:block" href="/practice/jumble/12345">Jumble</Link>
                         <GroupSelection />
                         <SettingsSelection />
                     </div>

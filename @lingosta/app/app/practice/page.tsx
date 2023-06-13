@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { useUser } from '../../providers/UserProvider';
-import PracticeContainer from '../../components/Practice/PracticeContainer';
+import PracticeContainer from '../../components/FlashCards/PracticeContainer';
 
 const Practice = () => {
     const { user } = useUser();

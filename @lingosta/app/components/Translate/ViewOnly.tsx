@@ -9,11 +9,11 @@ interface ViewOnlyProps {
 }
 
 const ViewOnly: React.FC<ViewOnlyProps> = ({
-                                             isLoading,
-                                             isViewOnlyOpen,
-                                             setIsViewOnlyOpen,
-                                             translations,
-                                           }) => {
+  isLoading,
+  isViewOnlyOpen,
+  setIsViewOnlyOpen,
+  translations,
+}) => {
   const closeModal = () => {
     setIsViewOnlyOpen(false);
   };
