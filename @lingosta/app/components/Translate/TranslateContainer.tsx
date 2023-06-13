@@ -163,8 +163,8 @@ const TranslateContainer = () => {
                     />
                 )
             }
-            {!activeGroup && isGroupModalOpen && (
-                <GroupModal isOpen={isGroupModalOpen} closeModal={() => setisGroupModalOpen(false)} />
+            {!activeGroup && (
+                <GroupModal isOpen={isGroupModalOpen} closeModal={() => {}} />
             )}
     </div>
     )

@@ -11,11 +11,15 @@ const PrevTranslationsList = ({ translationsList, setIsViewOnlyOpen, setSelected
         setIsViewOnlyOpen(true);
     }
 
+    if(translationsList.length === 0) {
+        return <></>
+    }
+
     return (
         <div className=''>
             <Toaster />
-            <div className='mt-4 text-lg font-semibold'>
-                Previous translations:
+            <div className='mt-12 text-lg font-semibold'>
+                Saved translations:
             </div>
             <div className='mx-auto grid grid-cols-1 gap-4 mt-2'>
                 {translationsList.map((data, index) => (
