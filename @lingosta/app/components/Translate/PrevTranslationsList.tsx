@@ -4,11 +4,11 @@ import { AiFillDelete } from 'react-icons/ai';
 import Highlighter from 'react-highlight-words';
 
 const PrevTranslationsList = ({
-                                translationsList,
-                                setIsViewOnlyOpen,
-                                setSelectedTranslation,
-                                handleDelete,
-                              }) => {
+  translationsList,
+  setIsViewOnlyOpen,
+  setSelectedTranslation,
+  handleDelete,
+}) => {
   const handleClick = (rawData, terms) => {
     setSelectedTranslation({ rawData, terms });
     setIsViewOnlyOpen(true);
@@ -54,3 +54,5 @@ const PrevTranslationsList = ({
         </div>
     )
 }
+
+export default PrevTranslationsList

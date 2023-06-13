@@ -11,13 +11,13 @@ interface TranslateModalProps {
 }
 
 const TranslateModal: React.FC<TranslateModalProps> = ({
-                                                         isLoading,
-                                                         handleSave,
-                                                         input,
-                                                         isOpen,
-                                                         setIsOpen,
-                                                         translations,
-                                                       }) => {
+  isLoading,
+  handleSave,
+  input,
+  isOpen,
+  setIsOpen,
+  translations,
+}) => {
   const closeModal = () => {
     setIsOpen(false);
   };

@@ -150,7 +150,7 @@ const TranslateContainer: React.FC = () => {
         />
       )}
       {!activeGroup && isGroupModalOpen && (
-        <GroupModal isOpen={isGroupModalOpen} closeModal={() => setisGroupModalOpen(false)}/>
+        <GroupModal isOpen={isGroupModalOpen} closeModal={() => {}}/>
       )}
     </div>
   );
