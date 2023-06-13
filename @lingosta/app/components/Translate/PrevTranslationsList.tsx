@@ -1,15 +1,18 @@
-import Link from 'next/link'
-import Highlighter from "react-highlight-words";
+import React from 'react';
 import { Toaster } from 'react-hot-toast';
-
 import { AiFillDelete } from 'react-icons/ai';
+import Highlighter from 'react-highlight-words';
 
-const PrevTranslationsList = ({ translationsList, setIsViewOnlyOpen, setSelectedTranslation, handleDelete }) => {
-
-    const handleClick = (rawData, terms) => {
-        setSelectedTranslation({rawData, terms})
-        setIsViewOnlyOpen(true);
-    }
+const PrevTranslationsList = ({
+                                translationsList,
+                                setIsViewOnlyOpen,
+                                setSelectedTranslation,
+                                handleDelete,
+                              }) => {
+  const handleClick = (rawData, terms) => {
+    setSelectedTranslation({ rawData, terms });
+    setIsViewOnlyOpen(true);
+  };
 
     if(translationsList.length === 0) {
         return <></>
@@ -18,8 +21,8 @@ const PrevTranslationsList = ({ translationsList, setIsViewOnlyOpen, setSelected
     return (
         <div className=''>
             <Toaster />
-            <div className='mt-12 text-lg font-semibold'>
-                Saved translations:
+            <div className='mt-4 text-lg font-semibold'>
+                Previous translations:
             </div>
             <div className='mx-auto grid grid-cols-1 gap-4 mt-2'>
                 {translationsList.map((data, index) => (
@@ -40,9 +43,9 @@ const PrevTranslationsList = ({ translationsList, setIsViewOnlyOpen, setSelected
                                 </span>
                                 <button 
                                     onClick={() => handleDelete(data.id)}
-                                    className='flex items-center bg-slate-500 hover:bg-slate-700 transition p-2 rounded-2xl text-sm'
+                                    className='flex items-center bg-slate-400 hover:bg-slate-700 transition p-2 rounded-xl text-sm'
                                 >
-                                    <AiFillDelete />Delete
+                                    <AiFillDelete /> Delete
                                 </button>
                             </div>
                     </div>
@@ -51,5 +54,3 @@ const PrevTranslationsList = ({ translationsList, setIsViewOnlyOpen, setSelected
         </div>
     )
 }
-
-export default PrevTranslationsList
