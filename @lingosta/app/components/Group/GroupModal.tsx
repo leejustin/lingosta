@@ -1,29 +1,29 @@
-import React, {Fragment, useEffect, useState} from 'react';
-import {Dialog, Transition} from '@headlessui/react';
-import LanguageSelection from "./LanguageSelection";
-import {Language} from "../../models";
-import { useGroup } from "../../providers/GroupProvider";
-import { useUser } from "../../providers/UserProvider";
+import React, { Fragment, useEffect, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import LanguageSelection from './LanguageSelection';
+import { Language } from '../../models';
+import { useGroup } from '../../providers/GroupProvider';
+import { useUser } from '../../providers/UserProvider';
 
-const GroupModal = ({isOpen, closeModal}) => {
-  const {createGroup} = useGroup();
-  const {user} = useUser();
+const GroupModal = ({ isOpen, closeModal }) => {
+  const { createGroup } = useGroup();
+  const { user } = useUser();
 
-  const [groupName, setGroupName] = useState<string>('');
+  const [groupName, setGroupName] = useState('');
   const [selectedLanguage, setSelectedLanguage] = useState<Language>(undefined);
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    setGroupName("");
-    setErrorMessage("");
-  }, [isOpen])
+    setGroupName('');
+    setErrorMessage('');
+  }, [isOpen]);
 
   const handleSubmit = async () => {
     if (!groupName) {
-      setErrorMessage("Please enter a group name.");
+      setErrorMessage('Please enter a group name.');
       return;
     } else if (!selectedLanguage) {
-      setErrorMessage("Please select a language.");
+      setErrorMessage('Please select a language.');
       return;
     }
 
@@ -37,7 +37,7 @@ const GroupModal = ({isOpen, closeModal}) => {
       console.log(`Created group ${result.name} with id ${result.id}`);
       closeModal();
     }
-  }
+  };
 
   return (
     <>
@@ -52,7 +52,7 @@ const GroupModal = ({isOpen, closeModal}) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25"/>
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -67,7 +67,8 @@ const GroupModal = ({isOpen, closeModal}) => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel
-                  className="w-full max-w-md transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  className="w-full max-w-md transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+                >
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-semibold leading-6 text-gray-900"
@@ -84,16 +85,18 @@ const GroupModal = ({isOpen, closeModal}) => {
                       <input
                         type="text"
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-teal-500 focus:border-teal-500"
-                        placeholder={"Group name"}
+                        placeholder="Group name"
                         value={groupName}
                         onChange={(e) => setGroupName(e.target.value)}
                       />
                     </div>
-                    <LanguageSelection setLanguage={setSelectedLanguage}/>
+                    <LanguageSelection setLanguage={setSelectedLanguage} />
                   </div>
-                  {errorMessage && (<div>
-                    <p className="text-red-700">{errorMessage}</p>
-                  </div>)}
+                  {errorMessage && (
+                    <div>
+                      <p className="text-red-700">{errorMessage}</p>
+                    </div>
+                  )}
                   <div className="flex flex-row justify-end mt-4 space-x-2">
                     <button
                       type="button"
@@ -118,6 +121,6 @@ const GroupModal = ({isOpen, closeModal}) => {
       </Transition>
     </>
   );
-}
+};
 
 export default GroupModal;
