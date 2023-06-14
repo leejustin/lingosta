@@ -25,7 +25,7 @@ const Practicing: React.FC = () => {
     }, []);
 
     return (
-      <main className="md:px-5 z-0 flex mx-auto items-center justify-center overflow-x-hidden">
+      <main className="md:px-5 flex mx-auto items-center justify-center overflow-x-hidden">
           {isLoading ? (
             <div>Loading...</div>
           ) : (
@@ -35,7 +35,7 @@ const Practicing: React.FC = () => {
                       <span className="text-lg font-bold">{data.rawData}</span>
                       <Swiper
                         key={index}
-                        className="w-full max-w-xs md:max-w-xl"
+                        className=""
                         rewind={true}
                         effect="cards"
                         navigation={true}
