@@ -23,9 +23,8 @@ export default function Home() {
           </h1>
           <div>
             <p>
-              Unlock the power of language-learning with Lingosta by using AI to generate curated exercises, making it
-              more
-              engaging for learners of all levels!
+              Unlock the power of language-learning by using AI to curate exercises, making it
+              more engaging for learners of all levels!
             </p>
             <p>
               🇪🇸 🇧🇷 🇺🇸 🇰🇷 🇫🇷 🇩🇪 🇮🇹 🇳🇱 🇷🇺 🇨🇳 🇯🇵
@@ -42,13 +41,15 @@ export default function Home() {
           <div className="w-full md:w-1/2 text-left p-4 space-y-4">
             <h2 className="text-3xl font-bold mb-4">AI-Powered Platform for Relevant Language-Learning</h2>
             <p className="leading-relaxed">
-              Imagine being able to take sentences or text from someone you follow on Instagram and translate those
-              words to
-              build your understanding of how to read relevant content. Many language learning approaches focus on
+              Many language learning approaches focus on
               formalized
               language instruction, which may not align with the organic language usage found on social media and the
               internet.
-              Lingosta allows you to have control over the type of text and content you want to spend time learning.
+            </p>
+            <p>
+              Imagine being able to take sentences from someone you follow on Instagram and translate those
+              words to
+              build your understanding of how to read relevant content. Lingosta allows you to have control over the type of text and content you want to spend time learning.
             </p>
             <button className="py-2 px-6 rounded-3xl text-white bg-teal-500 hover:bg-teal-600 transition">
               <Link href='/signup'>
@@ -63,7 +64,7 @@ export default function Home() {
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white shadow-lg p-6 rounded-3xl text-left space-y-2">
-            <h3 className="font-bold text-xl">Unlock the Power of Context with Relevant Content</h3>
+            <h3 className="font-bold text-xl">Contextually Relevant Content</h3>
             <p>
               We understand the importance of learning languages in a context that matters to you. Lingosta enables you
               to
