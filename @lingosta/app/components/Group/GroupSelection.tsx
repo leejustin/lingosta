@@ -39,7 +39,7 @@ const GroupSelection = () => {
     <div>
       <Menu as="div" className="relative inline-block text-left z-10">
         <div>
-          <Menu.Button className="inline-flex w-full justify-center rounded-md bg-teal-500 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-75 transition">
+          <Menu.Button className="inline-flex w-full justify-center overflow-hidden rounded-md bg-teal-500 px-2 py-2 text-sm font-medium text-white hover:bg-opacity-75 transition">
             {activeGroup ? (
               <span className="ml-2">
                 {getLanguageEmoji(activeGroup.language)} {activeGroup.name}

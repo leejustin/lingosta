@@ -4,6 +4,7 @@ import Link from "next/link";
 import {useUser} from "../providers/UserProvider";
 import {useRouter} from "next/navigation";
 import Image from "next/image";
+import Footer from "../components/Layout/Footer";
 
 export default function Home() {
 
@@ -98,6 +99,7 @@ export default function Home() {
             </p>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   )

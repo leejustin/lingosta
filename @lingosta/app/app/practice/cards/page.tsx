@@ -25,17 +25,17 @@ const Practicing: React.FC = () => {
     }, []);
 
     return (
-      <main className="md:px-5 z-0 flex mx-auto items-center justify-center overflow-x-hidden">
+      <main className="md:px-5 flex mx-auto items-center justify-center overflow-x-hidden">
           {isLoading ? (
             <div>Loading...</div>
           ) : (
             <div>
                 {selectedTranslations.map((data, index: number) => (
-                  <div key={index} className="max-w-sm md:max-w-xl mt-12 space-y-2">
+                  <div key={index} className="max-w-xs md:max-w-xl mt-12 space-y-2">
                       <span className="text-lg font-bold">{data.rawData}</span>
                       <Swiper
                         key={index}
-                        className="w-full max-w-sm md:max-w-xl"
+                        className=""
                         rewind={true}
                         effect="cards"
                         navigation={true}

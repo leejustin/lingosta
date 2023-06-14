@@ -25,7 +25,7 @@ const PrevTranslationsList = ({
                 Saved translations:
             </div>
             <div className='mx-auto grid grid-cols-1 gap-4 mt-2'>
-                {translationsList.map((data, index) => (
+                {translationsList?.map((data, index) => (
                     <div key={index} className='flex justify-between shadow-md h-28 p-6 rounded-3xl bg-slate-300 hover:bg-slate-400 transition'>
                             <div onClick={()=> handleClick(data.rawData, data.terms)} className='flex items-center w-full h-full'>
                                 <p className='text-lg flex-wrap'>
@@ -39,7 +39,7 @@ const PrevTranslationsList = ({
                             </div>
                             <div className='flex flex-col justify-between h-full'>
                                 <span className='text-xs md:text-sm'>
-                                    {new Date(data.updatedAt).toLocaleDateString()}
+                                    {new Date(data?.updatedAt).toLocaleDateString()}
                                 </span>
                                 <button 
                                     onClick={() => handleDelete(data.id)}

@@ -12,6 +12,7 @@ import {toast, Toaster} from 'react-hot-toast';
 import PrevTranslationsList from './PrevTranslationsList';
 import ViewOnly from './ViewOnly';
 import GroupModal from '../Group/GroupModal';
+import Loading from '../Loading';
 
 const TranslateContainer: React.FC = () => {
   const {user} = useUser();
@@ -42,7 +43,7 @@ const TranslateContainer: React.FC = () => {
       setIsOpen(false);
       toast.success('Successfully saved!');
 
-      setTranslationsList((prevTranslationsList) => [...prevTranslationsList, userTranslation]);
+      userTranslationsList();
     } catch (error) {
       console.log(error);
     }
@@ -81,10 +82,13 @@ const TranslateContainer: React.FC = () => {
     }
 
     try {
+      setIsLoading(true);
       const response = await getUserTranslations(user!.$id, activeGroup!.id);
       setTranslationsList(response);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -103,12 +107,14 @@ const TranslateContainer: React.FC = () => {
 
   useEffect(() => {
     userTranslationsList();
-    if (activeGroup) {
-      setisGroupModalOpen(false);
-    } else {
-      setisGroupModalOpen(true);
-    }
+    
+    const shouldShowGroupModal = !activeGroup;
+    setisGroupModalOpen(shouldShowGroupModal);
   }, [user, activeGroup]);
+
+  if(isLoading) {
+    return <Loading />
+  }
 
   return (
     <div className="mx-auto p-5 max-w-4xl">
