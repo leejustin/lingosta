@@ -1,33 +1,23 @@
 # Lingosta
-Unlock the power of language effortlessly. Our AI-driven language learning app turns your sentences into personalized flashcards, making learning a breeze.
+Unlock the power of language-learning with Lingosta by using AI to generate curated exercises, making it more engaging for learners of all levels!
 
-> Swipe, absorb, conquer! Unleash your linguistic prowess with our brainy flashcard generator - no words spoken, just pure learning power
+🇪🇸 🇧🇷 🇺🇸 🇰🇷 🇫🇷 🇩🇪 🇮🇹 🇳🇱 🇷🇺 🇨🇳 🇯🇵
 
-## Development Notes
-### Tools
-* [Appwrite](https://appwrite.io/) to handle our persistance
-* [Vercel](https://vercel.com/) will be used to deploy our frontend and backend application
-* [ChatGPT](https://platform.openai.com/docs/api-reference/making-requests) break down language into tokens
+## Prerequisites
+* OpenAI account with API access
+* Appwrite Cloud (bootstrap the database with `scripts`)
 
-### Technical Requirements
-* ReactJS with NextJS and Tailwind
-* NodeJS deployed as serverless functions in Vercel
-* TypeScript
-* REST interface between frontend and backend
+## Project Structure
+* `app` contains the API and pages
+* `components` contains React components
+* `helpers` contains functions for app functionality
+* `models` contains abstractions, mappers, and utils for Appwrite and application object models
+* `providers` are essentially helpers but wrapped with React Context to handle state
 
-### Functional Requirements
-#### Frontend
-* Responsive-first design. Users can use this on a browser or mobile
-* Swipe action for flash cards
+## Development
+This application is created with NextJS.
 
-#### Backend
-* TDB
-
-## Resources
-- [Hackathon Details](https://hashnode.com/hackathons/appwrite)
-- [Appwrite](https://appwrite.io/)
-- [Vercel](https://vercel.com/)
-
-## References
-- [Aikka](quizlet.com) - Flashcard app to reference their UX
-- [DuoLingo](https://www.duolingo.com/) - Existing language learning app that has impractical sentences and no flashcard feature
+The following command will start the application locally:
+```bash
+npm run dev
+```
