@@ -7,11 +7,10 @@ import GroupProvider from "../providers/GroupProvider";
 import Head from "next/head";
 import BottomNav from '../components/Layout/BottomNav'
 import { TranslationsProvider } from '../providers/SelectedTranslationsProvider'
-import { Metadata } from 'next'
 
 const inter = Inter({subsets: ['latin']})
 
-export const metadata: Metadata = {
+export const metadata = {
   openGraph: {
     title: 'Lingosta',
     description: "Discover a personalized language-learning journey with Lingosta by using AI to generate curated exercises, making it more engaging for learners of all levels! 🇪🇸 🇧🇷 🇺🇸 🇰🇷 🇫🇷 🇩🇪 🇮🇹 🇳🇱 🇷🇺 🇨🇳 🇯🇵"
