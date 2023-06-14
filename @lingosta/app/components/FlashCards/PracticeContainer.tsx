@@ -9,6 +9,7 @@ const PracticeContainer = () => {
   const { activeGroup } = useGroup();
 
   const [translationsList, setTranslationsList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchUserTranslations = async () => {
     if (!user || !activeGroup) {
@@ -16,16 +17,28 @@ const PracticeContainer = () => {
     }
 
     try {
+      setIsLoading(true);
       const response = await getUserTranslations(user.$id, activeGroup.id);
       setTranslationsList(response);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     fetchUserTranslations();
   }, [user, activeGroup]);
+
+
+  if(isLoading) {
+    return (
+      <div className='px-12 animate-pulse mx-auto items-center text-center py-8 font-bold text-xl'>
+        Loading...
+    </div>
+    )
+  }
 
   if(translationsList.length===0) {
     return (

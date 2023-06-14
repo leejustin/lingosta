@@ -11,7 +11,9 @@ interface LanguageSelectionProps {
 }
 
 const LanguageSelection = ({ setLanguage }: LanguageSelectionProps) => {
-  const languages = SUPPORTED_LANGUAGES.map((language: Language) => {
+  const languages = SUPPORTED_LANGUAGES
+  .filter((language: Language) => getLanguageName(language) !== 'Unknown')
+  .map((language: Language) => {
     return { id: language, name: getLanguageName(language), icon: getLanguageEmoji(language) };
   });
 

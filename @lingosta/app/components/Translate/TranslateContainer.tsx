@@ -81,10 +81,13 @@ const TranslateContainer: React.FC = () => {
     }
 
     try {
+      setIsLoading(true);
       const response = await getUserTranslations(user!.$id, activeGroup!.id);
       setTranslationsList(response);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -109,6 +112,14 @@ const TranslateContainer: React.FC = () => {
       setisGroupModalOpen(true);
     }
   }, [user, activeGroup]);
+
+  if(isLoading) {
+    return (
+      <div className='px-12 animate-pulse mx-auto items-center text-center py-8 font-bold text-xl'>
+        Loading...
+    </div>
+    )
+  }
 
   return (
     <div className="mx-auto p-5 max-w-4xl">
