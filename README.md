@@ -1,5 +1,5 @@
 # Lingosta
-Unlock the power of language-learning with Lingosta by using AI to generate curated exercises, making it more engaging for learners of all levels!
+Discover a personalized language-learning journey with Lingosta by using AI to generate curated exercises, making it more engaging for learners of all levels!
 
 🇪🇸 🇧🇷 🇺🇸 🇰🇷 🇫🇷 🇩🇪 🇮🇹 🇳🇱 🇷🇺 🇨🇳 🇯🇵
 
