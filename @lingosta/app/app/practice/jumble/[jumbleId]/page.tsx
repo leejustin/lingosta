@@ -8,34 +8,30 @@ import {UserJumble} from "../../../../models";
 import {v4 as uuidv4} from 'uuid';
 import { Toaster, toast } from "react-hot-toast";
 
-// Placeholder
+// DEMO: Since we want all users to experience a jumble, we're going to hard code this here
+//       so that users don't need to wait for the Appwrite scheduled process to generate jumbles
 const testJumble: UserJumble = {
   ownerId: "12345",
   sourceGroupIds: ["12345", "12346"],
   processId: "12345",
   terms: [
     {
-      "source": "Yo",
-      "target": "I",
+      "source": "Appwrite",
+      "target": "Appwrite",
       "weight": 0,
     },
     {
-      "source": "hablo",
-      "target": "speak",
+      "source": "es",
+      "target": "is",
       "weight": 0,
     },
     {
-      "source": "ingles",
-      "target": "English",
-      "weight": 0,
-    },
-    {
-      "source": "señor",
-      "target": "sir",
+      "source": "asombroso",
+      "target": "amazing",
       "weight": 0,
     },
   ],
-  options: ["I", "speak", "English", "sir", "and", "eat", "food", "coffee"],
+  options: ["I", "English", "Appwrite", "and", "amazing", "hungry", "coffee", "is"],
   id: "12345",
   createdAt: new Date(),
   updatedAt: new Date(),
@@ -117,7 +113,7 @@ const JumblePractice: React.FC = () => {
     ) {
       toast.success('Correct!')
     } else {
-      toast.error("Incorrect!")
+      toast.error("Sorry, that's incorrect 😔")
     }
   };
 
