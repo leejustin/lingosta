@@ -25,7 +25,7 @@ const Practicing: React.FC = () => {
     }, []);
 
     return (
-      <main className="md:px-5 flex mx-auto items-center justify-center overflow-x-hidden">
+      <main className="md:px-5 mt-8 flex mx-auto items-center justify-center overflow-x-hidden">
           {isLoading ? (
             <div>Loading...</div>
           ) : (

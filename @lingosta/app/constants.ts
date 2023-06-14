@@ -2,6 +2,8 @@ export const SUPPORT_EMAIL: string = "hello@lingosta.app";
 
 const APP_NAME: string = "Lingosta";
 
+const LINGOSTA_GREEN: string = 'teal-500';
+
 export const PRIVACY_POLICY: string = `Welcome to ${APP_NAME}! We understand the importance of your privacy and are committed to safeguarding your personal information. This Privacy Policy explains how we collect, use, and protect the information you provide when using our web application.
 
 When you use ${APP_NAME}, we may collect certain information from you, such as your name, email address, and usage data. Rest assured that we treat your information with the utmost care and take appropriate measures to protect it from unauthorized access or disclosure.
