@@ -121,7 +121,7 @@ const JumblePractice: React.FC = () => {
     <div className="mx-auto">
       <div className="bg-teal-500 w-full p-1 top-0 mx-auto text-center">
         <span className="text-white text-sm font-bold">
-          This is a preview for Jumbles!
+          Jumbles are generated daily. This is a demo to show functionality!
         </span>
       </div>
       <Toaster />
