@@ -23,8 +23,9 @@ const FilterList = ({ translationsList }) => {
     );
     setSelectedTranslations(selected);
 
+    // TODO: store translations in a provider rather than rely on local storage
     localStorage.setItem('selectedTranslations', JSON.stringify(selected));
-    router.push('/practice/flashcards');
+    router.push('/practice/cards');
   };
 
   return (
