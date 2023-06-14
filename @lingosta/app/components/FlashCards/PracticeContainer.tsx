@@ -3,6 +3,7 @@ import { useUser } from '../../providers/UserProvider';
 import { useGroup } from '../../providers/GroupProvider';
 import { getUserTranslations } from '../../helpers/TranslationHelper';
 import FilterList from './FilterList';
+import Loading from '../Loading';
 
 const PracticeContainer = () => {
   const { user } = useUser();
@@ -33,11 +34,7 @@ const PracticeContainer = () => {
 
 
   if(isLoading) {
-    return (
-      <div className='px-12 animate-pulse mx-auto items-center text-center py-8 font-bold text-xl'>
-        Loading...
-    </div>
-    )
+    return <Loading />
   }
 
   if(translationsList.length===0) {

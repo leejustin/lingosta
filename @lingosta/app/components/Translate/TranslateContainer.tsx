@@ -12,6 +12,7 @@ import {toast, Toaster} from 'react-hot-toast';
 import PrevTranslationsList from './PrevTranslationsList';
 import ViewOnly from './ViewOnly';
 import GroupModal from '../Group/GroupModal';
+import Loading from '../Loading';
 
 const TranslateContainer: React.FC = () => {
   const {user} = useUser();
@@ -112,11 +113,7 @@ const TranslateContainer: React.FC = () => {
   }, [user, activeGroup]);
 
   if(isLoading) {
-    return (
-      <div className='px-12 animate-pulse mx-auto items-center text-center py-8 font-bold text-xl'>
-        Loading...
-    </div>
-    )
+    return <Loading />
   }
 
   return (

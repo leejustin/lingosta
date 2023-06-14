@@ -6,7 +6,7 @@ import { BsTranslate, BsPencilFill } from 'react-icons/bs';
 import { TbDragDrop } from 'react-icons/tb';
 import { useUser } from '../../providers/UserProvider';
 
-const MobileNav = () => {
+const BottomNav = () => {
     const { user } = useUser();
 
     if (!user) {
@@ -33,4 +33,4 @@ const MobileNav = () => {
     );
 };
 
-export default MobileNav;
+export default BottomNav;

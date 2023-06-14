@@ -12,6 +12,7 @@ interface LanguageSelectionProps {
 
 const LanguageSelection = ({ setLanguage }: LanguageSelectionProps) => {
   const languages = SUPPORTED_LANGUAGES
+  // Since we want users to select a valid language from the list, we filter out the "Unknown" language which is used as a catch-all in `getLanguageName`
   .filter((language: Language) => getLanguageName(language) !== 'Unknown')
   .map((language: Language) => {
     return { id: language, name: getLanguageName(language), icon: getLanguageEmoji(language) };
