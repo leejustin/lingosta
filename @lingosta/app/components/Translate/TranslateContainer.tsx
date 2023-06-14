@@ -18,6 +18,7 @@ const TranslateContainer: React.FC = () => {
   const {activeGroup} = useGroup();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoadingTranslations, setIsLoadingTranslations] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isViewOnlyOpen, setIsViewOnlyOpen] = useState<boolean>(false);
   const [isGroupModalOpen, setisGroupModalOpen] = useState<boolean>(false);
@@ -81,13 +82,13 @@ const TranslateContainer: React.FC = () => {
     }
 
     try {
-      setIsLoading(true);
+      setIsLoadingTranslations(true);
       const response = await getUserTranslations(user!.$id, activeGroup!.id);
       setTranslationsList(response);
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(false);
+      setIsLoadingTranslations(false);
     }
   };
 
@@ -106,14 +107,12 @@ const TranslateContainer: React.FC = () => {
 
   useEffect(() => {
     userTranslationsList();
-    if (activeGroup) {
-      setisGroupModalOpen(false);
-    } else {
-      setisGroupModalOpen(true);
-    }
+    
+    const shouldShowGroupModal = !user && !activeGroup;
+    setisGroupModalOpen(shouldShowGroupModal);
   }, [user, activeGroup]);
 
-  if(isLoading) {
+  if (isLoading || isLoadingTranslations) {
     return (
       <div className='px-12 animate-pulse mx-auto items-center text-center py-8 font-bold text-xl'>
         Loading...
