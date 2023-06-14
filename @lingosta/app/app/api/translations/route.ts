@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 import {Configuration, OpenAIApi} from "openai";
 import {
   getLanguageName,
@@ -30,12 +30,12 @@ const cleanResponse = (input: string): string => {
   return input;
 };
 
-export default async function translations(
-  request,
-  response
-) {
+export async function GET() {
+  return NextResponse.json({"hi": "there"});
+}
 
-  const requestBody: TranslationRequest = request.body;
+export async function POST(request: Request) {
+  const requestBody: TranslationRequest = await request.json();
 
   const {sentence, type} = requestBody;
 
@@ -55,11 +55,12 @@ export default async function translations(
     const rawTranslation: RawTranslationResponse = JSON.parse(result);
     const translation: TranslationResponse = mapRawTranslation(sentence, rawTranslation, type as Language);
     console.log(translation);
-    return response.status(200).json(translation);
+
+    return NextResponse.json(translation);
   } catch (e) {
     console.error(e);
-    return response.status(500).json({
-      error: "Failed to parse response",
-    });
+    return new Response("Failed to parse response", {
+      status: 500
+    })
   }
 }
