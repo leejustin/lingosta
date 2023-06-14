@@ -42,7 +42,7 @@ const TranslateContainer: React.FC = () => {
       setIsOpen(false);
       toast.success('Successfully saved!');
 
-      setTranslationsList((prevTranslationsList) => [...prevTranslationsList, userTranslation]);
+      userTranslationsList();
     } catch (error) {
       console.log(error);
     }
