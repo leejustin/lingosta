@@ -6,7 +6,7 @@ import { BsTranslate, BsPencilFill } from 'react-icons/bs';
 import { TbDragDrop } from 'react-icons/tb';
 import { useUser } from '../../providers/UserProvider';
 
-const Footer = () => {
+const MobileNav = () => {
     const { user } = useUser();
 
     if (!user) {
@@ -14,7 +14,7 @@ const Footer = () => {
     }
 
     return (
-      <div className='block md:hidden bg-white/50 backdrop-blur-sm border-t-[1px] border-neutral-200 z-50 py-2 mx-auto fixed bottom-8 left-0 right-0'>
+      <div className='block md:hidden bg-white/50 backdrop-blur-sm border-t-[1px] border-neutral-200 z-50 py-2 mx-auto fixed bottom-0 left-0 right-0'>
           <div className='flex items-center justify-center space-x-24'>
               <Link href='translate' className='flex flex-col items-center space-y-1'>
                   <BsTranslate size={30} className='text-gray-600' />
@@ -33,4 +33,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default MobileNav;

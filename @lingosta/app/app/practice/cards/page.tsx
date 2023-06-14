@@ -31,11 +31,11 @@ const Practicing: React.FC = () => {
           ) : (
             <div>
                 {selectedTranslations.map((data, index: number) => (
-                  <div key={index} className="max-w-sm md:max-w-xl mt-12 space-y-2">
+                  <div key={index} className="max-w-xs md:max-w-xl mt-12 space-y-2">
                       <span className="text-lg font-bold">{data.rawData}</span>
                       <Swiper
                         key={index}
-                        className="w-full max-w-sm md:max-w-xl"
+                        className="w-full max-w-xs md:max-w-xl"
                         rewind={true}
                         effect="cards"
                         navigation={true}
