@@ -15,7 +15,7 @@ const Practice = () => {
     }
 
     return (
-      <div>
+      <div className='mt-16'>
           <PracticeContainer />
       </div>
     );

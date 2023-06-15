@@ -121,9 +121,6 @@ const TranslateContainer: React.FC = () => {
       <Toaster/>
       <div className="mt-8 text-center justify-center items-center space-y-4">
         <div className="flex gap-2 items-center font-bold text-xl">
-          <label>
-            <BsTranslate size={20}/>
-          </label>
           Translate
         </div>
         <Textbox input={input} handleInput={handleInput}/>

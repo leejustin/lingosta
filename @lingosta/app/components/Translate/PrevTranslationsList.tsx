@@ -1,6 +1,6 @@
 import React from 'react';
 import { Toaster } from 'react-hot-toast';
-import { AiFillDelete } from 'react-icons/ai';
+import { BsFillTrashFill } from 'react-icons/bs';
 import Highlighter from 'react-highlight-words';
 
 const PrevTranslationsList = ({
@@ -43,9 +43,9 @@ const PrevTranslationsList = ({
                                 </span>
                                 <button 
                                     onClick={() => handleDelete(data.id)}
-                                    className='flex items-center bg-slate-500 hover:bg-slate-700 transition p-2 rounded-xl text-sm'
+                                    className='flex mx-auto items-center text-black hover:text-gray-700 transition'
                                 >
-                                    <AiFillDelete /> Delete
+                                    <BsFillTrashFill size={25}/>
                                 </button>
                             </div>
                     </div>

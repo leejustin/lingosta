@@ -5,7 +5,9 @@ import { useGroup } from '../../providers/GroupProvider';
 const Textbox = ({ input, handleInput }) => {
 
     const { activeGroup } = useGroup();
-    const activeLanguage = getLanguageName(activeGroup?.language).toLowerCase();
+    //Capitalize the first letter of the Language
+    const activeLanguage = getLanguageName(activeGroup?.language)?.charAt(0).toUpperCase() + getLanguageName(activeGroup?.language)?.slice(1);
+
 
     return (
         <div className="">

@@ -11,9 +11,17 @@ import { TranslationsProvider } from '../providers/SelectedTranslationsProvider'
 const inter = Inter({subsets: ['latin']})
 
 export const metadata = {
-  title: 'Lingosta',
-  description: 'language learning app',
-}
+  tile: "Lingosta",
+  description: "Discover a personalized language-learning journey with Lingosta by using AI to generate curated exercises, making it more engaging for learners of all levels! 🇪🇸 🇧🇷 🇺🇸 🇰🇷 🇫🇷 🇩🇪 🇮🇹 🇳🇱 🇷🇺 🇨🇳 🇯🇵",
+  openGraph: {
+    title: 'Lingosta',
+    description: "Discover a personalized language-learning journey with Lingosta by using AI to generate curated exercises, making it more engaging for learners of all levels! 🇪🇸 🇧🇷 🇺🇸 🇰🇷 🇫🇷 🇩🇪 🇮🇹 🇳🇱 🇷🇺 🇨🇳 🇯🇵"
+  },
+  twitter: {
+    title: "Lingosta",
+    description: "Discover a personalized language-learning journey with Lingosta by using AI to generate curated exercises, making it more engaging for learners of all levels! 🇪🇸 🇧🇷 🇺🇸 🇰🇷 🇫🇷 🇩🇪 🇮🇹 🇳🇱 🇷🇺 🇨🇳 🇯🇵"
+  }
+};
 
 export default function RootLayout({
   children,
