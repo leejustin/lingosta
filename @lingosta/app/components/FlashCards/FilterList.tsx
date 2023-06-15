@@ -33,7 +33,7 @@ const FilterList = ({ translationsList }) => {
       <div className="max-w-lg items-center flex mx-auto">
         <Button label="Begin practice" onClick={handleBundleTranslations} />
       </div>
-      <div className="mt-4 text-lg font-semibold">Select translations to practice:</div>
+      <div className="mt-10 text-lg font-semibold">Select translations to practice:</div>
       <div className="mx-auto grid grid-flow-row gap-4 mt-2">
         {translationsList.map((data, index) => (
           <div key={index} className="flex space-x-2 items-center">
