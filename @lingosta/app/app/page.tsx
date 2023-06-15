@@ -24,8 +24,8 @@ export default function Home() {
           </h1>
           <div>
             <p>
-              Unlock the power of language-learning by using AI to curate exercises, making it
-              more engaging for learners of all levels!
+              Discover a personalized language-learning journey with Lingosta by using AI to generate curated exercises,
+              making it more engaging for learners of all levels!
             </p>
             <p>
               🇪🇸 🇧🇷 🇺🇸 🇰🇷 🇫🇷 🇩🇪 🇮🇹 🇳🇱 🇷🇺 🇨🇳 🇯🇵
@@ -50,7 +50,8 @@ export default function Home() {
             <p>
               Imagine being able to take sentences from someone you follow on Instagram and translate those
               words to
-              build your understanding of how to read relevant content. Lingosta allows you to have control over the type of text and content you want to spend time learning.
+              build your understanding of how to read relevant content. Lingosta allows you to have control over the
+              type of text and content you want to spend time learning.
             </p>
             <button className="py-2 px-6 rounded-3xl text-white bg-teal-500 hover:bg-teal-600 transition">
               <Link href='/signup'>
