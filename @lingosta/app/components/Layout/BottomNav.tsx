@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { BsTranslate, BsPencilFill } from 'react-icons/bs';
+import { BsTranslate } from 'react-icons/bs';
+import { VscNote } from 'react-icons/vsc';
 import { TbDragDrop } from 'react-icons/tb';
 import { useUser } from '../../providers/UserProvider';
 
@@ -21,7 +22,7 @@ const BottomNav = () => {
                   <p className='m-auto text-xs font-semibold text-gray-600'>Translate</p>
               </Link>
               <Link href='practice' className='flex flex-col items-center space-y-1'>
-                  <BsPencilFill size={30} className='text-gray-600' />
+                  <VscNote size={30} className='text-gray-600' />
                   <p className='m-auto text-xs font-semibold text-gray-600'>Cards</p>
               </Link>
               <Link href='practice/jumble/12345' className='flex flex-col items-center space-y-1'>
