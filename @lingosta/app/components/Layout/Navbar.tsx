@@ -26,6 +26,7 @@ const Navbar = () => {
               <div>
                   {!user ? (
                     <div className="space-x-4">
+                        <Link className="m-auto font-semibold hover:text-gray-500 pr-4" href="https://blog.lingosta.app">Blog</Link>
                         <Link className="m-auto font-semibold hover:text-gray-500" href="/login">Login</Link>
                         <Link className="m-auto font-semibold hover:text-gray-500" href="/signup">Join</Link>
                     </div>

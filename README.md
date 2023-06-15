@@ -1,7 +1,10 @@
+![Image](images/banner.png)
 # Lingosta
 Discover a personalized language-learning journey with Lingosta by using AI to generate curated exercises, making it more engaging for learners of all levels!
 
 🇪🇸 🇧🇷 🇺🇸 🇰🇷 🇫🇷 🇩🇪 🇮🇹 🇳🇱 🇷🇺 🇨🇳 🇯🇵
+
+![Image](images/mockup.png)
 
 ## Prerequisites
 * OpenAI account with API access
@@ -17,7 +20,12 @@ Discover a personalized language-learning journey with Lingosta by using AI to g
 ## Development
 This application is created with NextJS.
 
-The following command will start the application locally:
+1. Set up your `.env` file.
+1. Install dependencies
+```bash
+npm install
+```
+1. Start the application locally
 ```bash
 npm run dev
 ```

@@ -54,8 +54,8 @@ export default function Home() {
               type of text and content you want to spend time learning.
             </p>
             <button className="py-2 px-6 rounded-3xl text-white bg-teal-500 hover:bg-teal-600 transition">
-              <Link href='/signup'>
-                Get Started
+              <Link href='https://blog.lingosta.app/lingosta-discover-an-ai-powered-personalized-language-learning-journey'>
+                Learn More
               </Link>
             </button>
           </div>
