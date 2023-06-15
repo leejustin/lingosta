@@ -106,6 +106,10 @@ const TranslateContainer: React.FC = () => {
   };
 
   useEffect(() => {
+    setTranslationsList([]);
+  }, [isOpen]);
+
+  useEffect(() => {
     userTranslationsList();
     
     const shouldShowGroupModal = !activeGroup;
